@@ -9,9 +9,9 @@ public class Transaction {
         EXPENSE
     }
     enum ExpenseType{
-        A,
-        B,
-        C
+        SALARY,
+        UTILITY,
+        RENT
     }
     enum PaymentMethod{
         CASH,
