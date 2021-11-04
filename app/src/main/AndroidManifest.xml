@@ -10,7 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project242">
         <activity
-            android:name=".MainActivity"
+            android:name=".Transactions.Transactions"
+            android:exported="false" />
+        <activity
+            android:name=".Settings"
+            android:exported="false" />
+        <activity
+            android:name=".Students"
+            android:exported="false" />
+        <activity
+            android:name=".MonetaryRates.MonetaryRates"
+            android:exported="false" />
+        <activity
+            android:name=".Home.Home"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
