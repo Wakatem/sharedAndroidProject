@@ -11,7 +11,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 public class PagerAdapter extends FragmentStateAdapter {
 
     final private int numberOfTabs = 2;
-    Context context;
+    private Context context;
 
     public PagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, Context context) {
         super(fragmentManager, lifecycle);
@@ -23,16 +23,21 @@ public class PagerAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
 
-        if (position == 0)
+        if (position == 0) {
             return new CostsFragment();
-        else
+
+        }
+        else {
             return new DiscountsFragment();
+        }
 
     }
+
 
     @Override
     public int getItemCount() {
         return numberOfTabs;
     }
+
 
 }

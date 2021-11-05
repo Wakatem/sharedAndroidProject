@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="440dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fbutton="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:paddingBottom="20dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:orientation="vertical"
+            android:id="@+id/ringContainer"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:background="@drawable/less_than_ring">
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/newCostTV"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_regular"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="Add Cost"
+            android:visibility="invisible"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+    </FrameLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/chosenCost_amount"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/raleway_regular"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLines="1"
+                android:text="120"
+                android:textColor="@color/black"
+                android:textSize="23sp" />
+
+
+            <TextView
+                android:id="@+id/chosenCost_currency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/raleway_regular"
+                android:text="AED"
+                android:textColor="@color/black"
+                android:textSize="23sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <Spinner
+                android:id="@+id/chosenCost_desc"
+                android:layout_width="40dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                android:clickable="false"
+                android:layout_weight="1" />
+
+            <EditText
+                android:id="@+id/chosenCost_hours"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:focusableInTouchMode="true"
+                android:gravity="center"
+                android:inputType="number"
+                android:text="4"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/raleway_regular"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:inputType="number"
+                android:text="Hours"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <info.hoang8f.widget.FButton
+                android:id="@+id/edit_button"
+                android:layout_width="85dp"
+                android:layout_height="45dp"
+                android:gravity="center"
+                android:text="Edit"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                app:buttonColor="#FFC107"
+                app:shadowHeight="1dp"
+                android:layout_marginRight="70dp"/>
+
+            <info.hoang8f.widget.FButton
+                android:id="@+id/delete_button"
+                android:layout_width="85dp"
+                android:layout_height="45dp"
+                android:gravity="center"
+                android:text="Delete"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                app:shadowHeight="1dp"
+                app:buttonColor="#EF5350" />
+        </LinearLayout>
+
+
+
+
+</LinearLayout>
