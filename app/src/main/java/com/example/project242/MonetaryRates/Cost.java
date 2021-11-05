@@ -4,7 +4,7 @@ import com.example.project242.R;
 
 public class Cost {
 
-    enum Type {
+    public enum Type {
         GREATER,
         EQUAL,
         LESS
@@ -12,8 +12,8 @@ public class Cost {
 
     private int amount;
     private int duration;
-    private int ring;
     private Type type;
+    private int ring;
 
     public Cost(int amount, int duration, Type type) {
         this.amount = amount;

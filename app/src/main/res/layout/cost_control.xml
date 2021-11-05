@@ -57,6 +57,7 @@
                 android:id="@+id/chosenCost_desc"
                 android:layout_width="40dp"
                 android:layout_height="45dp"
+                android:layout_marginTop="5dp"
                 android:clickable="false"
                 android:layout_weight="1" />
 
@@ -65,10 +66,10 @@
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/raleway_regular"
+                android:focusable="false"
+                android:focusableInTouchMode="true"
                 android:gravity="center"
                 android:inputType="number"
-                android:focusable="false"
                 android:text="4"
                 android:textColor="@color/black"
                 android:textSize="18dp" />
@@ -97,23 +98,25 @@
 
             <info.hoang8f.widget.FButton
                 android:id="@+id/edit_button"
-                android:layout_width="65dp"
-                android:layout_height="35dp"
+                android:layout_width="85dp"
+                android:layout_height="45dp"
                 android:gravity="center"
                 android:text="Edit"
                 android:textColor="@color/white"
-                android:textSize="9sp"
+                android:textSize="13sp"
                 app:buttonColor="#FFC107"
+                app:shadowHeight="1dp"
                 android:layout_marginRight="70dp"/>
 
             <info.hoang8f.widget.FButton
                 android:id="@+id/delete_button"
-                android:layout_width="65dp"
-                android:layout_height="35dp"
+                android:layout_width="85dp"
+                android:layout_height="45dp"
                 android:gravity="center"
                 android:text="Delete"
                 android:textColor="@color/white"
-                android:textSize="9sp"
+                android:textSize="13sp"
+                app:shadowHeight="1dp"
                 app:buttonColor="#EF5350" />
         </LinearLayout>
 
