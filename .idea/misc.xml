@@ -5,14 +5,22 @@
       <map>
         <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/activity_transactions.xml" value="0.10144927536231885" />
         <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/drawable/app_bar_color.xml" value="0.16302083333333334" />
+        <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/drawable/circle.xml" value="0.2833333333333333" />
+        <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/drawable/circle2.xml" value="0.2833333333333333" />
+        <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/drawable/equal_ring.xml" value="0.28055555555555556" />
         <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/drawable/gradient_background1.xml" value="0.262037037037037" />
         <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/drawable/gradient_background2.xml" value="0.2574074074074074" />
+        <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/drawable/greater_than_ring.xml" value="0.28055555555555556" />
+        <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2833333333333333" />
+        <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/drawable/less_than_ring.xml" value="0.28055555555555556" />
         <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/drawable/menu_icon.xml" value="0.2574074074074074" />
         <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/activity_home.xml" value="0.2796875" />
         <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/activity_monetary_rates.xml" value="0.2796875" />
         <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/activity_settings.xml" value="0.2796875" />
         <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/activity_students.xml" value="0.265625" />
         <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/activity_transactions.xml" value="0.25" />
+        <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/cost_control.xml" value="0.25" />
+        <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/cost_item_sheet.xml" value="0.2796875" />
         <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/costs_fragment.xml" value="0.2796875" />
         <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/costs_list_item.xml" value="0.2796875" />
         <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/discounts_fragment.xml" value="0.2796875" />
