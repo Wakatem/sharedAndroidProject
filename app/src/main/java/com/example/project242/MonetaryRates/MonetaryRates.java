@@ -18,9 +18,6 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 public class MonetaryRates extends AppCompatActivity {
 
-    DrawerLayout drawer;
-    ActionBarDrawerToggle toggler;
-    NavigationView navView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
