@@ -46,10 +46,10 @@ public class CostAdapter extends ArrayAdapter<Cost> {
         //assign description appropriately
         if (type == Cost.Type.GREATER) {
             descTV.setText("More than "+duration+" hours");
-        } else if (type == Cost.Type.LESS) {
-            descTV.setText("Less than "+duration+" hours");
-        } else {
+        } else if (type == Cost.Type.EQUAL) {
             descTV.setText(duration+" Hours");
+        } else {
+            descTV.setText("Less than "+duration+" hours");
         }
 
         return item;

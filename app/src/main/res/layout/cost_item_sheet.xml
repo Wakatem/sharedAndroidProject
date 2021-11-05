@@ -7,15 +7,33 @@
     android:orientation="vertical"
     android:paddingBottom="20dp">
 
-    <LinearLayout
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:orientation="vertical"
-        android:id="@+id/ringContainer"
-        android:layout_weight="1"
-        android:layout_gravity="center"
-        android:background="@drawable/less_than_ring">
-    </LinearLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:orientation="vertical"
+            android:id="@+id/ringContainer"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:background="@drawable/less_than_ring">
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/newCostTV"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_regular"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="Add Cost"
+            android:visibility="invisible"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+    </FrameLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,7 +45,6 @@
                 android:id="@+id/chosenCost_amount"
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:focusable="false"
                 android:fontFamily="@font/raleway_regular"
                 android:gravity="center"
                 android:inputType="number"
@@ -66,7 +83,6 @@
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:focusable="false"
                 android:focusableInTouchMode="true"
                 android:gravity="center"
                 android:inputType="number"

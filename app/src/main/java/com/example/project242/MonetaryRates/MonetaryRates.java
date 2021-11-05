@@ -8,15 +8,20 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
+import com.example.project242.Home.Home;
 import com.example.project242.R;
 import com.example.project242.SectionsMenu;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 public class MonetaryRates extends AppCompatActivity {
+
+    private ViewPager2 pager;
 
 
     @Override
@@ -24,15 +29,29 @@ public class MonetaryRates extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monetary_rates);
 
-
+        //setup for sections menu
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.MR_drawer);
-
         SectionsMenu menu = new SectionsMenu(this, drawer);
         menu.initialize();
         menu.setupToolbar("Monetary Rates", R.drawable.menu_icon);
         menu.setOptionSelectedListener();
 
+        //setup tabs
         setupTabs();
+
+
+        FloatingActionButton fab = findViewById(R.id.fab_add);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (pager.getCurrentItem() == 0){
+                    addCost();
+
+                }else {
+                    addDiscount();
+                }
+            }
+        });
 
 
     }
@@ -40,7 +59,7 @@ public class MonetaryRates extends AppCompatActivity {
 
     void setupTabs(){
         //link viewpager with pager adapter
-        ViewPager2 pager = findViewById(R.id.pager);
+        pager = findViewById(R.id.pager);
         PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), getLifecycle(), this);
         pager.setAdapter(adapter);
 
@@ -50,14 +69,36 @@ public class MonetaryRates extends AppCompatActivity {
         new TabLayoutMediator(tabs, pager, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                if (position == 0)
+                if (position == 0) {
                     tab.setText("Costs");
-                else
+                }
+                else{
                     tab.setText("Discounts");
+                }
 
             }
         }).attach();
     }
+
+
+
+    void addCost(){
+        Cost cost = new Cost(1, 1, Cost.Type.LESS);
+
+        //create bottom sheet to add cost details
+        BottomSheet addingSheet = new BottomSheet(true, this, R.layout.cost_item_sheet, cost, Home.costsList, CostsFragment.costsListView, CostsFragment.adapter);
+        addingSheet.initializeViews();
+        addingSheet.setListeners();
+        addingSheet.show();
+    }
+
+
+    void addDiscount(){
+
+    }
+
+
+
 
 
 
