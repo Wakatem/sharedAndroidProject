@@ -15,11 +15,11 @@ import com.example.project242.R;
 
 import java.util.ArrayList;
 
-public class CostsAdapter extends ArrayAdapter<Cost> {
+public class CostAdapter extends ArrayAdapter<Cost> {
 
     ArrayList<Cost> list;
 
-    public CostsAdapter(@NonNull Context context, ArrayList<Cost> list) {
+    public CostAdapter(@NonNull Context context, ArrayList<Cost> list) {
         super(context, 0, list);
         this.list = list;
     }
