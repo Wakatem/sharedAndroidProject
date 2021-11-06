@@ -117,7 +117,7 @@
                 android:layout_width="85dp"
                 android:layout_height="45dp"
                 android:gravity="center"
-                android:text="button1"
+                android:text="Edit"
                 android:textColor="@color/white"
                 android:textSize="13sp"
                 app:shadowHeight="1dp"
@@ -128,7 +128,7 @@
                 android:layout_width="85dp"
                 android:layout_height="45dp"
                 android:gravity="center"
-                android:text="button2"
+                android:text="Delete"
                 android:textColor="@color/white"
                 android:textSize="13sp"
                 app:shadowHeight="1dp" />
