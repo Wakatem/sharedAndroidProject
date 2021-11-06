@@ -72,6 +72,88 @@ public class CostsHandler extends ArrayList<Cost> {
     }
 
 
+    /**
+     * Return Cost object based on duration
+     */
+    public int getCost(int hours, int minutes) {
+
+        int minIndex = -1;
+        boolean greaterFound = false;
+
+        int maxIndex = -1;
+        boolean lessFound = false;
+
+        boolean ignoreDelay = true;
+        if (minutes > 15)
+            ignoreDelay = false;
+
+
+        for (int i = size() - 1; i > -1; i--) {
+            Cost currentCost = get(i);
+            if (currentCost.getHours() == hours) {
+
+                if (ignoreDelay){
+                    if (currentCost.getType() == Cost.Type.EQUAL) {
+                        //return amount here
+                        return currentCost.getAmount();
+                    }
+                }else {
+                    if (currentCost.getType() == Cost.Type.GREATER) {
+                        //return amount here
+                        return currentCost.getAmount();
+                    }
+                }
+
+
+                if (minIndex != -1) {
+                    //when iteration reaches cost containing hours matching "hours", and founds a range
+                    //from lower-positioned costs, break
+                    greaterFound = true;
+                    break;
+                }
+
+
+
+            }
+            else if (currentCost.getHours() < hours) {
+                if (currentCost.getType() == Cost.Type.GREATER) {
+                    minIndex = i;
+                }
+            }
+            else if (currentCost.getHours() > hours) {
+                if (currentCost.getType() == Cost.Type.LESS) {
+                    maxIndex = i;
+                    lessFound = true;
+                    break;  //max possible cost found, break instantly
+                }
+            }
+
+        }//for
+
+
+        if (!greaterFound && !lessFound){
+
+            //return -1  (no cost entry covers the duration)
+            return -1;
+        }else if (greaterFound){
+
+            //return
+            return get(minIndex).getAmount();
+
+        }else if (lessFound){
+
+            //return
+            return get(maxIndex).getAmount();
+        }
+        else {
+
+            //return error code -2 (unexpected behaviour)
+            return -2;
+        }
+
+
+    }
+
 
     @Override
     public boolean add(Cost cost) {
