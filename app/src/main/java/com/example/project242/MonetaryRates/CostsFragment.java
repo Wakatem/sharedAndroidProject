@@ -29,7 +29,7 @@ public class CostsFragment extends Fragment {
         costsListView = frag.findViewById(R.id.listV);
 
         //set custom adapter
-        adapter = new CostAdapter(getContext(), Home.costsList);
+        adapter = new CostAdapter(getContext(), Home.costsHandler);
         costsListView.setAdapter(adapter);
 
         //set onclick listener for a single item
@@ -37,12 +37,14 @@ public class CostsFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 //display selected cost in a sheet
-                BottomSheet sheet = new BottomSheet(false, getContext(), R.layout.cost_sheet_item, Home.costsList.get(position), Home.costsList, costsListView, adapter);
+                BottomSheet sheet = new BottomSheet(false, getContext(), R.layout.cost_sheet_item, Home.costsHandler.get(position), Home.costsHandler, costsListView, adapter);
                 sheet.initializeViews();
                 sheet.setListeners();
                 sheet.show();
             }
         });
+
+        CostsHandler costsHandler = new CostsHandler();
 
 
         return frag;

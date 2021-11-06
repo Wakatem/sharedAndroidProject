@@ -66,8 +66,8 @@ public class BottomSheet {
 
         //cast objects according to type
         for (Object object : objects) {
-            if (object instanceof ArrayList) {
-                costsList = (ArrayList<Cost>) object;
+            if (object instanceof CostsHandler) {
+                costsList = (CostsHandler) object;
             }
 
             if (object instanceof ListView) {
@@ -137,7 +137,7 @@ public class BottomSheet {
             //update components with values respectively
             ringContainer.setBackgroundResource(chosenCost.getRing());
             amountET.setText(String.valueOf(chosenCost.getAmount()));
-            hoursET.setText(String.valueOf(chosenCost.getDuration()));
+            hoursET.setText(String.valueOf(chosenCost.getHours()));
         }
 
 
@@ -276,7 +276,7 @@ public class BottomSheet {
             if (costsList.get(i) != chosenCost) {
 
                 //if matching details found, don't save
-                if (newDuration == costsList.get(i).getDuration() && chosenCostType == costsList.get(i).getType()) {
+                if (newDuration == costsList.get(i).getHours() && chosenCostType == costsList.get(i).getType()) {
                     Toast.makeText(context, "Matching cost duration exists", Toast.LENGTH_SHORT).show();
                     return false;
                 }
@@ -292,10 +292,10 @@ public class BottomSheet {
         if (isAddingCost) {
 
             chosenCost.setAmount(Integer.valueOf(amountET.getText().toString()));
-            chosenCost.setDuration(Integer.valueOf(hoursET.getText().toString()));
+            chosenCost.setHours(Integer.valueOf(hoursET.getText().toString()));
             chosenCost.setType(costType);
 
-            Home.costsList.add(chosenCost);
+            Home.costsHandler.add(chosenCost);
 
         } else {
             // -- Editing cost --
@@ -303,7 +303,7 @@ public class BottomSheet {
             int position = costsList.indexOf(chosenCost);
 
             costsList.get(position).setAmount(Integer.valueOf(amountET.getText().toString()));
-            costsList.get(position).setDuration(Integer.valueOf(hoursET.getText().toString()));
+            costsList.get(position).setHours(Integer.valueOf(hoursET.getText().toString()));
             costsList.get(position).setType(costType);
 
         }

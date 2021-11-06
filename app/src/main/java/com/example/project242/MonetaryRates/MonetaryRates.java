@@ -79,10 +79,10 @@ public class MonetaryRates extends AppCompatActivity {
 
 
     void addCost(){
-        Cost cost = new Cost(1, 1, Cost.Type.LESS);
+        Cost cost = new Cost(1, Cost.Type.LESS, 1);
 
         //create bottom sheet to add cost details
-        BottomSheet addingSheet = new BottomSheet(true, this, R.layout.cost_sheet_item, cost, Home.costsList, CostsFragment.costsListView, CostsFragment.adapter);
+        BottomSheet addingSheet = new BottomSheet(true, this, R.layout.cost_sheet_item, cost, Home.costsHandler, CostsFragment.costsListView, CostsFragment.adapter);
         addingSheet.initializeViews();
         addingSheet.setListeners();
         addingSheet.show();
