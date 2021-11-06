@@ -1,21 +1,17 @@
 package com.example.project242.MonetaryRates;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.project242.Home.Home;
 import com.example.project242.R;
 import com.example.project242.SectionsMenu;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -86,7 +82,7 @@ public class MonetaryRates extends AppCompatActivity {
         Cost cost = new Cost(1, 1, Cost.Type.LESS);
 
         //create bottom sheet to add cost details
-        BottomSheet addingSheet = new BottomSheet(true, this, R.layout.cost_item_sheet, cost, Home.costsList, CostsFragment.costsListView, CostsFragment.adapter);
+        BottomSheet addingSheet = new BottomSheet(true, this, R.layout.cost_sheet_item, cost, Home.costsList, CostsFragment.costsListView, CostsFragment.adapter);
         addingSheet.initializeViews();
         addingSheet.setListeners();
         addingSheet.show();

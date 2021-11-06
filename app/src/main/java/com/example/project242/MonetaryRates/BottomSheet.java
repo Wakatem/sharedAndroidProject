@@ -47,15 +47,14 @@ public class BottomSheet {
 
 
     //default & shared variables
-    private int sheetLayout;
     private boolean initialCostLoad = true;   // to avoid the overriding of the ring on bottom sheet load
     private Cost.Type chosenCostType;         // passed later to save final cost type
-    private boolean isEditing = false;        // to track editing mode
-    private boolean addingCost;
+    private boolean isEditing = false;        // to track editing mode in edit button
+    private boolean isAddingCost;             // to determine bottom sheet role
 
 
-    public BottomSheet(boolean addingItem, Context parentContext, int sheetLayout, Cost chosenCost, Object... objects) {
-        this.addingCost = addingItem;
+    public BottomSheet(boolean isAddingItem, Context parentContext, int sheetLayout, Cost chosenCost, Object... objects) {
+        this.isAddingCost = isAddingItem;
 
         //initialize sheet dialog
         sheetDialog = new BottomSheetDialog(parentContext);
@@ -63,7 +62,6 @@ public class BottomSheet {
         this.chosenCost = chosenCost;
 
         //set sheet layout
-        this.sheetLayout = sheetLayout;
         sheetDialog.setContentView(sheetLayout);
 
         //cast objects according to type
@@ -101,35 +99,47 @@ public class BottomSheet {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context, R.array.costTypes, android.R.layout.simple_spinner_dropdown_item);
         costTypesMenu.setAdapter(adapter);
 
-        if (addingCost) {
+        if (isAddingCost) {
+            //show "Add Cost" text
             TextView newCost_tv = sheetDialog.findViewById(R.id.newCostTV);
             newCost_tv.setVisibility(View.VISIBLE);
+
+            //empty fields
+            amountET.setText("");
+            hoursET.setText("");
 
             //switch to edit mode
             isEditing = true;
             amountET.setFocusableInTouchMode(true);
             hoursET.setFocusableInTouchMode(true);
             costTypesMenu.setEnabled(true);
+
             editButton.setText("Save");
             editButton.setButtonColor(Color.parseColor("#4CAF50"));
             deleteButton.setText("Cancel");
             deleteButton.setButtonColor(Color.parseColor("#9E9E9E"));
 
-            costTypesMenu.setSelection(2);
             costTypesMenu.setEnabled(true);
 
+
         } else {
-            //-- an existing cost was picked --
+            //-- an existing cost was chosen --
+
+            editButton.setText("Edit");
+            editButton.setButtonColor(Color.parseColor("#FFC107"));
+            deleteButton.setText("Delete");
+            deleteButton.setButtonColor(Color.parseColor("#EF5350"));
 
             amountET.setFocusableInTouchMode(false);
             hoursET.setFocusableInTouchMode(false);
             costTypesMenu.setEnabled(false); //disable initial menu availability
+
+            //update components with values respectively
+            ringContainer.setBackgroundResource(chosenCost.getRing());
+            amountET.setText(String.valueOf(chosenCost.getAmount()));
+            hoursET.setText(String.valueOf(chosenCost.getDuration()));
         }
 
-        //update components with the relevant info
-        ringContainer.setBackgroundResource(chosenCost.getRing());
-        amountET.setText(String.valueOf(chosenCost.getAmount()));
-        hoursET.setText(String.valueOf(chosenCost.getDuration()));
 
 
     }
@@ -140,14 +150,17 @@ public class BottomSheet {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 if (initialCostLoad) {
-                    //set the correct drop menu option based on current ring of the item
+                    //set the correct drop menu option & values based on current cost type
                     if (chosenCost.getType() == Cost.Type.GREATER) {
+                        chosenCostType = Cost.Type.GREATER;
                         costTypesMenu.setSelection(0);
                         ringContainer.setBackgroundResource(R.drawable.greater_than_ring);
                     } else if (chosenCost.getType() == Cost.Type.EQUAL) {
+                        chosenCostType = Cost.Type.EQUAL;
                         costTypesMenu.setSelection(1);
                         ringContainer.setBackgroundResource(R.drawable.equal_ring);
                     } else {
+                        chosenCostType = Cost.Type.LESS;
                         costTypesMenu.setSelection(2);
                         ringContainer.setBackgroundResource(R.drawable.less_than_ring);
                     }
@@ -191,11 +204,12 @@ public class BottomSheet {
                         Toast.makeText(context, "Fields cannot be empty", Toast.LENGTH_SHORT).show();
                     }
 
-                    //a condition to avoid checking details if current fields are empty
-                    if (readyToSave) {
-                        //to determine details uniqueness state
+                    //if all fields have a value
+                    if (!amountET.getText().toString().equals("") || !amountET.getText().toString().equals("")){
+                        //determine details uniqueness state
                         readyToSave = uniqueCostDetails();
                     }
+
 
 
                     //Saving process
@@ -237,7 +251,7 @@ public class BottomSheet {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (addingCost) {
+                if (isAddingCost) {
                     sheetDialog.dismiss();
                 } else {
                     costsList.remove(chosenCost);
@@ -275,7 +289,7 @@ public class BottomSheet {
 
     private void saveCostChanges(Cost chosenCost, EditText amountET, EditText hoursET, Cost.Type costType) {
 
-        if (addingCost) {
+        if (isAddingCost) {
 
             chosenCost.setAmount(Integer.valueOf(amountET.getText().toString()));
             chosenCost.setDuration(Integer.valueOf(hoursET.getText().toString()));
