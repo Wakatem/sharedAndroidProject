@@ -7,6 +7,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.project242.Home.Home;
 import com.example.project242.R;
@@ -85,7 +86,8 @@ public class MonetaryRates extends AppCompatActivity {
         BottomSheet addingSheet = new BottomSheet(true, this, R.layout.cost_sheet_item, cost, Home.costsHandler, CostsFragment.costsListView, CostsFragment.adapter);
         addingSheet.initializeViews();
         addingSheet.setListeners();
-        addingSheet.show();
+        //addingSheet.show();
+        Toast.makeText(this, String.valueOf(Home.costsHandler.getCost(6, 0)), Toast.LENGTH_SHORT).show();
     }
 
 

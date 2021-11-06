@@ -38,10 +38,8 @@ public class Home extends AppCompatActivity {
         costsHandler.add(new Cost(220, Cost.Type.LESS, 2));
         costsHandler.add(new Cost(100, Cost.Type.EQUAL, 2));
         costsHandler.add(new Cost(120, Cost.Type.GREATER, 2));
-
-        costsHandler.add(new Cost(13, Cost.Type.EQUAL, 3));
-        costsHandler.add(new Cost(20, Cost.Type.GREATER, 3));
-        costsHandler.add(new Cost(433, Cost.Type.LESS, 3));
+        costsHandler.add(new Cost(100, Cost.Type.EQUAL, 4));
+        costsHandler.add(new Cost(130, Cost.Type.GREATER, 5));
 
 
 
