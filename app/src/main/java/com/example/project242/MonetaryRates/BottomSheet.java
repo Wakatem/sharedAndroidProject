@@ -47,11 +47,10 @@ public class BottomSheet {
 
 
     //default & shared variables
-    private int sheetLayout;
     private boolean initialCostLoad = true;   // to avoid the overriding of the ring on bottom sheet load
     private Cost.Type chosenCostType;         // passed later to save final cost type
-    private boolean isEditing = false;        // to track editing mode
-    private boolean isAddingCost;
+    private boolean isEditing = false;        // to track editing mode in edit button
+    private boolean isAddingCost;             // to determine bottom sheet role
 
 
     public BottomSheet(boolean isAddingItem, Context parentContext, int sheetLayout, Cost chosenCost, Object... objects) {
@@ -63,7 +62,6 @@ public class BottomSheet {
         this.chosenCost = chosenCost;
 
         //set sheet layout
-        this.sheetLayout = sheetLayout;
         sheetDialog.setContentView(sheetLayout);
 
         //cast objects according to type
@@ -102,6 +100,7 @@ public class BottomSheet {
         costTypesMenu.setAdapter(adapter);
 
         if (isAddingCost) {
+            //show "Add Cost" text
             TextView newCost_tv = sheetDialog.findViewById(R.id.newCostTV);
             newCost_tv.setVisibility(View.VISIBLE);
 

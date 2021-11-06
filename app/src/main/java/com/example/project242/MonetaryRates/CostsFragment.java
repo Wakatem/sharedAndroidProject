@@ -36,8 +36,7 @@ public class CostsFragment extends Fragment {
         costsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-
-                //display selected cost based in a sheet
+                //display selected cost in a sheet
                 BottomSheet sheet = new BottomSheet(false, getContext(), R.layout.cost_sheet_item, Home.costsList.get(position), Home.costsList, costsListView, adapter);
                 sheet.initializeViews();
                 sheet.setListeners();
