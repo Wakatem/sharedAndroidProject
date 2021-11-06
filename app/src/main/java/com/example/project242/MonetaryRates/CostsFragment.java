@@ -15,9 +15,6 @@ import androidx.fragment.app.Fragment;
 import com.example.project242.Home.Home;
 import com.example.project242.R;
 
-import java.util.ArrayList;
-import java.util.Objects;
-
 public class CostsFragment extends Fragment {
 
     static ListView costsListView;
@@ -39,7 +36,7 @@ public class CostsFragment extends Fragment {
         costsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                BottomSheet sheet = new BottomSheet(false, getContext(), R.layout.cost_item_sheet, Home.costsList.get(position), Home.costsList, costsListView, adapter);
+                BottomSheet sheet = new BottomSheet(false, getContext(), R.layout.cost_sheet_item, Home.costsList.get(position), Home.costsList, costsListView, adapter);
                 sheet.initializeViews();
                 sheet.setListeners();
                 sheet.show();

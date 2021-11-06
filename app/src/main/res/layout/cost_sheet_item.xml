@@ -117,10 +117,9 @@
                 android:layout_width="85dp"
                 android:layout_height="45dp"
                 android:gravity="center"
-                android:text="Edit"
+                android:text="button1"
                 android:textColor="@color/white"
                 android:textSize="13sp"
-                app:buttonColor="#FFC107"
                 app:shadowHeight="1dp"
                 android:layout_marginRight="70dp"/>
 
@@ -129,11 +128,10 @@
                 android:layout_width="85dp"
                 android:layout_height="45dp"
                 android:gravity="center"
-                android:text="Delete"
+                android:text="button2"
                 android:textColor="@color/white"
                 android:textSize="13sp"
-                app:shadowHeight="1dp"
-                app:buttonColor="#EF5350" />
+                app:shadowHeight="1dp" />
         </LinearLayout>
 
 

@@ -110,6 +110,7 @@ public class BottomSheet {
             amountET.setFocusableInTouchMode(true);
             hoursET.setFocusableInTouchMode(true);
             costTypesMenu.setEnabled(true);
+
             editButton.setText("Save");
             editButton.setButtonColor(Color.parseColor("#4CAF50"));
             deleteButton.setText("Cancel");
@@ -120,6 +121,11 @@ public class BottomSheet {
 
         } else {
             //-- an existing cost was picked --
+
+            editButton.setText("Edit");
+            editButton.setButtonColor(Color.parseColor("#FFC107"));
+            deleteButton.setText("Delete");
+            deleteButton.setButtonColor(Color.parseColor("#9E9E9E"));
 
             amountET.setFocusableInTouchMode(false);
             hoursET.setFocusableInTouchMode(false);
