@@ -1,15 +1,11 @@
 package com.example.project242.MonetaryRates;
 
-import android.content.Context;
-import android.widget.Toast;
-
 import java.util.ArrayList;
 
 public class CostsHandler extends ArrayList<Cost> {
 
 
-    public CostsHandler() {
-    }
+    public CostsHandler() {}
 
 
     private void sortCosts() {
@@ -118,6 +114,7 @@ public class CostsHandler extends ArrayList<Cost> {
             else if (currentCost.getHours() < hours) {
                 if (currentCost.getType() == Cost.Type.GREATER) {
                     minIndex = i;
+                    greaterFound = true;
                 }
             }
             else if (currentCost.getHours() > hours) {

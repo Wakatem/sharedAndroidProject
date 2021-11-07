@@ -44,8 +44,6 @@ public class CostsFragment extends Fragment {
             }
         });
 
-        CostsHandler costsHandler = new CostsHandler();
-
 
         return frag;
     }

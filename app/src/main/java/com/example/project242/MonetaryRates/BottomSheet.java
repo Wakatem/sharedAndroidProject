@@ -208,8 +208,8 @@ public class BottomSheet {
 
                         int newDuration = Integer.valueOf(hoursET.getText().toString());
 
-                        for (int i = costsList.size()-1; i > -1; i--){
-                            if (uniqueCostDetails(i, newDuration) == false || noRangeConflict(i, newDuration) == false){
+                        for (int i = costsList.size() - 1; i > -1; i--) {
+                            if (uniqueCostDetails(i, newDuration) == false || noRangeConflict(i, newDuration) == false) {
                                 readyToSave = false;
                                 break;
                             }
@@ -277,54 +277,47 @@ public class BottomSheet {
     private boolean uniqueCostDetails(int i, int newDuration) {
 
 
-            //skip current chosen cost item to avoid unnecessary comparison
-            if (costsList.get(i) != chosenCost) {
+        //skip current chosen cost item to avoid unnecessary comparison
+        if (costsList.get(i) != chosenCost) {
 
-                //if matching details found, don't save
-                if (newDuration == costsList.get(i).getHours() && chosenCostType == costsList.get(i).getType()) {
-                    Toast.makeText(context, "Matching cost duration exists", Toast.LENGTH_SHORT).show();
-                    return false;
-                }
-
+            //if matching details found, don't save
+            if (newDuration == costsList.get(i).getHours() && chosenCostType == costsList.get(i).getType()) {
+                Toast.makeText(context, "Matching cost duration exists", Toast.LENGTH_SHORT).show();
+                return false;
             }
+
+        }
 
         return true;
     }
 
-    private boolean noRangeConflict(int i, int newDuration){
+    private boolean noRangeConflict(int i, int newDuration) {
 
-        try {
+        Cost currentCost = costsList.get(i);
 
-            Cost currentCost = costsList.get(i);
-
-            if (currentCost.getType() == Cost.Type.LESS){
-                if (chosenCostType == Cost.Type.GREATER){
-                    if (newDuration < currentCost.getHours()){
-                        if (i+1 == costsList.size()){
-                            Toast.makeText(context, "conflicting with LESS " + String.valueOf(i), Toast.LENGTH_SHORT).show();
-                            return false;
-                        }
-                    }
-                }
-            }else if (currentCost.getType() == Cost.Type.GREATER){
-                if (chosenCostType == Cost.Type.LESS){
-                    if (newDuration > currentCost.getHours()){
-                        if (i-1 == -1){
-                            Toast.makeText(context, "conflicting with GREATER " + String.valueOf(i), Toast.LENGTH_SHORT).show();
-                            return false;
-                        }else {
-                            Toast.makeText(context, "conflicting with GREATER " + String.valueOf(i), Toast.LENGTH_SHORT).show();
-                            return false;
-                        }
+        if (currentCost.getType() == Cost.Type.LESS) {
+            if (chosenCostType == Cost.Type.GREATER) {
+                if (newDuration < currentCost.getHours()) {
+                    if (i + 1 == costsList.size()) {
+                        Toast.makeText(context, "conflicting with LESS " + String.valueOf(i), Toast.LENGTH_SHORT).show();
+                        return false;
                     }
                 }
             }
-
-
-
-        }catch (IndexOutOfBoundsException e){
-
+        } else if (currentCost.getType() == Cost.Type.GREATER) {
+            if (chosenCostType == Cost.Type.LESS) {
+                if (newDuration > currentCost.getHours()) {
+                    if (i - 1 == -1) {
+                        Toast.makeText(context, "conflicting with GREATER " + String.valueOf(i), Toast.LENGTH_SHORT).show();
+                        return false;
+                    } else {
+                        Toast.makeText(context, "conflicting with GREATER " + String.valueOf(i), Toast.LENGTH_SHORT).show();
+                        return false;
+                    }
+                }
+            }
         }
+
 
         return true;
     }
