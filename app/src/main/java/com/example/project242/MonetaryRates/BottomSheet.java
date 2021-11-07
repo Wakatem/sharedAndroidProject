@@ -66,8 +66,8 @@ public class BottomSheet {
 
         //cast objects according to type
         for (Object object : objects) {
-            if (object instanceof ArrayList) {
-                costsList = (ArrayList<Cost>) object;
+            if (object instanceof CostsHandler) {
+                costsList = (CostsHandler) object;
             }
 
             if (object instanceof ListView) {
@@ -137,9 +137,8 @@ public class BottomSheet {
             //update components with values respectively
             ringContainer.setBackgroundResource(chosenCost.getRing());
             amountET.setText(String.valueOf(chosenCost.getAmount()));
-            hoursET.setText(String.valueOf(chosenCost.getDuration()));
+            hoursET.setText(String.valueOf(chosenCost.getHours()));
         }
-
 
 
     }
@@ -205,11 +204,19 @@ public class BottomSheet {
                     }
 
                     //if all fields have a value
-                    if (!amountET.getText().toString().equals("") || !amountET.getText().toString().equals("")){
-                        //determine details uniqueness state
-                        readyToSave = uniqueCostDetails();
-                    }
+                    if (!amountET.getText().toString().equals("") || !amountET.getText().toString().equals("")) {
 
+                        int newDuration = Integer.valueOf(hoursET.getText().toString());
+
+                        for (int i = costsList.size() - 1; i > -1; i--) {
+                            if (uniqueCostDetails(i, newDuration) == false || noRangeConflict(i, newDuration) == false) {
+                                readyToSave = false;
+                                break;
+                            }
+
+                        }//for
+
+                    }
 
 
                     //Saving process
@@ -267,22 +274,50 @@ public class BottomSheet {
 
     }
 
-    private boolean uniqueCostDetails() {
-        int newDuration = Integer.valueOf(hoursET.getText().toString());
+    private boolean uniqueCostDetails(int i, int newDuration) {
 
-        for (int i = 0; i < costsList.size(); i++) {
 
-            //skip current chosen cost item to avoid unnecessary comparison
-            if (costsList.get(i) != chosenCost) {
+        //skip current chosen cost item to avoid unnecessary comparison
+        if (costsList.get(i) != chosenCost) {
 
-                //if matching details found, don't save
-                if (newDuration == costsList.get(i).getDuration() && chosenCostType == costsList.get(i).getType()) {
-                    Toast.makeText(context, "Matching cost duration exists", Toast.LENGTH_SHORT).show();
-                    return false;
-                }
+            //if matching details found, don't save
+            if (newDuration == costsList.get(i).getHours() && chosenCostType == costsList.get(i).getType()) {
+                Toast.makeText(context, "Matching cost duration exists", Toast.LENGTH_SHORT).show();
+                return false;
             }
 
-        }//for
+        }
+
+        return true;
+    }
+
+    private boolean noRangeConflict(int i, int newDuration) {
+
+        Cost currentCost = costsList.get(i);
+
+        if (currentCost.getType() == Cost.Type.LESS) {
+            if (chosenCostType == Cost.Type.GREATER) {
+                if (newDuration < currentCost.getHours()) {
+                    if (i + 1 == costsList.size()) {
+                        Toast.makeText(context, "conflicting with LESS " + String.valueOf(i), Toast.LENGTH_SHORT).show();
+                        return false;
+                    }
+                }
+            }
+        } else if (currentCost.getType() == Cost.Type.GREATER) {
+            if (chosenCostType == Cost.Type.LESS) {
+                if (newDuration > currentCost.getHours()) {
+                    if (i - 1 == -1) {
+                        Toast.makeText(context, "conflicting with GREATER " + String.valueOf(i), Toast.LENGTH_SHORT).show();
+                        return false;
+                    } else {
+                        Toast.makeText(context, "conflicting with GREATER " + String.valueOf(i), Toast.LENGTH_SHORT).show();
+                        return false;
+                    }
+                }
+            }
+        }
+
 
         return true;
     }
@@ -292,10 +327,10 @@ public class BottomSheet {
         if (isAddingCost) {
 
             chosenCost.setAmount(Integer.valueOf(amountET.getText().toString()));
-            chosenCost.setDuration(Integer.valueOf(hoursET.getText().toString()));
+            chosenCost.setHours(Integer.valueOf(hoursET.getText().toString()));
             chosenCost.setType(costType);
 
-            Home.costsList.add(chosenCost);
+            Home.costsHandler.add(chosenCost);
 
         } else {
             // -- Editing cost --
@@ -303,7 +338,7 @@ public class BottomSheet {
             int position = costsList.indexOf(chosenCost);
 
             costsList.get(position).setAmount(Integer.valueOf(amountET.getText().toString()));
-            costsList.get(position).setDuration(Integer.valueOf(hoursET.getText().toString()));
+            costsList.get(position).setHours(Integer.valueOf(hoursET.getText().toString()));
             costsList.get(position).setType(costType);
 
         }
