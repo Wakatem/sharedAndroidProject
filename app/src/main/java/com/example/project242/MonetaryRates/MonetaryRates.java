@@ -21,7 +21,6 @@ public class MonetaryRates extends AppCompatActivity {
 
     private ViewPager2 pager;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,28 +37,13 @@ public class MonetaryRates extends AppCompatActivity {
         setupTabs();
 
 
-        FloatingActionButton fab = findViewById(R.id.fab_add);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (pager.getCurrentItem() == 0){
-                    addCost();
-
-                }else {
-                    addDiscount();
-                }
-            }
-        });
-
-
-
     }
 
 
     void setupTabs(){
         //link viewpager with pager adapter
         pager = findViewById(R.id.pager);
-        PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), getLifecycle(), this);
+        PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), getLifecycle());
         pager.setAdapter(adapter);
 
         TabLayout tabs = findViewById(R.id.tabs);
@@ -78,28 +62,6 @@ public class MonetaryRates extends AppCompatActivity {
             }
         }).attach();
     }
-
-
-
-    void addCost(){
-        Cost cost = new Cost(1, Cost.Type.LESS, 1);
-
-        //create bottom sheet to add cost details
-        BottomSheet addingSheet = new BottomSheet(true, this, R.layout.cost_sheet_item, cost, Home.costsHandler, CostsFragment.costsListView, CostsFragment.adapter);
-        addingSheet.initializeViews();
-        addingSheet.setListeners();
-        addingSheet.show();
-    }
-
-
-
-
-    void addDiscount(){
-
-    }
-
-
-
 
 
 

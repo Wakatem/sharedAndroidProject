@@ -1,6 +1,8 @@
 package com.example.project242.MonetaryRates;
 
+import android.app.Activity;
 import android.content.Context;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -8,14 +10,14 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class PagerAdapter extends FragmentStateAdapter {
 
     final private int numberOfTabs = 2;
-    private Context context;
 
-    public PagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, Context context) {
+    public PagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
         super(fragmentManager, lifecycle);
-        this.context = context;
     }
 
 

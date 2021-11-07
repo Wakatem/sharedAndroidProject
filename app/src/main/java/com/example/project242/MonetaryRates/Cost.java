@@ -56,15 +56,5 @@ public class Cost {
         return type;
     }
 
-    public void setType(Type type) {
-        this.type = type;
 
-        //assign ring based on cost type
-        if (type == Type.GREATER)
-            ring = R.drawable.greater_than_ring;
-        else if (type == Type.EQUAL)
-            ring = R.drawable.equal_ring;
-        else
-            ring = R.drawable.less_than_ring;
-    }
 }

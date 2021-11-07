@@ -37,7 +37,7 @@ public class CostsFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 //display selected cost in a sheet
-                BottomSheet sheet = new BottomSheet(false, getContext(), R.layout.cost_sheet_item, Home.costsHandler.get(position), Home.costsHandler, costsListView, adapter);
+                BottomSheet sheet = new BottomSheet(getContext(), R.layout.cost_sheet_item, Home.costsHandler.get(position), Home.costsHandler, costsListView, adapter);
                 sheet.initializeViews();
                 sheet.setListeners();
                 sheet.show();

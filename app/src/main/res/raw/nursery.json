@@ -323,16 +323,16 @@
   "Monetary Rates": {
     "Costs": [
       {
-        "duration": "x<4",
-        "amount": 40
+        "duration": "x>4",
+        "amount": 30
       },
       {
         "duration": "x=4",
         "amount": 140
       },
       {
-        "duration": "x>4",
-        "amount": 30
+        "duration": "x<4",
+        "amount": 40
       }
     ],
     "Discounts": [
