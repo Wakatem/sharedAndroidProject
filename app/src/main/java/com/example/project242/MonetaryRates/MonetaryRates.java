@@ -6,7 +6,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.project242.Home.Home;
 import com.example.project242.R;
@@ -50,6 +52,7 @@ public class MonetaryRates extends AppCompatActivity {
         });
 
 
+
     }
 
 
@@ -87,6 +90,8 @@ public class MonetaryRates extends AppCompatActivity {
         addingSheet.setListeners();
         addingSheet.show();
     }
+
+
 
 
     void addDiscount(){

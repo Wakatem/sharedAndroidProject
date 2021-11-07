@@ -310,7 +310,7 @@ public class BottomSheet {
                     if (i - 1 == -1) {
                         Toast.makeText(context, "conflicting with GREATER " + String.valueOf(i), Toast.LENGTH_SHORT).show();
                         return false;
-                    } else {
+                    } else if (costsList.get(i - 1).getHours() <= newDuration) {
                         Toast.makeText(context, "conflicting with GREATER " + String.valueOf(i), Toast.LENGTH_SHORT).show();
                         return false;
                     }
