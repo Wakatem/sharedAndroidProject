@@ -35,17 +35,10 @@ public class Home extends AppCompatActivity {
         //TODO here, create all lists will be used across different sections
 
         costsHandler = new CostsHandler();
-        costsHandler.add(new Cost(220, Cost.Type.LESS, 2));
-        costsHandler.add(new Cost(100, Cost.Type.EQUAL, 2));
-        costsHandler.add(new Cost(120, Cost.Type.GREATER, 2));
-        costsHandler.add(new Cost(100, Cost.Type.EQUAL, 4));
-        costsHandler.add(new Cost(130, Cost.Type.GREATER, 5));
+        costsHandler.loadFromJSON(this);
 
 
 
     }
-
-
-    private void loadFromJSON(){}
 
 }
