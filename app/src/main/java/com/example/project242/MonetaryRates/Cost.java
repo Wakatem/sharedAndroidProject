@@ -11,14 +11,14 @@ public class Cost {
     }
 
     private int amount;
-    private int duration;
+    private int hours;
     private Type type;
     private int ring;
 
 
-    public Cost(int amount, int duration, Type type) {
+    public Cost(int amount, Type type, int hours) {
         this.amount = amount;
-        this.duration = duration;
+        this.hours = hours;
         this.type = type;
 
         //assign ring based on cost type
@@ -40,12 +40,12 @@ public class Cost {
         this.amount = amount;
     }
 
-    public int getDuration() {
-        return duration;
+    public int getHours() {
+        return hours;
     }
 
-    public void setDuration(int duration) {
-        this.duration = duration;
+    public void setHours(int hours) {
+        this.hours = hours;
     }
 
     public int getRing() {

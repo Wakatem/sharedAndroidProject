@@ -17,9 +17,9 @@ import java.util.ArrayList;
 
 public class CostAdapter extends ArrayAdapter<Cost> {
 
-    ArrayList<Cost> list;
+    CostsHandler list;
 
-    public CostAdapter(@NonNull Context context, ArrayList<Cost> list) {
+    public CostAdapter(@NonNull Context context, CostsHandler list) {
         super(context, 0, list);
         this.list = list;
     }
@@ -41,7 +41,7 @@ public class CostAdapter extends ArrayAdapter<Cost> {
         ring.setBackgroundResource(list.get(position).getRing());
 
         Cost.Type type = list.get(position).getType();
-        String duration = String.valueOf(list.get(position).getDuration());
+        String duration = String.valueOf(list.get(position).getHours());
 
         //assign description appropriately
         if (type == Cost.Type.GREATER) {
