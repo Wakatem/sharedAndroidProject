@@ -1,4 +1,4 @@
-package com.example.project242.MonetaryRates;
+package com.example.project242.MonetaryRates.Costs;
 
 import com.example.project242.R;
 

@@ -338,12 +338,12 @@
     "Discounts": [
       {
         "Title": "Early Bird",
-        "Percentage": "20%",
+        "Percentage": "20",
         "Active": true
       },
       {
         "Title": "Liv 50% Discount",
-        "Percentage": "50%",
+        "Percentage": "50",
         "Active": true
       }
     ]

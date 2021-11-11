@@ -3,7 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/drawable/add_icon.xml" value="0.18796296296296297" />
+        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/drawable/app_bar_color.xml" value="0.18796296296296297" />
+        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/drawable/borderdeets.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/drawable/circle.xml" value="0.18796296296296297" />
+        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/drawable/equal_ring.xml" value="0.18796296296296297" />
+        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/drawable/gradient_bg1.xml" value="0.18796296296296297" />
+        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/drawable/ic_launcher_background.xml" value="0.18796296296296297" />
+        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/drawable/less_than_ring.xml" value="0.18796296296296297" />
+        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/drawable/textstyle.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/activity_home.xml" value="0.14221014492753623" />
+        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/activity_monetary_rates.xml" value="0.1" />
         <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/activity_transactions.xml" value="0.10144927536231885" />
+        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/bottomsheetlayout.xml" value="0.17527173913043478" />
+        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/cost_sheet_item.xml" value="0.14221014492753623" />
+        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/costs_fragment.xml" value="0.14221014492753623" />
+        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/costs_list_item.xml" value="0.14221014492753623" />
+        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/discount_sheet_item.xml" value="0.17527173913043478" />
+        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/discounts_fragment.xml" value="0.1" />
+        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/single_list_item.xml" value="0.22" />
         <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/drawable/app_bar_color.xml" value="0.16302083333333334" />
         <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/drawable/circle.xml" value="0.2833333333333333" />
         <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/drawable/circle2.xml" value="0.2833333333333333" />

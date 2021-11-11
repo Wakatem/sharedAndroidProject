@@ -1,4 +1,4 @@
-package com.example.project242.MonetaryRates;
+package com.example.project242.MonetaryRates.Costs;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,8 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.project242.R;
-
-import java.util.ArrayList;
 
 public class CostAdapter extends ArrayAdapter<Cost> {
 

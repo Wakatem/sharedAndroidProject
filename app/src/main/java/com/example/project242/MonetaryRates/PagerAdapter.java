@@ -1,16 +1,13 @@
 package com.example.project242.MonetaryRates;
 
-import android.app.Activity;
-import android.content.Context;
-import android.view.View;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.project242.MonetaryRates.Costs.CostsFragment;
+import com.example.project242.MonetaryRates.Discount.DiscountsFragment;
 
 public class PagerAdapter extends FragmentStateAdapter {
 
@@ -38,6 +35,7 @@ public class PagerAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
+
         return numberOfTabs;
     }
 

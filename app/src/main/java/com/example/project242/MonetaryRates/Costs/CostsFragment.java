@@ -1,4 +1,4 @@
-package com.example.project242.MonetaryRates;
+package com.example.project242.MonetaryRates.Costs;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,13 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.project242.Home.Home;
+import com.example.project242.MonetaryRates.BottomSheet;
 import com.example.project242.R;
 
 public class CostsFragment extends Fragment {
@@ -38,7 +38,7 @@ public class CostsFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 //display selected cost in a sheet
                 BottomSheet sheet = new BottomSheet(getContext(), R.layout.cost_sheet_item, Home.costsHandler.get(position), Home.costsHandler, costsListView, adapter);
-                sheet.initializeViews();
+                sheet.initializeCostsViews();
                 sheet.setListeners();
                 sheet.show();
             }
