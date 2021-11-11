@@ -36,11 +36,11 @@ public class BottomSheet {
     private Context context;
     private Cost chosenCost;
 
-    //create expected specific objects
+    //expected specific objects
     private CostsHandler costsList;
-    private DiscountsHandler discountsList;
-    private ListView costsListView;
     private CostAdapter adapter;
+    private ListView costsListView;
+    private DiscountsHandler discountsList;
 
     //costs variables
     private LinearLayout ringContainer;
@@ -65,13 +65,13 @@ public class BottomSheet {
     private boolean isEditing = false;
 
 
-    public BottomSheet(Context newContext, int sheetlayout){
+    public BottomSheet(Context newContext, int sheetLayout){
         discountsList = Home.discountsHandler;
 
         sheetDialog = new BottomSheetDialog(newContext);
         context = newContext;
 
-        sheetDialog.setContentView(sheetlayout);
+        sheetDialog.setContentView(sheetLayout);
     }
 
 

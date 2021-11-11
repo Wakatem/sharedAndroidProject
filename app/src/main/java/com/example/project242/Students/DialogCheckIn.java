@@ -19,9 +19,7 @@ import com.example.project242.R;
 public class DialogCheckIn extends AppCompatDialogFragment {
     private TextView studentNameTextView;
     private TextView studentIDTextView;
-    private Button confirmButton;
 
-    //private DialogCheckInListener listener;
 
     @NonNull
     @Override

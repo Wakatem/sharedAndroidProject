@@ -19,8 +19,10 @@ import com.example.project242.R;
 import java.util.ArrayList;
 
 public class AdapterAllStudents extends ArrayAdapter {
+
     private Context context;
     private ArrayList<Student> students;
+
 
     public AdapterAllStudents(Context context, ArrayList<Student> arrayList) {
         super(context, 0, arrayList);
