@@ -12,6 +12,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.project242.Home.Home;
 import com.example.project242.MonetaryRates.MonetaryRates;
+import com.example.project242.Settings.Settings;
+import com.example.project242.Students.Students;
 import com.example.project242.Transactions.Transactions;
 import com.google.android.material.navigation.NavigationView;
 

@@ -21,67 +21,10 @@ public class CostsHandler extends ArrayList<Cost> {
     public CostsHandler() {}
 
 
-    public void loadFromJSON(Context context){
-        try {
-            //open file
-            InputStreamReader inputStreamReader = new InputStreamReader(context.getResources().openRawResource(R.raw.nursery));
-            BufferedReader reader = new BufferedReader(inputStreamReader);
-            StringBuffer stringBuffer = new StringBuffer();
-
-            //read file
-            String line;
-            while ((line = reader.readLine()) != null){
-                stringBuffer.append(line);
-            }
-
-            JSONObject root = new JSONObject(stringBuffer.toString());
-            JSONObject MonetaryRates_obj = root.getJSONObject("Monetary Rates");
-            JSONArray allCosts = MonetaryRates_obj.getJSONArray("Costs");
-
-            for (int i = 0; i < allCosts.length(); i++) {
-                JSONObject cost = allCosts.getJSONObject(i);
-
-                //get cost duration details
-                String durationString = cost.getString("duration");
-                char arr[] = durationString.toCharArray();
-                Cost.Type type;
-
-                if (arr[1] == '>'){
-                    type = Cost.Type.GREATER;
-                }else if(arr[1] == '='){
-                    type = Cost.Type.EQUAL;
-                }else {
-                    type = Cost.Type.LESS;
-                }
-
-                int hours= Integer.valueOf(String.valueOf(arr[2]));
-
-
-                //get cost amount
-                String amountString = cost.getString("amount");
-                int amount = Integer.valueOf(amountString);
-
-
-                //add new Cost
-                add(new Cost(amount, type, hours));
-
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            Toast.makeText(context, "NotFound", Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-
     public void editCost(@NonNull Cost chosenCost, int amount, int hours){
 
         //change all costs hours if EQUAL cost's hours changed
-        if (chosenCost.getType() == Cost.Type.EQUAL){
+        if (chosenCost.getType() == CostTypes.EQUAL){
             for(Cost cost : this){
                 cost.setHours(hours);
             }
@@ -104,7 +47,7 @@ public class CostsHandler extends ArrayList<Cost> {
             int totalCost=140;
 
             for(Cost cost : this){
-                if (cost.getType() == Cost.Type.GREATER) {
+                if (cost.getType() == CostTypes.GREATER) {
 
                     //get additional costs per hour
                     while (totalTime != 0){
@@ -122,7 +65,7 @@ public class CostsHandler extends ArrayList<Cost> {
             //EQUAL
 
             for(Cost cost : this){
-                if (cost.getType() == Cost.Type.EQUAL)
+                if (cost.getType() == CostTypes.EQUAL)
                     return cost.getAmount();
             }
         }
@@ -130,7 +73,7 @@ public class CostsHandler extends ArrayList<Cost> {
         else {
             //LESS
             for(Cost cost : this){
-                if (cost.getType() == Cost.Type.LESS)
+                if (cost.getType() == CostTypes.LESS)
                     return cost.getAmount();
             }
         }

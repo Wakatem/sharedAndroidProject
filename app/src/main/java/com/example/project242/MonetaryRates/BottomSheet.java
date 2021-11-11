@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.project242.Home.Home;
 import com.example.project242.MonetaryRates.Costs.Cost;
 import com.example.project242.MonetaryRates.Costs.CostAdapter;
+import com.example.project242.MonetaryRates.Costs.CostTypes;
 import com.example.project242.MonetaryRates.Costs.CostsHandler;
 import com.example.project242.MonetaryRates.Discount.Discount;
 import com.example.project242.MonetaryRates.Discount.DiscountAdapter;
@@ -34,16 +35,12 @@ public class BottomSheet {
     private BottomSheetDialog sheetDialog;
     private Context context;
     private Cost chosenCost;
-    private Discount Discount;
 
     //create expected specific objects
     private CostsHandler costsList;
     private DiscountsHandler discountsList;
     private ListView costsListView;
-
     private CostAdapter adapter;
-    private DiscountAdapter discountAdapter;
-
 
     //costs variables
     private LinearLayout ringContainer;
@@ -64,13 +61,12 @@ public class BottomSheet {
     private Button cancel;
 
 
-
-    // to track editing mode in edit button
+    // to track cost editing mode in edit button
     private boolean isEditing = false;
+
 
     public BottomSheet(Context newContext, int sheetlayout){
         discountsList = Home.discountsHandler;
-        //Discount = newDiscount;
 
         sheetDialog = new BottomSheetDialog(newContext);
         context = newContext;
@@ -161,9 +157,9 @@ public class BottomSheet {
 
     public void addDiscount(EditText discountTypeR, EditText percentageR, Switch newswitch){
         String name = discountTypeR.getText().toString();
-        int percantage = Integer.valueOf(percentageR.getText().toString());
+        int percentage = Integer.valueOf(percentageR.getText().toString());
         boolean switchR = newswitch.isChecked();
-        Discount newDiscount = new Discount(name, percantage,switchR);
+        Discount newDiscount = new Discount(name, percentage,switchR);
         discountsList.add(newDiscount);
         DiscountsFragment.adapter.notifyDataSetChanged();
         DiscountsFragment.discountList.invalidateViews();
@@ -244,7 +240,7 @@ public class BottomSheet {
                     editButton.setText("Save");
                     editButton.setButtonColor(Color.parseColor("#4CAF50"));
 
-                    if (chosenCost.getType() == Cost.Type.GREATER || chosenCost.getType() == Cost.Type.LESS){
+                    if (chosenCost.getType() == CostTypes.GREATER || chosenCost.getType() == CostTypes.LESS){
                         amountET.setFocusableInTouchMode(true);
                         hoursET.setFocusableInTouchMode(false);
                     } else {

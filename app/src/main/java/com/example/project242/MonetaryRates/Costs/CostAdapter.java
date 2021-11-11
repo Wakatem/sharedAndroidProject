@@ -38,13 +38,13 @@ public class CostAdapter extends ArrayAdapter<Cost> {
         amountTV.setText(String.valueOf(list.get(position).getAmount()) + " AED");
         ring.setBackgroundResource(list.get(position).getRing());
 
-        Cost.Type type = list.get(position).getType();
+        CostTypes type = list.get(position).getType();
         String duration = String.valueOf(list.get(position).getHours());
 
         //assign description appropriately
-        if (type == Cost.Type.GREATER) {
+        if (type == CostTypes.GREATER) {
             descTV.setText("Per additional hour");
-        } else if (type == Cost.Type.EQUAL) {
+        } else if (type == CostTypes.EQUAL) {
             descTV.setText(duration+" Hours");
         } else {
             descTV.setText("Less than "+duration+" hours");

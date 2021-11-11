@@ -13,10 +13,10 @@
             android:name=".Transactions.Transactions"
             android:exported="false" />
         <activity
-            android:name=".Settings"
+            android:name=".Settings.Settings"
             android:exported="false" />
         <activity
-            android:name=".Students"
+            android:name=".Students.Students"
             android:exported="false" />
         <activity
             android:name=".MonetaryRates.MonetaryRates"

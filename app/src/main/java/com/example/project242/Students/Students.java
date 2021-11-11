@@ -1,14 +1,16 @@
-package com.example.project242;
+package com.example.project242.Students;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Settings extends AppCompatActivity {
+import com.example.project242.R;
+
+public class Students extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_students);
     }
 }

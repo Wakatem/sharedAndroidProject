@@ -23,7 +23,6 @@ import java.util.ArrayList;
 public class MonetaryRates extends AppCompatActivity {
 
     private ViewPager2 pager;
-   // public static ArrayList<discount> discountList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +66,13 @@ public class MonetaryRates extends AppCompatActivity {
         }).attach();
     }
 
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
+    }
 
 
 }

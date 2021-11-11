@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Transaction {
 
-    private final int transactionID;
+    private final long transactionID;
     private int sender_AccountNumber;
     private String sender_AccountName;
     private int recipient_AccountNumber;
@@ -17,7 +17,7 @@ public class Transaction {
 
 
     //without expense type specification
-    public Transaction(int transactionID, int sender_AccountNumber, String sender_AccountName, int recipient_AccountNumber, String recipient_AccountName, int amount, Date date, TransactionTypes transactionType, PaymentMethods paymentMethod){
+    public Transaction(long transactionID, int sender_AccountNumber, String sender_AccountName, int recipient_AccountNumber, String recipient_AccountName, int amount, Date date, TransactionTypes transactionType, PaymentMethods paymentMethod){
         this.transactionID = transactionID;
         this.sender_AccountNumber = sender_AccountNumber;
         this.sender_AccountName = sender_AccountName;
@@ -30,7 +30,7 @@ public class Transaction {
     }
 
     //with expense type specification
-    public Transaction(int transactionID, int sender_AccountNumber, String sender_AccountName, int recipient_AccountNumber, String recipient_AccountName, int amount, Date date, ExpenseTypes expenseType, PaymentMethods paymentMethod){
+    public Transaction(long transactionID, int sender_AccountNumber, String sender_AccountName, int recipient_AccountNumber, String recipient_AccountName, int amount, Date date, ExpenseTypes expenseType, PaymentMethods paymentMethod){
         this.transactionID = transactionID;
         this.sender_AccountNumber = sender_AccountNumber;
         this.sender_AccountName = sender_AccountName;
@@ -45,7 +45,7 @@ public class Transaction {
 
 
 
-    public int getTransactionID() {
+    public long getTransactionID() {
         return transactionID;
     }
 
