@@ -4,22 +4,6 @@ import java.util.Date;
 
 public class Transaction {
 
-    enum Type{
-        INCOME,
-        EXPENSE
-    }
-    enum ExpenseType{
-        SALARY,
-        UTILITY,
-        RENT
-    }
-    enum PaymentMethod{
-        CASH,
-        CHEQUE,
-        BANK_TRANSFER
-    }
-
-
     private final int transactionID;
     private int sender_AccountNumber;
     private String sender_AccountName;
@@ -27,13 +11,13 @@ public class Transaction {
     private String recipient_AccountName;
     private int amount;
     private Date date;
-    private Type transactionType;
-    private ExpenseType expenseType;
-    private PaymentMethod paymentMethod;
+    private TransactionTypes transactionType;
+    private ExpenseTypes expenseType;
+    private PaymentMethods paymentMethod;
 
 
     //without expense type specification
-    public Transaction(int transactionID, int sender_AccountNumber, String sender_AccountName, int recipient_AccountNumber, String recipient_AccountName, int amount, Date date, Type transactionType, PaymentMethod paymentMethod){
+    public Transaction(int transactionID, int sender_AccountNumber, String sender_AccountName, int recipient_AccountNumber, String recipient_AccountName, int amount, Date date, TransactionTypes transactionType, PaymentMethods paymentMethod){
         this.transactionID = transactionID;
         this.sender_AccountNumber = sender_AccountNumber;
         this.sender_AccountName = sender_AccountName;
@@ -46,7 +30,7 @@ public class Transaction {
     }
 
     //with expense type specification
-    public Transaction(int transactionID, int sender_AccountNumber, String sender_AccountName, int recipient_AccountNumber, String recipient_AccountName, int amount, Date date, ExpenseType expenseType, PaymentMethod paymentMethod){
+    public Transaction(int transactionID, int sender_AccountNumber, String sender_AccountName, int recipient_AccountNumber, String recipient_AccountName, int amount, Date date, ExpenseTypes expenseType, PaymentMethods paymentMethod){
         this.transactionID = transactionID;
         this.sender_AccountNumber = sender_AccountNumber;
         this.sender_AccountName = sender_AccountName;
@@ -54,7 +38,7 @@ public class Transaction {
         this.recipient_AccountName = recipient_AccountName;
         this.amount = amount;
         this.date = date;
-        this.transactionType = Type.EXPENSE; //automatically assigned as EXPENSE if this constructor called
+        this.transactionType = TransactionTypes.EXPENSE; //automatically assigned as EXPENSE if this constructor called
         this.expenseType = expenseType;
         this.paymentMethod = paymentMethod;
     }
@@ -113,27 +97,27 @@ public class Transaction {
         this.date = date;
     }
 
-    public Type getTransactionType() {
+    public TransactionTypes getTransactionType() {
         return transactionType;
     }
 
-    public void setTransactionType(Type transactionType) {
+    public void setTransactionType(TransactionTypes transactionType) {
         this.transactionType = transactionType;
     }
 
-    public ExpenseType getExpenseType() {
+    public ExpenseTypes getExpenseType() {
         return expenseType;
     }
 
-    public void setExpenseType(ExpenseType expenseType) {
+    public void setExpenseType(ExpenseTypes expenseType) {
         this.expenseType = expenseType;
     }
 
-    public PaymentMethod getPaymentMethod() {
+    public PaymentMethods getPaymentMethod() {
         return paymentMethod;
     }
 
-    public void setPaymentMethod(PaymentMethod paymentMethod) {
+    public void setPaymentMethod(PaymentMethods paymentMethod) {
         this.paymentMethod = paymentMethod;
     }
 }//class
