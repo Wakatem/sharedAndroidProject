@@ -2,7 +2,7 @@ package com.example.project242.Transactions;
 
 import java.util.LinkedHashMap;
 
-public class TransactionsHandler extends LinkedHashMap {
+public class TransactionsHandler extends LinkedHashMap<Integer,Transaction> {
 
     public TransactionsHandler(){
     }
