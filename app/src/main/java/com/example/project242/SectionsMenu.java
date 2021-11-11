@@ -47,11 +47,11 @@ public class SectionsMenu {
     }
 
     public void initialize() {
-        toolbar     = (Toolbar)    includer.findViewById(R.id.app_toolbar);
-        screenTitle = (TextView)   includer.findViewById(R.id.screenTitle);
-        menuButton  = (ImageView)  includer.findViewById(R.id.menu_button);
+        toolbar     = (Toolbar)   includer.findViewById(R.id.app_toolbar);
+        screenTitle = (TextView)  includer.findViewById(R.id.screenTitle);
+        menuButton  = (ImageView) includer.findViewById(R.id.menu_button);
 
-        navView     = (NavigationView) drawer.findViewById(R.id.navigation_view);
+        navView = (NavigationView) drawer.findViewById(R.id.navigation_view);
 
     }
 
@@ -72,41 +72,57 @@ public class SectionsMenu {
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                boolean status = false;
+
                 switch (item.getItemId()) {
                     case R.id.HomeSection:
-                        //if current activity is not Home
                         if (!(activity instanceof Home))
-                            activity.startActivity(new Intent(activity, Home.class));
+                            //destroy current activity and go back to home automatically
+                            activity.finish();
+                        status = true;
+                        break;
 
-                        drawer.closeDrawer(GravityCompat.START);
-                        return true;
 
                     case R.id.StudentsSection:
-                        if (!(activity instanceof Students))
+                        if (!(activity instanceof Students)) {
                             activity.startActivity(new Intent(activity, Students.class));
-                        drawer.closeDrawer(GravityCompat.START);
-                        return true;
+                        }
+                        status = true;
+                        break;
+
 
                     case R.id.TransactionsSection:
-                        if (!(activity instanceof Transactions))
+                        if (!(activity instanceof Transactions)) {
                             activity.startActivity(new Intent(activity, Transactions.class));
-                        drawer.closeDrawer(GravityCompat.START);
-                        return true;
+                        }
+                        status = true;
+                        break;
+
 
                     case R.id.MonetaryRatesSection:
-                        if (!(activity instanceof MonetaryRates))
+                        if (!(activity instanceof MonetaryRates)) {
                             activity.startActivity(new Intent(activity, MonetaryRates.class));
-                        drawer.closeDrawer(GravityCompat.START);
-                        return true;
+                        }
+                        status = true;
+                        break;
+
 
                     case R.id.Settings:
-                        if (!(activity instanceof Settings))
+                        if (!(activity instanceof Settings)) {
                             activity.startActivity(new Intent(activity, Settings.class));
-                        drawer.closeDrawer(GravityCompat.START);
-                        return true;
+                        }
+                        status = true;
+                        break;
 
+                }//switch
+
+                if (status == true) {
+                    if (!(activity instanceof Home)) {
+                        activity.finish();
+                    }
                 }
 
+                drawer.closeDrawer(GravityCompat.START);
                 return false;
             }
         });
