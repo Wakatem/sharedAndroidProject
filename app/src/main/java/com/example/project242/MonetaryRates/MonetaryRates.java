@@ -29,7 +29,7 @@ public class MonetaryRates extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monetary_rates);
 
-        //setup for sections menu
+        //setup Navigation menu
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.MR_drawer);
         SectionsMenu menu = new SectionsMenu(this, drawer);
         menu.initialize();

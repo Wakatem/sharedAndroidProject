@@ -7,6 +7,7 @@ import com.example.project242.MonetaryRates.Costs.CostTypes;
 import com.example.project242.MonetaryRates.Costs.CostsHandler;
 import com.example.project242.MonetaryRates.Discount.Discount;
 import com.example.project242.MonetaryRates.Discount.DiscountsHandler;
+import com.example.project242.Students.Student;
 import com.example.project242.Transactions.ExpenseTypes;
 import com.example.project242.Transactions.PaymentMethods;
 import com.example.project242.Transactions.Transaction;
@@ -22,6 +23,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class CentralJSON {
@@ -190,6 +192,68 @@ public class CentralJSON {
 
         return list;
     }
+
+
+
+
+    public static ArrayList<Student> parseAllStudents(){
+        ArrayList<Student> list = new ArrayList<>();
+
+        try {
+            JSONObject Students = root.getJSONObject("Students");
+            JSONArray studentsJSONArray = Students.getJSONArray("All Students");
+
+            for (int i = 0; i < studentsJSONArray.length(); ++i) {
+                JSONObject studentDetails = studentsJSONArray.getJSONObject(i);
+
+                list.add(new Student());
+                list.get(i).setStudentID(studentDetails.getInt("ID"));
+                list.get(i).setStudentName(studentDetails.getString("Name"));
+                list.get(i).setStudentDOB(studentDetails.getString("DOB"));
+                list.get(i).setStudentGender(studentDetails.getString("Gender"));
+            }
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
+
+
+
+    public static ArrayList<Student> parseCurrentStudents(){
+        ArrayList<Student> list = new ArrayList<>();
+
+        try {
+            JSONObject Students = root.getJSONObject("Students");
+            JSONArray studentsJSONArray = Students.getJSONArray("Current Students");
+
+            for (int i = 0; i < studentsJSONArray.length(); ++i) {
+                JSONObject studentDetails = studentsJSONArray.getJSONObject(i);
+
+                list.add(new Student());
+                list.get(i).setStudentID(studentDetails.getInt("ID"));
+                list.get(i).setStudentName(studentDetails.getString("Name"));
+                list.get(i).setStudentDOB(studentDetails.getString("DOB"));
+                list.get(i).setStudentGender(studentDetails.getString("Gender"));
+            }
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
+
+
+
+
+    ////////////////////////////////////////////////////////////       Helper Methods    ////////////////////////////////////////////////////////////////////
 
 
     private static Date getDateLong(String dateString){
