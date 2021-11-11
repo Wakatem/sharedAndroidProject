@@ -27,11 +27,11 @@ public class Students extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_students);
 
-        //setup for sections menu
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.students_drawer);
+        //setup Navigation menu
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
         SectionsMenu menu = new SectionsMenu(this, drawer);
         menu.initialize();
-        menu.setupToolbar("Students", R.drawable.menu_icon);
+        menu.setToolbarTitle("Students");
         menu.setOptionSelectedListener();
 
         //setup tabs

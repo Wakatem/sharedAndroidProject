@@ -2,7 +2,12 @@ package com.example.project242;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -25,31 +30,49 @@ import com.google.android.material.navigation.NavigationView;
 public class SectionsMenu {
 
     private DrawerLayout drawer;
+    private View includer;
+    private TextView screenTitle;
+    private ImageView menuButton;
     private Toolbar toolbar;
     private NavigationView navView;
     private ActionBarDrawerToggle toggler;
     private final Activity activity;
 
+
     public SectionsMenu(Activity activity, DrawerLayout activityDrawer) {
         //provided layout must match the layout the provided activity uses
         this.drawer = activityDrawer;
         this.activity = activity;
+        includer = drawer.findViewById(R.id.includer);
 
     }
 
     public void initialize() {
-        toolbar = (Toolbar) drawer.findViewById(R.id.app_toolbar);
-        navView = (NavigationView) drawer.findViewById(R.id.navigation_view);
+        toolbar     = (Toolbar)    includer.findViewById(R.id.app_toolbar);
+        screenTitle = (TextView)   includer.findViewById(R.id.screenTitle);
+        menuButton  = (ImageView)  includer.findViewById(R.id.menu_button);
+
+        navView     = (NavigationView) drawer.findViewById(R.id.navigation_view);
+
         //creating an instance of ActionBarDrawerToggle (the button toggling the menu)
         toggler = new ActionBarDrawerToggle(activity, drawer, toolbar, R.string.open, R.string.close);
+
     }
 
-    public void setupToolbar(String title, int icon) {
-        toolbar.setTitle(title);
-        toolbar.setNavigationIcon(icon);
+    public void setToolbarTitle(String title) {
+        screenTitle.setText(title);
     }
 
     public void setOptionSelectedListener() {
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawer.openDrawer(GravityCompat.START);
+
+            }
+        });
+
+
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

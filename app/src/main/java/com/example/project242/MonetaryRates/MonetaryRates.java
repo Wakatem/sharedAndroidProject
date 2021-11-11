@@ -30,10 +30,10 @@ public class MonetaryRates extends AppCompatActivity {
         setContentView(R.layout.activity_monetary_rates);
 
         //setup Navigation menu
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.MR_drawer);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
         SectionsMenu menu = new SectionsMenu(this, drawer);
         menu.initialize();
-        menu.setupToolbar("Monetary Rates", R.drawable.menu_icon);
+        menu.setToolbarTitle("Monetary Rates");
         menu.setOptionSelectedListener();
 
         //setup tabs

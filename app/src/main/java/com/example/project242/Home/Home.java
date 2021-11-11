@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.project242.CentralJSON;
@@ -30,10 +32,10 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         //setup Navigation menu
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.home_drawer);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
         SectionsMenu menu = new SectionsMenu(this, drawer);
         menu.initialize();
-        menu.setupToolbar("Home", R.drawable.menu_icon);
+        menu.setToolbarTitle("Home");
         menu.setOptionSelectedListener();
 
 

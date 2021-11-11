@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/MR_drawer"
+    android:id="@+id/drawer"
     tools:context=".MonetaryRates.MonetaryRates">
 
     <LinearLayout
@@ -12,13 +12,9 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="95dp"
-            android:id="@+id/app_toolbar"
-            android:background="@drawable/app_bar_color"
-            android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
-            app:popupTheme="@style/Theme.MaterialComponents.Light"/>
+        <include
+            android:id="@+id/includer"
+            layout="@layout/custom_toolbar" />
 
 
         <com.google.android.material.tabs.TabLayout
@@ -40,20 +36,16 @@
         </com.google.android.material.tabs.TabLayout>
 
 
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
             <androidx.viewpager2.widget.ViewPager2
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/pager" />
 
-        </FrameLayout>
 
 
 
     </LinearLayout>
+
 
     <com.google.android.material.navigation.NavigationView
         android:layout_width="200dp"
