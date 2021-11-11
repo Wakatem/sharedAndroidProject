@@ -3,21 +3,17 @@ package com.example.project242.Home;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
-import com.example.project242.MonetaryRates.Cost;
-import com.example.project242.MonetaryRates.CostsHandler;
-import com.example.project242.MonetaryRates.MonetaryRates;
+import com.example.project242.MonetaryRates.Costs.CostsHandler;
+import com.example.project242.MonetaryRates.Discount.DiscountsHandler;
 import com.example.project242.R;
 import com.example.project242.SectionsMenu;
-
-import java.util.ArrayList;
 
 public class Home extends AppCompatActivity {
 
     public static CostsHandler costsHandler;
+    public static DiscountsHandler discountsHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +32,8 @@ public class Home extends AppCompatActivity {
 
         costsHandler = new CostsHandler();
         costsHandler.loadFromJSON(this);
+        discountsHandler = new DiscountsHandler();
+        discountsHandler.getJSON(this);
 
 
 

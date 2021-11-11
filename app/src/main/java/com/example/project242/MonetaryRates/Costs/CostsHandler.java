@@ -1,8 +1,10 @@
-package com.example.project242.MonetaryRates;
+package com.example.project242.MonetaryRates.Costs;
 
 import android.content.Context;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
+
+import com.example.project242.MonetaryRates.Costs.Cost;
 import com.example.project242.R;
 import org.json.JSONArray;
 import org.json.JSONException;
