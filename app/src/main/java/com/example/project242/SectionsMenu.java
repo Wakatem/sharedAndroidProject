@@ -35,7 +35,6 @@ public class SectionsMenu {
     private ImageView menuButton;
     private Toolbar toolbar;
     private NavigationView navView;
-    private ActionBarDrawerToggle toggler;
     private final Activity activity;
 
 
@@ -53,9 +52,6 @@ public class SectionsMenu {
         menuButton  = (ImageView)  includer.findViewById(R.id.menu_button);
 
         navView     = (NavigationView) drawer.findViewById(R.id.navigation_view);
-
-        //creating an instance of ActionBarDrawerToggle (the button toggling the menu)
-        toggler = new ActionBarDrawerToggle(activity, drawer, toolbar, R.string.open, R.string.close);
 
     }
 
