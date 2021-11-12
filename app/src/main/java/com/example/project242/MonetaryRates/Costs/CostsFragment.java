@@ -39,7 +39,7 @@ public class CostsFragment extends Fragment {
                 //display selected cost in a sheet
                 BottomSheet sheet = new BottomSheet(getContext(), R.layout.cost_sheet_item, Home.costsHandler.get(position), Home.costsHandler, costsListView, adapter);
                 sheet.initializeCostsViews();
-                sheet.setListeners();
+                sheet.setCostListeners();
                 sheet.show();
             }
         });

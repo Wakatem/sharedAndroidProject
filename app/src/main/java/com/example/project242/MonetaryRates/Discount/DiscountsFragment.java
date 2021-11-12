@@ -62,7 +62,7 @@ public class DiscountsFragment extends Fragment {
             public void onClick(View view) {
                 BottomSheet sheet = new BottomSheet(getContext(),R.layout.discount_sheet_item);
                 sheet.initializeDiscountsViews();
-                sheet.setDiscountListener();
+                sheet.setDiscountListeners();
                 sheet.show();
 
 

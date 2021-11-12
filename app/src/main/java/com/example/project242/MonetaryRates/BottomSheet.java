@@ -2,6 +2,8 @@ package com.example.project242.MonetaryRates;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -141,6 +143,8 @@ public class BottomSheet {
     }
 
     public void initializeDiscountsViews(){
+
+        //load and link sheet components
         heading = sheetDialog.findViewById(R.id.header);
         discountType = sheetDialog.findViewById(R.id.type1);
         discountTypeR = sheetDialog.findViewById(R.id.type2);
@@ -150,26 +154,10 @@ public class BottomSheet {
         add = sheetDialog.findViewById(R.id.add);
         cancel = sheetDialog.findViewById(R.id.cancel);
 
-
-
-
-    }
-
-    public void addDiscount(EditText discountTypeR, EditText percentageR, Switch newswitch){
-        String name = discountTypeR.getText().toString();
-        int percentage = Integer.valueOf(percentageR.getText().toString());
-        boolean switchR = newswitch.isChecked();
-        Discount newDiscount = new Discount(name, percentage,switchR);
-        discountsList.add(newDiscount);
-        DiscountsFragment.adapter.notifyDataSetChanged();
-        DiscountsFragment.discountList.invalidateViews();
-
-
     }
 
 
-
-    public void setDiscountListener(){
+    public void setDiscountListeners(){
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -198,7 +186,32 @@ public class BottomSheet {
     }
 
 
-    public void setListeners() {
+    public void setCostListeners() {
+
+        amountET.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                int val = Integer.parseInt(charSequence.toString());
+
+                //update hours textview
+                if (val == 1){
+                    ((TextView) sheetDialog.findViewById(R.id.hoursTV)).setText("Hour");
+                }else {
+                    ((TextView) sheetDialog.findViewById(R.id.hoursTV)).setText("Hours");
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -266,6 +279,19 @@ public class BottomSheet {
     }
 
 
+    public void addDiscount(EditText discountTypeR, EditText percentageR, Switch newswitch) {
+        String name = discountTypeR.getText().toString();
+        int percentage = Integer.valueOf(percentageR.getText().toString());
+        boolean switchR = newswitch.isChecked();
+        Discount newDiscount = new Discount(name, percentage, switchR);
+        discountsList.add(newDiscount);
+        DiscountsFragment.adapter.notifyDataSetChanged();
+        DiscountsFragment.discountList.invalidateViews();
+
+
+    }
+
+
     private void saveCostChanges(Cost chosenCost, EditText amountET, EditText hoursET) {
 
         int amount = Integer.valueOf(amountET.getText().toString());
@@ -280,8 +306,5 @@ public class BottomSheet {
         sheetDialog.show();
     }
 
-    public void close() {
-        sheetDialog.dismiss();
-    }
 
 }
