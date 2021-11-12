@@ -163,7 +163,7 @@ public class CentralJSON {
 
 
             //parsing Expenses
-            transactionType = Transactions_obj.getJSONArray("Income");
+            transactionType = Transactions_obj.getJSONArray("Expenses");
             for (int i = 0; i < transactionType.length(); i++) {
                 JSONObject transaction = transactionType.getJSONObject(i);
 
