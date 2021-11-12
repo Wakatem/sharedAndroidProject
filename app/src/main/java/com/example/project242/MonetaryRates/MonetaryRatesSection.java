@@ -35,7 +35,7 @@ public class MonetaryRatesSection extends AppCompatActivity {
     }
 
 
-    void setupTabs(){
+    private void setupTabs(){
         //link viewpager with pager adapter
         pager = findViewById(R.id.pager);
         PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), getLifecycle());

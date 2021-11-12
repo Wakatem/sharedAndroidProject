@@ -1,8 +1,9 @@
 package com.example.project242.Transactions;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
-public class TransactionsHandler extends LinkedHashMap<Long,Transaction> {
+public class TransactionsHandler extends ArrayList<Transaction> {
 
     public TransactionsHandler(){
     }

@@ -40,7 +40,7 @@ public class StudentsSection extends AppCompatActivity {
 
 
 
-    void setupTabs(){
+    private void setupTabs(){
         //link viewpager with pager adapter
         pager = findViewById(R.id.activity_main_viewPager2_1);
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager(), getLifecycle());

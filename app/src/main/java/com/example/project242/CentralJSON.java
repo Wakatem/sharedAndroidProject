@@ -153,17 +153,17 @@ public class CentralJSON {
                 int recipientAccNumber    = transaction.getInt("Recipient AccNumber");
                 String recipientAccName   = transaction.getString("Recipient AccName");
                 int amount                = transaction.getInt("Amount");
-                Date date                 = getDate(transaction.getString("Data"));
+                Date date                 = getDate(transaction.getString("Date"));
                 PaymentMethods method     = getPaymentMethod(transaction.getString("PaymentMethod"));
 
                 Transaction t = new Transaction(transactionID, senderAccNumber, senderAccName, recipientAccNumber, recipientAccName, amount, date, TransactionTypes.INCOME, method);
-                list.put(transactionID,t);
+                list.add(t);
 
             }
 
 
             //parsing Expenses
-            transactionType = Transactions_obj.getJSONArray("Expenses");
+            transactionType = Transactions_obj.getJSONArray("Expense");
             for (int i = 0; i < transactionType.length(); i++) {
                 JSONObject transaction = transactionType.getJSONObject(i);
 
@@ -173,12 +173,12 @@ public class CentralJSON {
                 int recipientAccNumber    = transaction.getInt("Recipient AccNumber");
                 String recipientAccName   = transaction.getString("Recipient AccName");
                 int amount                = transaction.getInt("Amount");
-                Date date                 = getDate(transaction.getString("Data"));
+                Date date                 = getDate(transaction.getString("Date"));
                 ExpenseTypes expense      = getExpense(transaction.getString("Expense Type"));
                 PaymentMethods method     = getPaymentMethod(transaction.getString("PaymentMethod"));
 
                 Transaction t = new Transaction(transactionID, senderAccNumber, senderAccName, recipientAccNumber, recipientAccName, amount, date, expense, method);
-                list.put(transactionID,t);
+                list.add(t);
 
             }
 
