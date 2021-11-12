@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
@@ -23,6 +24,10 @@ import java.util.ArrayList;
 public class AdapterAllStudents extends ArrayAdapter {
     private Context context;
     private ArrayList<Student> students;
+
+    private TextView studentNameTextView;
+    private TextView studentIDTextView;
+    private Button studentStatus;
 
     public AdapterAllStudents(Context context, ArrayList<Student> arrayList) {
         super(context, 0, arrayList);
@@ -41,13 +46,13 @@ public class AdapterAllStudents extends ArrayAdapter {
 
         Student student = students.get(position);
 
-        TextView studentNameTextView = (TextView) listItem.findViewById(R.id.listView_all_students_textView_student_name_1);
+        studentNameTextView = (TextView) listItem.findViewById(R.id.listView_all_students_textView_student_name_1);
         studentNameTextView.setText(student.getStudentName());
 
-        TextView studentIDTextView = (TextView) listItem.findViewById(R.id.listView_all_students_textView_student_id_1);
+        studentIDTextView = (TextView) listItem.findViewById(R.id.listView_all_students_textView_student_id_1);
         studentIDTextView.setText(String.valueOf(student.getStudentID()));
 
-        Button studentStatus = (Button) listItem.findViewById(R.id.listView_all_students_button_status);
+        studentStatus = (Button) listItem.findViewById(R.id.listView_all_students_button_status);
 
         for (int i = 0; i < Home.currentStudentsArrayList.size(); ++i) {
             if (student.getStudentID() == Home.currentStudentsArrayList.get(i).getStudentID()) {
@@ -71,9 +76,11 @@ public class AdapterAllStudents extends ArrayAdapter {
                 FragmentManager fragmentManager = students.getSupportFragmentManager();
 
                 DialogCheckIn dialogCheckIn = new DialogCheckIn();
+
                 Bundle bundle = new Bundle();
                 bundle.putString("Name", student.getStudentName());
                 bundle.putInt("ID", student.getStudentID());
+                bundle.putParcelable("Student", student);
                 dialogCheckIn.setArguments(bundle);
                 dialogCheckIn.show(fragmentManager, "Check-In Dialog");
             }
