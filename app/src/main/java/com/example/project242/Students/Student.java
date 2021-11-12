@@ -5,19 +5,22 @@ public class Student {
     private String studentName;
     private String studentDOB;
     private String studentGender;
+    private Guardian guardian;
 
     public Student() {
         this.studentID = -1;
         this.studentName = "Null";
         this.studentDOB = "Null";
         this.studentGender = "Null";
+        this.guardian = new Guardian();
     }
 
-    public Student(int studentID, String studentName, String studentDOB, String studentGender) {
+    public Student(int studentID, String studentName, String studentDOB, String studentGender, Guardian guardian) {
         this.studentID = studentID;
         this.studentName = studentName;
         this.studentDOB = studentDOB;
         this.studentGender = studentGender;
+        this.guardian = guardian;
     }
 
     public int getStudentID() {
@@ -50,5 +53,13 @@ public class Student {
 
     public void setStudentGender(String studentGender) {
         this.studentGender = studentGender;
+    }
+
+    public Guardian getGuardian() {
+        return this.guardian;
+    }
+
+    public void setGuardian(Guardian guardian) {
+        this.guardian = guardian;
     }
 }
