@@ -60,8 +60,6 @@ public class DiscountsFragment extends Fragment {
                 sheet.initializeDiscountsViews();
                 sheet.setDiscountListeners();
                 sheet.show();
-
-
             }
         });
 

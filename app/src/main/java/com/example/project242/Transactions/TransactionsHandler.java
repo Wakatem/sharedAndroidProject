@@ -6,6 +6,7 @@ import java.util.LinkedHashMap;
 public class TransactionsHandler extends ArrayList<Transaction> {
 
     public TransactionsHandler(){
+
     }
 
     ////////////////////////////////////////////////////////////////////////

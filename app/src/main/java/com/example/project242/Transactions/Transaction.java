@@ -16,6 +16,8 @@ public class Transaction {
     private PaymentMethods paymentMethod;
 
 
+
+
     //without expense type specification
     public Transaction(long transactionID, int sender_AccountNumber, String sender_AccountName, int recipient_AccountNumber, String recipient_AccountName, int amount, Date date, TransactionTypes transactionType, PaymentMethods paymentMethod){
         this.transactionID = transactionID;
@@ -46,10 +48,12 @@ public class Transaction {
 
 
     public long getTransactionID() {
+
         return transactionID;
     }
 
     public int getSender_AccountNumber() {
+
         return sender_AccountNumber;
     }
 
@@ -58,6 +62,7 @@ public class Transaction {
     }
 
     public String getSender_AccountName() {
+
         return sender_AccountName;
     }
 
