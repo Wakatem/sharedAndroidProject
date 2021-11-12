@@ -257,6 +257,7 @@ public class CentralJSON {
                 list.get(i).setStudentDOB(studentDetails.getString("DOB"));
                 list.get(i).setStudentGender(studentDetails.getString("Gender"));
                 list.get(i).setGuardian(parseStudentGuardian(studentDetails));
+                list.get(i).setCheckedInFlag(true);
             }
         } catch (JSONException e) {
             e.printStackTrace();
