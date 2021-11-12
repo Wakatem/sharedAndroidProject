@@ -1,9 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/student_details_drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Students.StudentDetailsActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/app_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:background="@drawable/app_bar_color"
+            android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
+            app:popupTheme="@style/Theme.MaterialComponents.Light" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="48dp" >
+
+            <TextView
+                android:id="@+id/activity_student_details_textView_student_name_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/activity_student_details_textView_student_id_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="TextView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_student_details_textView_student_name_1" />
+
+            <TextView
+                android:id="@+id/activity_student_details_textView_student_DOB_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="TextView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_student_details_textView_student_id_1" />
+
+            <TextView
+                android:id="@+id/activity_student_details_textView_student_gender_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="TextView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_student_details_textView_student_DOB_1" />
+
+            <TextView
+                android:id="@+id/activity_student_details_textView_student_guardian_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="TextView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_student_details_textView_student_gender_1" />
+
+            <TextView
+                android:id="@+id/activity_student_details_textView_guardian_name_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                app:layout_constraintStart_toEndOf="@+id/activity_student_details_textView_student_guardian_1"
+                app:layout_constraintTop_toBottomOf="@+id/activity_student_details_textView_student_guardian_1"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/activity_student_details_textView_guardian_relationship_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                app:layout_constraintStart_toStartOf="@+id/activity_student_details_textView_guardian_name_1"
+                app:layout_constraintTop_toBottomOf="@+id/activity_student_details_textView_guardian_name_1"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/activity_student_details_textView_guardian_phone_number_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                app:layout_constraintStart_toStartOf="@+id/activity_student_details_textView_guardian_relationship_1"
+                app:layout_constraintTop_toBottomOf="@+id/activity_student_details_textView_guardian_relationship_1"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/activity_student_details_textView_guardian_email_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                app:layout_constraintStart_toStartOf="@+id/activity_student_details_textView_guardian_phone_number_1"
+                app:layout_constraintTop_toBottomOf="@+id/activity_student_details_textView_guardian_phone_number_1"
+                android:layout_marginTop="8dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:clipToPadding="false"
+        app:menu="@menu/main_menu" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

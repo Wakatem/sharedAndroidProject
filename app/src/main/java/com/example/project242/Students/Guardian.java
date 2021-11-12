@@ -1,6 +1,9 @@
 package com.example.project242.Students;
 
-public class Guardian {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Guardian implements Parcelable {
     private String guardianName;
     private String relationship;
     private String guardianPhoneNumber;
@@ -18,6 +21,38 @@ public class Guardian {
         this.relationship = relationship;
         this.guardianPhoneNumber = guardianPhoneNumber;
         this.guardianEmail = guardianEmail;
+    }
+
+    protected Guardian(Parcel in) {
+        guardianName = in.readString();
+        relationship = in.readString();
+        guardianPhoneNumber = in.readString();
+        guardianEmail = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(guardianName);
+        parcel.writeString(relationship);
+        parcel.writeString(guardianPhoneNumber);
+        parcel.writeString(guardianEmail);
+    }
+
+    public static final Creator<Guardian> CREATOR = new Creator<Guardian>() {
+        @Override
+        public Guardian createFromParcel(Parcel in) {
+            return new Guardian(in);
+        }
+
+        @Override
+        public Guardian[] newArray(int size) {
+            return new Guardian[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public String getGuardianName() {

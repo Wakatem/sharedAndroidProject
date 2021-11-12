@@ -1,6 +1,7 @@
 package com.example.project242.Students;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -82,11 +83,19 @@ public class AdapterAllStudents extends ArrayAdapter {
                 DialogCheckIn dialogCheckIn = new DialogCheckIn();
 
                 Bundle bundle = new Bundle();
-                bundle.putString("Name", student.getStudentName());
-                bundle.putInt("ID", student.getStudentID());
                 bundle.putParcelable("Student", student);
                 dialogCheckIn.setArguments(bundle);
                 dialogCheckIn.show(fragmentManager, "Check-In Dialog");
+            }
+        });
+
+        detailsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, StudentDetailsActivity.class);
+                intent.putExtra("Student", student);
+                intent.putExtra("Guardian", student.getGuardian());
+                context.startActivity(intent);
             }
         });
 
