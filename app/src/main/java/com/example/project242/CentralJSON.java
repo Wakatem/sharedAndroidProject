@@ -7,6 +7,7 @@ import com.example.project242.MonetaryRates.Costs.CostTypes;
 import com.example.project242.MonetaryRates.Costs.CostsHandler;
 import com.example.project242.MonetaryRates.Discount.Discount;
 import com.example.project242.MonetaryRates.Discount.DiscountsHandler;
+import com.example.project242.Students.Guardian;
 import com.example.project242.Students.Student;
 import com.example.project242.Transactions.ExpenseTypes;
 import com.example.project242.Transactions.PaymentMethods;
@@ -196,7 +197,26 @@ public class CentralJSON {
 
 
 
-    public static ArrayList<Student> parseAllStudents(){
+    public static Guardian parseStudentGuardian(JSONObject studentDetails) {
+        Guardian guardian = new Guardian();
+
+        try {
+            JSONObject guardianDetails = studentDetails.getJSONObject("Guardian");
+
+            guardian.setGuardianName(guardianDetails.getString("Name"));
+            guardian.setRelationship(guardianDetails.getString("Relationship"));
+            guardian.setGuardianPhoneNumber(guardianDetails.getString("Phone Number"));
+            guardian.setGuardianEmail(guardianDetails.getString("Email"));
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return guardian;
+    }
+
+
+    public static ArrayList<Student> parseAllStudents() {
         ArrayList<Student> list = new ArrayList<>();
 
         try {
@@ -211,9 +231,8 @@ public class CentralJSON {
                 list.get(i).setStudentName(studentDetails.getString("Name"));
                 list.get(i).setStudentDOB(studentDetails.getString("DOB"));
                 list.get(i).setStudentGender(studentDetails.getString("Gender"));
+                list.get(i).setGuardian(parseStudentGuardian(studentDetails));
             }
-
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -222,9 +241,7 @@ public class CentralJSON {
     }
 
 
-
-
-    public static ArrayList<Student> parseCurrentStudents(){
+    public static ArrayList<Student> parseCurrentStudents() {
         ArrayList<Student> list = new ArrayList<>();
 
         try {
@@ -239,9 +256,8 @@ public class CentralJSON {
                 list.get(i).setStudentName(studentDetails.getString("Name"));
                 list.get(i).setStudentDOB(studentDetails.getString("DOB"));
                 list.get(i).setStudentGender(studentDetails.getString("Gender"));
+                list.get(i).setGuardian(parseStudentGuardian(studentDetails));
             }
-
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
