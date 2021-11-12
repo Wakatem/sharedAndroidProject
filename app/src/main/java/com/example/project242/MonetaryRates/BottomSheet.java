@@ -281,6 +281,7 @@ public class BottomSheet {
     }
 
     public void close() {
+
         sheetDialog.dismiss();
     }
 

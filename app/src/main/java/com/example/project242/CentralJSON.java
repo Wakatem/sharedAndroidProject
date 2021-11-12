@@ -157,7 +157,7 @@ public class CentralJSON {
                 PaymentMethods method     = getPaymentMethod(transaction.getString("PaymentMethod"));
 
                 Transaction t = new Transaction(transactionID, senderAccNumber, senderAccName, recipientAccNumber, recipientAccName, amount, date, TransactionTypes.INCOME, method);
-                list.put(transactionID,t);
+                list.add(t);
 
             }
 
@@ -178,7 +178,7 @@ public class CentralJSON {
                 PaymentMethods method     = getPaymentMethod(transaction.getString("PaymentMethod"));
 
                 Transaction t = new Transaction(transactionID, senderAccNumber, senderAccName, recipientAccNumber, recipientAccName, amount, date, expense, method);
-                list.put(transactionID,t);
+                list.add(t);
 
             }
 

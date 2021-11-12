@@ -16,6 +16,8 @@ public class Transaction {
     private PaymentMethods paymentMethod;
 
 
+
+
     //without expense type specification
     public Transaction(long transactionID, int sender_AccountNumber, String sender_AccountName, int recipient_AccountNumber, String recipient_AccountName, int amount, Date date, TransactionTypes transactionType, PaymentMethods paymentMethod){
         this.transactionID = transactionID;
