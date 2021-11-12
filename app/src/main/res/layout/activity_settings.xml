@@ -29,6 +29,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:clipToPadding="false"
+        app:headerLayout="@layout/header_layout"
         app:menu="@menu/main_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
