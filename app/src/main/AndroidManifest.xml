@@ -22,9 +22,6 @@
             android:name=".MonetaryRates.MonetaryRates"
             android:exported="false" />
         <activity
-            android:name=".Students.CheckInActivity"
-            android:exported="false" />
-        <activity
             android:name=".Home.Home"
             android:exported="true">
             <intent-filter>

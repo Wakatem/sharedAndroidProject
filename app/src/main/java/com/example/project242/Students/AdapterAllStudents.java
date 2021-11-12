@@ -1,7 +1,7 @@
 package com.example.project242.Students;
 
 import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.project242.Home.Home;
 import com.example.project242.R;
@@ -24,7 +26,7 @@ public class AdapterAllStudents extends ArrayAdapter {
 
     public AdapterAllStudents(Context context, ArrayList<Student> arrayList) {
         super(context, 0, arrayList);
-        this.context = context;
+        this.context = (FragmentActivity) context;
         this.students = arrayList;
     }
 
@@ -65,10 +67,15 @@ public class AdapterAllStudents extends ArrayAdapter {
                     return;
                 }
 
-                Intent intent = new Intent(context, CheckInActivity.class);
-                intent.putExtra("Name", student.getStudentName());
-                intent.putExtra("ID", student.getStudentID());
-                context.startActivity(intent);
+                Students students = (Students) (context);
+                FragmentManager fragmentManager = students.getSupportFragmentManager();
+
+                DialogCheckIn dialogCheckIn = new DialogCheckIn();
+                Bundle bundle = new Bundle();
+                bundle.putString("Name", student.getStudentName());
+                bundle.putInt("ID", student.getStudentID());
+                dialogCheckIn.setArguments(bundle);
+                dialogCheckIn.show(fragmentManager, "Check-In Dialog");
             }
         });
 
