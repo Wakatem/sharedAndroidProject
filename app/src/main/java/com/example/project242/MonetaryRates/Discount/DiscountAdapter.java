@@ -6,18 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 
-import com.example.project242.Home.Home;
+import com.example.project242.Home.HomeSection;
 import com.example.project242.R;
-
-import java.util.ArrayList;
 
 public class DiscountAdapter extends ArrayAdapter<Discount> {
     //private Context context;
@@ -52,7 +48,7 @@ public class DiscountAdapter extends ArrayAdapter<Discount> {
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Home.discountsHandler.remove(position);
+                HomeSection.discountsHandler.remove(position);
                 DiscountsFragment.adapter.notifyDataSetChanged();
                 DiscountsFragment.discountList.invalidateViews();
             }

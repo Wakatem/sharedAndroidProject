@@ -12,7 +12,7 @@ import com.example.project242.R;
 import com.example.project242.SectionsMenu;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
-public class Transactions extends AppCompatActivity {
+public class TransactionsSection extends AppCompatActivity {
 
     ImageButton button1;
 
@@ -32,7 +32,7 @@ public class Transactions extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NewTransactionSheet newsheet = new NewTransactionSheet(Transactions.this , R.layout.add_transaction_sheet);
+                NewTransactionSheet newsheet = new NewTransactionSheet(TransactionsSection.this , R.layout.add_transaction_sheet);
                 newsheet.initializeTransactionView();
                 newsheet.setTransactionListener();
                 newsheet.show();

@@ -10,22 +10,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project242">
         <activity
-            android:name=".Transactions.Transactions"
+            android:name=".Transactions.DisplayTransactions"
             android:exported="false" />
         <activity
-            android:name=".Settings.Settings"
+            android:name=".Transactions.TransactionsSection"
             android:exported="false" />
         <activity
-            android:name=".Students.Students"
+            android:name=".Settings.SettingsSection"
             android:exported="false" />
         <activity
-            android:name=".MonetaryRates.MonetaryRates"
+            android:name=".Students.StudentsSection"
+            android:exported="false" />
+        <activity
+            android:name=".MonetaryRates.MonetaryRatesSection"
             android:exported="false" />
         <activity
             android:name=".Students.CheckInActivity"
             android:exported="false" />
         <activity
-            android:name=".Home.Home"
+            android:name=".Home.HomeSection"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

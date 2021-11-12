@@ -18,7 +18,7 @@ import com.example.project242.Transactions.TransactionsHandler;
 
 import java.util.ArrayList;
 
-public class Home extends AppCompatActivity {
+public class HomeSection extends AppCompatActivity {
 
     public static CostsHandler costsHandler;
     public static DiscountsHandler discountsHandler;

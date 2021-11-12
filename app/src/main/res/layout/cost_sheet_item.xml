@@ -92,6 +92,7 @@
 
 
             <TextView
+                android:id="@+id/hoursTV"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/raleway_regular"

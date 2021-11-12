@@ -11,7 +11,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.project242.Home.Home;
+import com.example.project242.Home.HomeSection;
+import com.example.project242.Home.HomeSection;
 import com.example.project242.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
@@ -44,7 +45,7 @@ public class NewTransactionSheet {
     private Button cancel;
 
     public NewTransactionSheet(Context ActivityContext, int sheetlayout){
-        newList = Home.transactionsHandler;
+        newList = HomeSection.transactionsHandler;
         newSheetDialog = new BottomSheetDialog(ActivityContext);
         context=ActivityContext;
         newSheetDialog.setContentView(sheetlayout);
