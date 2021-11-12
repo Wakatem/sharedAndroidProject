@@ -46,10 +46,12 @@ public class Transaction {
 
 
     public long getTransactionID() {
+
         return transactionID;
     }
 
     public int getSender_AccountNumber() {
+
         return sender_AccountNumber;
     }
 
@@ -58,6 +60,7 @@ public class Transaction {
     }
 
     public String getSender_AccountName() {
+
         return sender_AccountName;
     }
 
