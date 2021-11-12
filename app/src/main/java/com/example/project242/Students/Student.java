@@ -10,6 +10,8 @@ public class Student implements Parcelable {
     private String studentGender;
     private Guardian guardian;
 
+    private boolean checkedInFlag = false;
+
     public Student() {
         this.studentID = -1;
         this.studentName = "Null";
@@ -96,5 +98,13 @@ public class Student implements Parcelable {
 
     public void setGuardian(Guardian guardian) {
         this.guardian = guardian;
+    }
+
+    public boolean checkedInFlag () {
+        return checkedInFlag;
+    }
+
+    public void setCheckedInFlag(boolean flag) {
+        this.checkedInFlag = flag;
     }
 }
