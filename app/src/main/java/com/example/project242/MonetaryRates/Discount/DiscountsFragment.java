@@ -4,21 +4,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.project242.Home.Home;
+import com.example.project242.Home.HomeSection;
 import com.example.project242.MonetaryRates.BottomSheet;
 import com.example.project242.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.ArrayList;
 
 public class DiscountsFragment extends Fragment {
 
@@ -38,7 +34,7 @@ public class DiscountsFragment extends Fragment {
         View fragment = LayoutInflater.from(getContext()).inflate(R.layout.discounts_fragment,container,false);
         discountList = fragment.findViewById(R.id.discountList);
 
-        adapter = new DiscountAdapter(getContext(), Home.discountsHandler);
+        adapter = new DiscountAdapter(getContext(), HomeSection.discountsHandler);
         discountList.setAdapter(adapter);
        // close = fragment.findViewById(R.id.discountName);
         close = discountList.findViewById(R.id.closedown);

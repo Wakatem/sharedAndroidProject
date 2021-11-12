@@ -17,7 +17,7 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.ArrayList;
 
-public class Students extends AppCompatActivity {
+public class StudentsSection extends AppCompatActivity {
 
     ViewPager2 pager;
 

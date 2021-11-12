@@ -6,21 +6,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.Toast;
 
-import com.example.project242.Home.Home;
-import com.example.project242.MonetaryRates.Discount.DiscountsFragment;
 import com.example.project242.R;
 import com.example.project242.SectionsMenu;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-import java.util.ArrayList;
-
-public class MonetaryRates extends AppCompatActivity {
+public class MonetaryRatesSection extends AppCompatActivity {
 
     private ViewPager2 pager;
 

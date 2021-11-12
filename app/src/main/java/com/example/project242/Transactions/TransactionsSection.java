@@ -8,7 +8,7 @@ import android.os.Bundle;
 import com.example.project242.R;
 import com.example.project242.SectionsMenu;
 
-public class Transactions extends AppCompatActivity {
+public class TransactionsSection extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

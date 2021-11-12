@@ -13,7 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.project242.Home.Home;
+import com.example.project242.Home.HomeSection;
 import com.example.project242.R;
 
 import java.util.ArrayList;
@@ -49,8 +49,8 @@ public class AdapterAllStudents extends ArrayAdapter {
 
         Button studentStatus = (Button) listItem.findViewById(R.id.listView_all_students_button_status);
 
-        for (int i = 0; i < Home.currentStudentsArrayList.size(); ++i) {
-            if (student.getStudentID() == Home.currentStudentsArrayList.get(i).getStudentID()) {
+        for (int i = 0; i < HomeSection.currentStudentsArrayList.size(); ++i) {
+            if (student.getStudentID() == HomeSection.currentStudentsArrayList.get(i).getStudentID()) {
                 studentStatus.setText("Checked-In");
                 studentStatus.getBackground();
                 break;

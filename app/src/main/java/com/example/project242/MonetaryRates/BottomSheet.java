@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -17,18 +16,16 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.project242.Home.Home;
+import com.example.project242.Home.HomeSection;
 import com.example.project242.MonetaryRates.Costs.Cost;
 import com.example.project242.MonetaryRates.Costs.CostAdapter;
 import com.example.project242.MonetaryRates.Costs.CostTypes;
 import com.example.project242.MonetaryRates.Costs.CostsHandler;
 import com.example.project242.MonetaryRates.Discount.Discount;
-import com.example.project242.MonetaryRates.Discount.DiscountAdapter;
 import com.example.project242.MonetaryRates.Discount.DiscountsFragment;
 import com.example.project242.MonetaryRates.Discount.DiscountsHandler;
 import com.example.project242.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.example.project242.MonetaryRates.Discount.Discount;
 
 import info.hoang8f.widget.FButton;
 
@@ -68,7 +65,7 @@ public class BottomSheet {
 
 
     public BottomSheet(Context newContext, int sheetLayout){
-        discountsList = Home.discountsHandler;
+        discountsList = HomeSection.discountsHandler;
 
         sheetDialog = new BottomSheetDialog(newContext);
         context = newContext;

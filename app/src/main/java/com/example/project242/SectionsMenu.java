@@ -2,24 +2,21 @@ package com.example.project242;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.example.project242.Home.Home;
-import com.example.project242.MonetaryRates.MonetaryRates;
-import com.example.project242.Settings.Settings;
-import com.example.project242.Students.Students;
-import com.example.project242.Transactions.Transactions;
+import com.example.project242.Home.HomeSection;
+import com.example.project242.MonetaryRates.MonetaryRatesSection;
+import com.example.project242.Settings.SettingsSection;
+import com.example.project242.Students.StudentsSection;
+import com.example.project242.Transactions.TransactionsSection;
 import com.google.android.material.navigation.NavigationView;
 
 /**
@@ -76,7 +73,7 @@ public class SectionsMenu {
 
                 switch (item.getItemId()) {
                     case R.id.HomeSection:
-                        if (!(activity instanceof Home))
+                        if (!(activity instanceof HomeSection))
                             //destroy current activity and go back to home automatically
                             activity.finish();
                         status = true;
@@ -84,32 +81,32 @@ public class SectionsMenu {
 
 
                     case R.id.StudentsSection:
-                        if (!(activity instanceof Students)) {
-                            activity.startActivity(new Intent(activity, Students.class));
+                        if (!(activity instanceof StudentsSection)) {
+                            activity.startActivity(new Intent(activity, StudentsSection.class));
                         }
                         status = true;
                         break;
 
 
                     case R.id.TransactionsSection:
-                        if (!(activity instanceof Transactions)) {
-                            activity.startActivity(new Intent(activity, Transactions.class));
+                        if (!(activity instanceof TransactionsSection)) {
+                            activity.startActivity(new Intent(activity, TransactionsSection.class));
                         }
                         status = true;
                         break;
 
 
                     case R.id.MonetaryRatesSection:
-                        if (!(activity instanceof MonetaryRates)) {
-                            activity.startActivity(new Intent(activity, MonetaryRates.class));
+                        if (!(activity instanceof MonetaryRatesSection)) {
+                            activity.startActivity(new Intent(activity, MonetaryRatesSection.class));
                         }
                         status = true;
                         break;
 
 
                     case R.id.Settings:
-                        if (!(activity instanceof Settings)) {
-                            activity.startActivity(new Intent(activity, Settings.class));
+                        if (!(activity instanceof SettingsSection)) {
+                            activity.startActivity(new Intent(activity, SettingsSection.class));
                         }
                         status = true;
                         break;
@@ -117,7 +114,7 @@ public class SectionsMenu {
                 }//switch
 
                 if (status == true) {
-                    if (!(activity instanceof Home)) {
+                    if (!(activity instanceof HomeSection)) {
                         activity.finish();
                     }
                 }
