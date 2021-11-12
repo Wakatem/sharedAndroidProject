@@ -28,6 +28,7 @@ public class AdapterAllStudents extends ArrayAdapter {
     private TextView studentNameTextView;
     private TextView studentIDTextView;
     private Button studentStatus;
+    private Button detailsButton;
 
     public AdapterAllStudents(Context context, ArrayList<Student> arrayList) {
         super(context, 0, arrayList);
@@ -63,6 +64,9 @@ public class AdapterAllStudents extends ArrayAdapter {
 
             studentStatus.setText("Check-In");
         }
+
+        detailsButton = (Button) listItem.findViewById(R.id.listView_all_students_button_details);
+        detailsButton.setText("Details");
 
         studentStatus.setOnClickListener(new View.OnClickListener() {
             @Override
