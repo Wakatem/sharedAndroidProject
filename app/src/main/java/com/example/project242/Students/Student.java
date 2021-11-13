@@ -12,8 +12,8 @@ public class Student implements Parcelable {
 
     private boolean checkedInFlag = false;
 
-    private long checkInTime;
-    private long checkOutTime;
+    private long checkInTime = 0;
+    private long checkOutTime = 0;
 
     public Student() {
         this.studentID = -1;
