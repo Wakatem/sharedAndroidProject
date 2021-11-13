@@ -19,6 +19,10 @@ public class AdapterCurrentStudents extends ArrayAdapter {
     private Context context;
     private ArrayList<Student> students;
 
+    private TextView studentNameTextView;
+    private TextView studentIDTextView;
+    private Button statusButton;
+
     public AdapterCurrentStudents(Context context, ArrayList<Student> arrayList) {
         super(context, 0, arrayList);
         this.context = context;
@@ -36,17 +40,14 @@ public class AdapterCurrentStudents extends ArrayAdapter {
 
         Student student = students.get(position);
 
-        TextView studentNameTextView = (TextView) listItem.findViewById(R.id.listView_current_students_textView_student_name_1);
+        studentNameTextView = (TextView) listItem.findViewById(R.id.listView_current_students_textView_student_name_1);
         studentNameTextView.setText(student.getStudentName());
 
-        TextView studentIDTextView = (TextView) listItem.findViewById(R.id.listView_current_students_textView_student_id_1);
+        studentIDTextView = (TextView) listItem.findViewById(R.id.listView_current_students_textView_student_id_1);
         studentIDTextView.setText(String.valueOf(student.getStudentID()));
 
-        Button statusButton = (Button) listItem.findViewById(R.id.listView_current_students_button_status);
+        statusButton = (Button) listItem.findViewById(R.id.listView_current_students_button_status);
         statusButton.setText("Check-Out");
-
-        Button detailsButton = (Button) listItem.findViewById(R.id.listView_current_students_button_details);
-        detailsButton.setText("Details");
 
         return listItem;
     }
