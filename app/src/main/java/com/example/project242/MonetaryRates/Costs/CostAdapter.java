@@ -45,9 +45,15 @@ public class CostAdapter extends ArrayAdapter<Cost> {
         if (type == CostTypes.GREATER) {
             descTV.setText("Per additional hour");
         } else if (type == CostTypes.EQUAL) {
-            descTV.setText(duration+" Hours");
+            if (list.get(position).getHours() == 1)
+                descTV.setText(duration + " Hour");
+            else
+                descTV.setText(duration + " Hours");
         } else {
-            descTV.setText("Less than "+duration+" hours");
+            if (list.get(position).getHours() == 1)
+                descTV.setText("Less than " + duration + " hour");
+            else
+                descTV.setText("Less than " + duration + " hours");
         }
 
         return item;
