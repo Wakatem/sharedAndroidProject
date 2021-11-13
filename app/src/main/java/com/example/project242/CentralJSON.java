@@ -190,6 +190,7 @@ public class CentralJSON {
 
 
 
+        list.sortTransactions();
 
         return list;
     }
