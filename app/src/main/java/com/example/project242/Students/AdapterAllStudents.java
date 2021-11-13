@@ -55,15 +55,10 @@ public class AdapterAllStudents extends ArrayAdapter {
         studentIDTextView.setText(String.valueOf(student.getStudentID()));
 
         studentStatus = (Button) listItem.findViewById(R.id.listView_all_students_button_status);
-
-        for (int i = 0; i < Home.currentStudentsArrayList.size(); ++i) {
-            if (student.getStudentID() == Home.currentStudentsArrayList.get(i).getStudentID()) {
-                studentStatus.setText("Checked-In");
-                studentStatus.getBackground();
-                break;
-            }
-
+        if (!student.getCheckedInFlag()) {
             studentStatus.setText("Check-In");
+        } else {
+            studentStatus.setText("Checked-In");
         }
 
         detailsButton = (Button) listItem.findViewById(R.id.listView_all_students_button_details);
@@ -72,7 +67,7 @@ public class AdapterAllStudents extends ArrayAdapter {
         studentStatus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (studentStatus.getText() == "Checked-In") {
+                if (student.getCheckedInFlag()) {
                     Toast.makeText(context, "The student is already checked in!", Toast.LENGTH_SHORT).show();
                     return;
                 }

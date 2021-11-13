@@ -22,7 +22,7 @@ public class FragmentCurrentStudents extends Fragment {
         View view = inflater.inflate(R.layout.fragment_current_students, container, false);
 
         listView = (ListView) view.findViewById(R.id.fragment_current_students_listView_current_students_1);
-        AdapterCurrentStudents studentAdapter = new AdapterCurrentStudents(getContext(), Home.currentStudentsArrayList);
+        AdapterCurrentStudents studentAdapter = new AdapterCurrentStudents(getActivity(), Home.currentStudentsArrayList);
         listView.setAdapter(studentAdapter);
 
         return view;
