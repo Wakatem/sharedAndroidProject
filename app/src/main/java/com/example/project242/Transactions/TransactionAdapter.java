@@ -13,10 +13,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.example.project242.R;
 
+import java.util.Calendar;
+
 public class TransactionAdapter extends ArrayAdapter<Transaction> {
 
     private final TransactionsHandler handler;
     private final Context context;
+    private Calendar calendar;
 
     public TransactionAdapter(Context context, TransactionsHandler handler) {
         super(context, 0, handler);
@@ -32,7 +35,6 @@ public class TransactionAdapter extends ArrayAdapter<Transaction> {
         if (item==null)
             item = LayoutInflater.from(context).inflate(R.layout.transaction_listview_item, parent, false);
 
-        //get Transaction object
         Transaction transaction = handler.get(position);
 
         //link views
@@ -46,20 +48,23 @@ public class TransactionAdapter extends ArrayAdapter<Transaction> {
         String accHolder="";
         if (transaction.getTransactionType() == TransactionTypes.INCOME) {
             image.setImageResource(R.drawable.income);
-            accHolder = "From: " + String.valueOf(transaction.getSender_AccountName() + "\n");
+            accHolder = "From: " + "\n" + String.valueOf(transaction.getSender_AccountName());
             amountTV.setTextColor(Color.parseColor("#00BFA5"));
         }
         else {
             image.setImageResource(R.drawable.expense);
-            accHolder = "To: " + String.valueOf(transaction.getRecipient_AccountName() + "\n");
+            accHolder = "To: " + "\n" + String.valueOf(transaction.getRecipient_AccountName());
             amountTV.setTextColor(Color.parseColor("#D84315"));
         }
 
-        String id     = String.valueOf(transaction.getTransactionID());
-        String amount = String.valueOf(transaction.getAmount() + R.string.currency);
-        String date   = String.valueOf(transaction.getDate().getDay())   + "/" +
-                        String.valueOf(transaction.getDate().getMonth()) + "/" +
-                        String.valueOf(transaction.getDate().getYear())  + "/";
+        String id     = "transaction ID: " + String.valueOf(transaction.getTransactionID());
+        String amount = String.valueOf(transaction.getAmount()) + " AED";
+
+        calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(transaction.getDate().getTime());
+        String date   = String.valueOf(calendar.get(Calendar.DAY_OF_MONTH)) + "/" +
+                        String.valueOf(calendar.get(Calendar.MONTH))        + "/" +
+                        String.valueOf(calendar.get(Calendar.YEAR));
 
 
         //assign values to views

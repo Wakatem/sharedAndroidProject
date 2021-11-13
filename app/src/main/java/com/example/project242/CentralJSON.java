@@ -275,7 +275,7 @@ public class CentralJSON {
 
     private static Date getDate(String dateString){
 
-        SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         Date date=null;
         try {
             date = format.parse(dateString);

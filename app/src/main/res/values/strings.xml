@@ -2,7 +2,6 @@
     <string name="app_name">project242</string>
     <string name="open">open</string>
     <string name="close">close</string>
-    <string name="currency">AED</string>
     <string-array name="costTypes">
         <item>More than</item>
         <item>Equals</item>
