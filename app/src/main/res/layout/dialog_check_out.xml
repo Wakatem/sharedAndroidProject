@@ -15,4 +15,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/dialog_check_out_textView_student_name_1" />
 
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dialog_check_out_textView_student_id_1">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cash" />
+
+    </RadioGroup>
+
 </RelativeLayout>
