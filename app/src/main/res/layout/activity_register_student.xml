@@ -162,7 +162,7 @@
                 android:layout_marginEnd="20dp"
                 android:ems="10"
                 android:hint="dd/mm/yy"
-                android:inputType="numberSigned"
+                android:inputType="date"
                 android:textSize="12sp" />
 
             <RadioGroup
@@ -238,7 +238,7 @@
                 android:layout_marginRight="20dp"
                 android:ems="10"
                 android:hint="+971-XX-XXX-XXXX"
-                android:inputType="textPersonName"
+                android:inputType="numberSigned"
                 android:textSize="12dp" />
 
             <EditText
@@ -262,7 +262,7 @@
                 android:layout_marginTop="7dp"
                 android:layout_marginRight="20dp"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:inputType="numberSigned"
                 android:textSize="12dp" />
 
             <Button
