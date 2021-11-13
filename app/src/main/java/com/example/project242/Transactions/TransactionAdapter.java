@@ -53,11 +53,11 @@ public class TransactionAdapter extends ArrayAdapter<Transaction> {
         }
         else {
             image.setImageResource(R.drawable.expense);
-            accHolder = "To: " + "\n" + String.valueOf(transaction.getRecipient_AccountName());
+            accHolder = "To: " + String.valueOf(transaction.getRecipient_AccountName());
             amountTV.setTextColor(Color.parseColor("#D84315"));
         }
 
-        String id     = "transaction ID: " + String.valueOf(transaction.getTransactionID());
+        String id     = "transaction id: " + String.valueOf(transaction.getTransactionID());
         String amount = String.valueOf(transaction.getAmount()) + " AED";
 
         calendar = Calendar.getInstance();
