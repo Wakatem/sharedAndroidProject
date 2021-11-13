@@ -8,6 +8,7 @@ public class Guardian implements Parcelable {
     private String relationship;
     private String guardianPhoneNumber;
     private String guardianEmail;
+    private String guardianAccountNumber;
 
     public Guardian() {
         this.guardianName = "Null";
@@ -85,5 +86,13 @@ public class Guardian implements Parcelable {
 
     public void setGuardianEmail(String guardianEmail) {
         this.guardianEmail = guardianEmail;
+    }
+
+    public String getGuardianAccountNumber() {
+        return this.guardianAccountNumber;
+    }
+
+    public void setGuardianAccountNumber(String guardianAccountNumber) {
+        this.guardianAccountNumber = guardianAccountNumber;
     }
 }
