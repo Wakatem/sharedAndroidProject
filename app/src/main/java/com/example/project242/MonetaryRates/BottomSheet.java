@@ -48,6 +48,7 @@ public class BottomSheet {
     private Spinner costTypesMenu;
     private FButton editButton;
     private FButton cancelButton;
+    private TextView hoursTV;
 
     //discount variables
     private TextView heading;
@@ -109,12 +110,12 @@ public class BottomSheet {
     public void initializeCostsViews() {
 
         //load and link sheet components
-        ringContainer = sheetDialog.findViewById(R.id.ringContainer);
-        amountET = sheetDialog.findViewById(R.id.chosenCost_amount);
-        hoursET = sheetDialog.findViewById(R.id.chosenCost_hours);
-        costTypesMenu = sheetDialog.findViewById(R.id.chosenCost_desc);
-        cancelButton = sheetDialog.findViewById(R.id.cancel_button);
-        editButton = sheetDialog.findViewById(R.id.edit_button);
+        ringContainer  = sheetDialog.findViewById(R.id.ringContainer);
+        amountET       = sheetDialog.findViewById(R.id.chosenCost_amount);
+        hoursET        = sheetDialog.findViewById(R.id.chosenCost_hours);
+        costTypesMenu  = sheetDialog.findViewById(R.id.chosenCost_desc);
+        cancelButton   = sheetDialog.findViewById(R.id.cancel_button);
+        editButton     = sheetDialog.findViewById(R.id.edit_button);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context, R.array.costTypes, android.R.layout.simple_spinner_dropdown_item);
         costTypesMenu.setAdapter(adapter);
@@ -135,6 +136,12 @@ public class BottomSheet {
         amountET.setText(String.valueOf(chosenCost.getAmount()));
         hoursET.setText(String.valueOf(chosenCost.getHours()));
 
+        if (chosenCost.getType() == CostTypes.GREATER)
+            costTypesMenu.setSelection(0);
+        else if (chosenCost.getType() == CostTypes.EQUAL)
+            costTypesMenu.setSelection(1);
+        else
+            costTypesMenu.setSelection(2);
 
 
     }
@@ -153,39 +160,10 @@ public class BottomSheet {
 
     }
 
-
-    public void setDiscountListeners(){
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(discountTypeR.getText().toString()=="" || percentageR.getText().toString().equals("")){
-                    Toast.makeText(context, "please enter values to continue",Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    addDiscount(discountTypeR, percentageR, aSwitch);
-                    sheetDialog.dismiss();
-                }
-
-
-
-            }
-        });
-
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sheetDialog.dismiss();
-            }
-        });
-
-
-
-    }
-
-
     public void setCostListeners() {
 
-        amountET.addTextChangedListener(new TextWatcher() {
+        hoursTV =  sheetDialog.findViewById(R.id.hoursTV);
+        hoursET.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -193,20 +171,18 @@ public class BottomSheet {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                int val = Integer.parseInt(charSequence.toString());
-
                 //update hours textview
-                if (val == 1){
-                    ((TextView) sheetDialog.findViewById(R.id.hoursTV)).setText("Hour");
-                }else {
-                    ((TextView) sheetDialog.findViewById(R.id.hoursTV)).setText("Hours");
+                if (!charSequence.toString().equals("")) {
+                    if (Integer.parseInt(charSequence.toString()) == 1) {
+                        hoursTV.setText("Hour");
+                    } else {
+                        hoursTV.setText("Hours");
+                    }
                 }
-
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-
             }
         });
 
@@ -217,7 +193,7 @@ public class BottomSheet {
                     boolean readyToSave = true;
 
                     //check if any field is empty before saving
-                    if (amountET.getText().toString().equals("") || amountET.getText().toString().equals("")) {
+                    if (amountET.getText().toString().equals("") || hoursET.getText().toString().equals("")) {
                         readyToSave = false;
                         Toast.makeText(context, "Fields cannot be empty", Toast.LENGTH_SHORT).show();
                     }
@@ -275,6 +251,44 @@ public class BottomSheet {
 
     }
 
+    public void setDiscountListeners(){
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(discountTypeR.getText().toString()=="" || percentageR.getText().toString().equals("")){
+                    Toast.makeText(context, "please enter values to continue",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    addDiscount(discountTypeR, percentageR, aSwitch);
+                    sheetDialog.dismiss();
+                }
+
+
+
+            }
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sheetDialog.dismiss();
+            }
+        });
+
+
+
+    }
+
+
+
+    private void saveCostChanges(Cost chosenCost, EditText amountET, EditText hoursET) {
+
+        int amount = Integer.valueOf(amountET.getText().toString());
+        int hours = Integer.valueOf(hoursET.getText().toString());
+
+        costsList.editCost(chosenCost, amount, hours);
+
+    }
 
     public void addDiscount(EditText discountTypeR, EditText percentageR, Switch newswitch) {
         String name = discountTypeR.getText().toString();
@@ -289,14 +303,6 @@ public class BottomSheet {
     }
 
 
-    private void saveCostChanges(Cost chosenCost, EditText amountET, EditText hoursET) {
-
-        int amount = Integer.valueOf(amountET.getText().toString());
-        int hours = Integer.valueOf(hoursET.getText().toString());
-
-        costsList.editCost(chosenCost, amount, hours);
-
-    }
 
     public void show() {
 
