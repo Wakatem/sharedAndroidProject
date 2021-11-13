@@ -57,7 +57,9 @@ public class TransactionAdapter extends ArrayAdapter<Transaction> {
 
         String id     = String.valueOf(transaction.getTransactionID());
         String amount = String.valueOf(transaction.getAmount() + R.string.currency);
-        String date   = String.valueOf(transaction.getDate().getDay());
+        String date   = String.valueOf(transaction.getDate().getDay())   + "/" +
+                        String.valueOf(transaction.getDate().getMonth()) + "/" +
+                        String.valueOf(transaction.getDate().getYear())  + "/";
 
 
         //assign values to views
