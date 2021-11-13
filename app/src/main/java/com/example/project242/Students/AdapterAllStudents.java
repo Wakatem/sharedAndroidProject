@@ -2,6 +2,7 @@ package com.example.project242.Students;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.project242.Home.HomeSection;
 import com.example.project242.R;
@@ -19,10 +21,13 @@ import com.example.project242.R;
 import java.util.ArrayList;
 
 public class AdapterAllStudents extends ArrayAdapter {
-
     private Context context;
     private ArrayList<Student> students;
 
+    private TextView studentNameTextView;
+    private TextView studentIDTextView;
+    private Button studentStatus;
+    private Button detailsButton;
 
     public AdapterAllStudents(Context context, ArrayList<Student> arrayList) {
         super(context, 0, arrayList);
@@ -41,23 +46,21 @@ public class AdapterAllStudents extends ArrayAdapter {
 
         Student student = students.get(position);
 
-        TextView studentNameTextView = (TextView) listItem.findViewById(R.id.listView_all_students_textView_student_name_1);
+        studentNameTextView = (TextView) listItem.findViewById(R.id.listView_all_students_textView_student_name_1);
         studentNameTextView.setText(student.getStudentName());
 
-        TextView studentIDTextView = (TextView) listItem.findViewById(R.id.listView_all_students_textView_student_id_1);
+        studentIDTextView = (TextView) listItem.findViewById(R.id.listView_all_students_textView_student_id_1);
         studentIDTextView.setText(String.valueOf(student.getStudentID()));
 
-        Button studentStatus = (Button) listItem.findViewById(R.id.listView_all_students_button_status);
-
-        for (int i = 0; i < HomeSection.currentStudentsArrayList.size(); ++i) {
-            if (student.getStudentID() == HomeSection.currentStudentsArrayList.get(i).getStudentID()) {
-                studentStatus.setText("Checked-In");
-                studentStatus.getBackground();
-                break;
-            }
-
+        studentStatus = (Button) listItem.findViewById(R.id.listView_all_students_button_status);
+        if (!student.getCheckedInFlag()) {
             studentStatus.setText("Check-In");
+        } else {
+            studentStatus.setText("Checked-In");
         }
+
+        detailsButton = (Button) listItem.findViewById(R.id.listView_all_students_button_details);
+        detailsButton.setText("Details");
 
         studentStatus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,10 +70,19 @@ public class AdapterAllStudents extends ArrayAdapter {
                     return;
                 }
 
-                Intent intent = new Intent(context, CheckInActivity.class);
-                intent.putExtra("Name", student.getStudentName());
-                intent.putExtra("ID", student.getStudentID());
-                context.startActivity(intent);
+                StudentsSection students = (StudentsSection) (context);
+                FragmentManager fragmentManager = students.getSupportFragmentManager();
+
+                DialogCheckIn dialogCheckIn = new DialogCheckIn();
+
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("Student", student);
+                dialogCheckIn.setArguments(bundle);
+                dialogCheckIn.show(fragmentManager, "Check-In Dialog");
+
+                if(student.getCheckedInFlag()) {
+                    studentStatus.setText("Checked-In");
+                }
             }
         });
 

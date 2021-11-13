@@ -1,23 +1,63 @@
 package com.example.project242.Students;
 
-public class Student {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Student implements Parcelable {
     private int studentID;
     private String studentName;
     private String studentDOB;
     private String studentGender;
+    private Guardian guardian;
+
+    private boolean checkedInFlag = false;
 
     public Student() {
         this.studentID = -1;
         this.studentName = "Null";
         this.studentDOB = "Null";
         this.studentGender = "Null";
+        this.guardian = new Guardian();
     }
 
-    public Student(int studentID, String studentName, String studentDOB, String studentGender) {
+    public Student(int studentID, String studentName, String studentDOB, String studentGender, Guardian guardian) {
         this.studentID = studentID;
         this.studentName = studentName;
         this.studentDOB = studentDOB;
         this.studentGender = studentGender;
+        this.guardian = guardian;
+    }
+
+    protected Student(Parcel in) {
+        studentID = in.readInt();
+        studentName = in.readString();
+        studentDOB = in.readString();
+        studentGender = in.readString();
+    }
+
+    public static final Creator<Student> CREATOR = new Creator<Student>() {
+        @Override
+        public Student createFromParcel(Parcel in) {
+            return new Student(in);
+        }
+
+        @Override
+        public Student[] newArray(int size) {
+            return new Student[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(studentID);
+        parcel.writeString(studentName);
+        parcel.writeString(studentDOB);
+        parcel.writeString(studentGender);
     }
 
     public int getStudentID() {
@@ -50,5 +90,21 @@ public class Student {
 
     public void setStudentGender(String studentGender) {
         this.studentGender = studentGender;
+    }
+
+    public Guardian getGuardian() {
+        return this.guardian;
+    }
+
+    public void setGuardian(Guardian guardian) {
+        this.guardian = guardian;
+    }
+
+    public boolean getCheckedInFlag () {
+        return checkedInFlag;
+    }
+
+    public void setCheckedInFlag(boolean flag) {
+        this.checkedInFlag = flag;
     }
 }

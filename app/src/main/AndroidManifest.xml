@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project242">
         <activity
+            android:name=".Students.StudentDetailsActivity"
+            android:exported="true" />
+        <activity
             android:name=".Transactions.DisplayTransactions"
             android:exported="false" />
         <activity
