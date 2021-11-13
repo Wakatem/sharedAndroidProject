@@ -29,7 +29,7 @@ public class StudentDetailsActivity extends AppCompatActivity {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.student_details_drawer);
         SectionsMenu menu = new SectionsMenu(this, drawer);
         menu.initialize();
-        menu.setupToolbar("Student Details", R.drawable.menu_icon);
+        menu.setToolbarTitle("Student Details");
         menu.setOptionSelectedListener();
 
         studentName = findViewById(R.id.activity_student_details_textView_student_name_1);
