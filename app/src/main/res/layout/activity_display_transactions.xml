@@ -19,9 +19,9 @@
         android:orientation="horizontal">
 
         <SearchView
+            android:id="@+id/transactionSearch"
             android:layout_width="200dp"
-            android:layout_height="30dp"
-            android:queryHint="transaction ID"/>
+            android:layout_height="30dp" />
 
         <Spinner
             android:layout_width="40dp"
