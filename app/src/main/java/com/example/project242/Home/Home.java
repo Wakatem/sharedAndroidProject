@@ -48,8 +48,14 @@ public class Home extends AppCompatActivity {
         allStudentsArrayList      = CentralJSON.parseAllStudents();
         currentStudentsArrayList  = CentralJSON.parseCurrentStudents();
 
-
-
+        // Synchronise checkedInFlag of allStudentsArrayList with currentStudentsArrayList
+        for (int i = 0; i < allStudentsArrayList.size(); ++i) {
+            for (int j = 0; j < currentStudentsArrayList.size(); ++j) {
+                if (allStudentsArrayList.get(i).getStudentID() == currentStudentsArrayList.get(j).getStudentID()) {
+                    allStudentsArrayList.get(i).setCheckedInFlag(currentStudentsArrayList.get(j).getCheckedInFlag());
+                    break;
+                }
+            }
+        }
     }
-
 }

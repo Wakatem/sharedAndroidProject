@@ -100,7 +100,7 @@ public class Student implements Parcelable {
         this.guardian = guardian;
     }
 
-    public boolean checkedInFlag () {
+    public boolean getCheckedInFlag () {
         return checkedInFlag;
     }
 
