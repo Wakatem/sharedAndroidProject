@@ -1,10 +1,13 @@
 package com.example.project242.Students;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.project242.R;
@@ -26,11 +29,8 @@ public class StudentDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_details);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.student_details_drawer);
-        SectionsMenu menu = new SectionsMenu(this, drawer);
-        menu.initialize();
-        menu.setToolbarTitle("Student Details");
-        menu.setOptionSelectedListener();
+        View includer = findViewById(R.id.includer);
+        setupToolbar(includer, "Student Details");
 
         studentName = findViewById(R.id.activity_student_details_textView_student_name_1);
         studentID = findViewById(R.id.activity_student_details_textView_student_id_1);
@@ -55,5 +55,20 @@ public class StudentDetailsActivity extends AppCompatActivity {
         guardianRelationship.setText("Relationship: " + student.getGuardian().getRelationship());
         guardianPhoneNumber.setText("Phone number: " + student.getGuardian().getGuardianPhoneNumber());
         guardianEmail.setText("Email: " + student.getGuardian().getGuardianEmail());
+    }
+
+    private void setupToolbar(View includer, String title){
+        Toolbar toolbar       = (Toolbar)   includer.findViewById(R.id.app_toolbar);
+        TextView screenTitle  = (TextView)  includer.findViewById(R.id.screenTitle);
+        ImageView backButton  = (ImageView) includer.findViewById(R.id.menu_button);
+
+        screenTitle.setText(title);
+        backButton.setImageResource(R.drawable.back_icon);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 }

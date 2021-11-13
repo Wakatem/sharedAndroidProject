@@ -25,7 +25,7 @@ public class FragmentAllStudents extends Fragment {
         View view = inflater.inflate(R.layout.fragment_all_students, container, false);
 
         listView = (ListView) view.findViewById(R.id.fragment_all_students_listView_all_students_1);
-        studentAdapter = new AdapterAllStudents(getContext(), HomeSection.allStudentsArrayList);
+        studentAdapter = new AdapterAllStudents(getContext(), HomeSection.allStudentsArrayList, listView);
         listView.setAdapter(studentAdapter);
 
         return listView;

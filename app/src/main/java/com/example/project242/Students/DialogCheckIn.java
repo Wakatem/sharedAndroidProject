@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +20,14 @@ import com.example.project242.Home.HomeSection;
 public class DialogCheckIn extends AppCompatDialogFragment {
     private TextView studentNameTextView;
     private TextView studentIDTextView;
+
+    private AdapterAllStudents adapter;
+    private ListView listView;
+
+    DialogCheckIn(AdapterAllStudents adapter, ListView listView) {
+        this.adapter = adapter;
+        this.listView = listView;
+    }
 
     @NonNull
     @Override
@@ -38,6 +47,8 @@ public class DialogCheckIn extends AppCompatDialogFragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         HomeSection.currentStudentsArrayList.add(student);
                         student.setCheckedInFlag(true);
+                        adapter.notifyDataSetChanged();
+                        listView.invalidateViews();
                         Toast.makeText(getActivity(),"Confirmed!", Toast.LENGTH_SHORT).show();
                     }
                 })

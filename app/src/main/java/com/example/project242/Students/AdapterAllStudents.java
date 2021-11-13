@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,16 +24,20 @@ import java.util.ArrayList;
 public class AdapterAllStudents extends ArrayAdapter {
     private Context context;
     private ArrayList<Student> students;
+    private ListView listView;
 
     private TextView studentNameTextView;
     private TextView studentIDTextView;
     private Button studentStatus;
     private Button detailsButton;
 
-    public AdapterAllStudents(Context context, ArrayList<Student> arrayList) {
+    private DialogCheckIn dialogCheckIn;
+
+    public AdapterAllStudents(Context context, ArrayList<Student> arrayList, ListView listView) {
         super(context, 0, arrayList);
         this.context = context;
         this.students = arrayList;
+        this.listView = listView;
     }
 
     @NonNull
@@ -65,7 +70,7 @@ public class AdapterAllStudents extends ArrayAdapter {
         studentStatus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (studentStatus.getText() == "Checked-In") {
+                if (student.getCheckedInFlag()) {
                     Toast.makeText(context, "The student is already checked in!", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -73,16 +78,22 @@ public class AdapterAllStudents extends ArrayAdapter {
                 StudentsSection students = (StudentsSection) (context);
                 FragmentManager fragmentManager = students.getSupportFragmentManager();
 
-                DialogCheckIn dialogCheckIn = new DialogCheckIn();
+                dialogCheckIn = new DialogCheckIn(AdapterAllStudents.this, listView);
 
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("Student", student);
                 dialogCheckIn.setArguments(bundle);
                 dialogCheckIn.show(fragmentManager, "Check-In Dialog");
+            }
+        });
 
-                if(student.getCheckedInFlag()) {
-                    studentStatus.setText("Checked-In");
-                }
+        detailsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, StudentDetailsActivity.class);
+                intent.putExtra("Student", student);
+                intent.putExtra("Guardian", student.getGuardian());
+                context.startActivity(intent);
             }
         });
 
