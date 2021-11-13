@@ -20,21 +20,14 @@
         <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/activity_settings.xml" value="0.14628623188405798" />
         <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/activity_students.xml" value="0.14628623188405798" />
         <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/activity_transactions.xml" value="0.10144927536231885" />
-        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/add_transaction_sheet.xml" value="0.22" />
         <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/bottomsheetlayout.xml" value="0.17527173913043478" />
         <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/cost_sheet_item.xml" value="0.14221014492753623" />
         <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/costs_fragment.xml" value="0.14221014492753623" />
         <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/costs_list_item.xml" value="0.14221014492753623" />
-        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/custom_toolbar.xml" value="0.14628623188405798" />
-        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/dialog_check_in.xml" value="0.14628623188405798" />
         <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/discount_sheet_item.xml" value="0.17527173913043478" />
         <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/discounts_fragment.xml" value="0.1" />
-        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/fragment_all_students.xml" value="0.14628623188405798" />
-        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/fragment_current_students.xml" value="0.14628623188405798" />
         <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/header_layout.xml" value="0.14628623188405798" />
         <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/headerfile.xml" value="0.15081521739130435" />
-        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/listview_all_students.xml" value="0.14628623188405798" />
-        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/listview_current_students.xml" value="0.14628623188405798" />
         <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/sidebar_list_items.xml" value="0.15081521739130435" />
         <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/single_list_item.xml" value="0.22" />
         <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/menu/main_menu.xml" value="0.1796875" />
@@ -54,6 +47,7 @@
         <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/activity_settings.xml" value="0.2796875" />
         <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/activity_students.xml" value="0.265625" />
         <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/activity_transactions.xml" value="0.25" />
+        <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/add_transaction_sheet.xml" value="0.2796875" />
         <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/cost_control.xml" value="0.25" />
         <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/cost_item_sheet.xml" value="0.2796875" />
         <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/cost_sheet_item.xml" value="0.2796875" />
@@ -62,6 +56,7 @@
         <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/discounts_fragment.xml" value="0.2796875" />
         <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/header_layout.xml" value="0.146875" />
         <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/navigation_drawer_layout.xml" value="0.2796875" />
+        <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/single_list_item.xml" value="0.2796875" />
         <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/transaction_listview_item.xml" value="0.2796875" />
         <entry key="..\:/Users/Mudethir/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/menu/main_menu.xml" value="0.2796875" />
       </map>
