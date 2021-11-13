@@ -2,8 +2,10 @@ package com.example.project242;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,6 +35,7 @@ public class SectionsMenu {
     private Toolbar toolbar;
     private NavigationView navView;
     private final Activity activity;
+    //private Button button1;
 
 
     public SectionsMenu(Activity activity, DrawerLayout activityDrawer) {
@@ -40,6 +43,7 @@ public class SectionsMenu {
         this.drawer = activityDrawer;
         this.activity = activity;
         includer = drawer.findViewById(R.id.includer);
+
 
     }
 
@@ -52,6 +56,7 @@ public class SectionsMenu {
 
     }
 
+
     public void initialize(String boom) {
         toolbar     = (Toolbar)   drawer.findViewById(R.id.app_toolbar);
         screenTitle = (TextView)  drawer.findViewById(R.id.screenTitle);
@@ -62,8 +67,10 @@ public class SectionsMenu {
     }
 
     public void setToolbarTitle(String title) {
+
         screenTitle.setText(title);
     }
+
 
     public void setOptionSelectedListener() {
         menuButton.setOnClickListener(new View.OnClickListener() {

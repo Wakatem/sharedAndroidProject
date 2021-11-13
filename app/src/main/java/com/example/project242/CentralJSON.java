@@ -103,6 +103,7 @@ public class CentralJSON {
 
     public static DiscountsHandler parseDiscounts(){
         DiscountsHandler list = new DiscountsHandler();
+        
 
         try {
             JSONObject MonetaryRates_obj = root.getJSONObject("Monetary Rates");
@@ -128,6 +129,47 @@ public class CentralJSON {
 
 
         return list;
+    }
+
+    public static User parseUsers(String username, String password){
+       // UsersHandler userList = new UsersHandler();
+        User newUser = new User();
+        try {
+
+            JSONArray  users = root.getJSONArray("Users");
+
+            // users = Users_obj.getJSONArray("Users");
+            for(int i = 0; i <users.length();i++) {
+                JSONObject user = users.getJSONObject(i);
+                if (user.getString("Username").equals(username)) {
+                    int userID = user.getInt("ID");
+                    String name = user.getString("Name");
+                    String username1 = username;
+                    String password1 = password;
+                    Date DOB = getDate(user.getString("DOB"));
+                    String gender = user.getString("Gender");
+                    String phoneNo = user.getString("Phone Number");
+                    String email = user.getString("Email");
+
+                    //newUser = new User(userID,name,username1,password1,DOB,gender,phoneNo,email);
+                    newUser.setUserID(userID);
+                    newUser.setName(name);
+                    newUser.setUsername(username1);
+                    newUser.setPassword(password1);
+                    newUser.setDOB(DOB);
+                    newUser.setGender(gender);
+                    newUser.setPhoneNo(phoneNo);
+                    newUser.setEmail(email);
+
+
+                }
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return newUser;
+
     }
 
 
