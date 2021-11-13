@@ -16,15 +16,24 @@ import java.util.ArrayList;
 
 public class FragmentCurrentStudents extends Fragment {
     private ListView listView;
+    private AdapterCurrentStudents studentAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_current_students, container, false);
 
         listView = (ListView) view.findViewById(R.id.fragment_current_students_listView_current_students_1);
-        AdapterCurrentStudents studentAdapter = new AdapterCurrentStudents(getContext(), HomeSection.currentStudentsArrayList);
+        studentAdapter = new AdapterCurrentStudents(getContext(), HomeSection.currentStudentsArrayList, listView);
         listView.setAdapter(studentAdapter);
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        studentAdapter.notifyDataSetChanged();
+        listView.invalidateViews();
     }
 }

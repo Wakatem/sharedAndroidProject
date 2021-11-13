@@ -52,6 +52,15 @@ public class SectionsMenu {
 
     }
 
+    public void initialize(String boom) {
+        toolbar     = (Toolbar)   drawer.findViewById(R.id.app_toolbar);
+        screenTitle = (TextView)  drawer.findViewById(R.id.screenTitle);
+        menuButton  = (ImageView) drawer.findViewById(R.id.menu_button);
+
+        navView = (NavigationView) drawer.findViewById(R.id.navigation_view);
+
+    }
+
     public void setToolbarTitle(String title) {
         screenTitle.setText(title);
     }

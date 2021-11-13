@@ -30,4 +30,12 @@ public class FragmentAllStudents extends Fragment {
 
         return listView;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        studentAdapter.notifyDataSetChanged();
+        listView.invalidateViews();
+    }
 }

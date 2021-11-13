@@ -30,7 +30,7 @@ public class StudentsSection extends AppCompatActivity {
         //setup Navigation menu
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
         SectionsMenu menu = new SectionsMenu(this, drawer);
-        menu.initialize();
+        menu.initialize("Boom");
         menu.setToolbarTitle("Students");
         menu.setOptionSelectedListener();
 

@@ -13,9 +13,51 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include
-            android:id="@+id/includer"
-            layout="@layout/custom_toolbar" />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/app_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:background="@drawable/app_bar_color"
+            android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
+            app:popupTheme="@style/Theme.MaterialComponents.Light">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/menu_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="36dp"
+                    android:src="@drawable/menu_icon" />
+
+                <TextView
+                    android:id="@+id/screenTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="36dp"
+                    android:layout_toRightOf="@id/menu_button"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Text"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/add_icon"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="36dp"
+                    android:layout_alignParentRight="true" />
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
 
 
         <!-- main content here from here -->
