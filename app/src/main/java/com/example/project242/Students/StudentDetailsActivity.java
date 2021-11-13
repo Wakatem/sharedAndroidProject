@@ -23,6 +23,7 @@ public class StudentDetailsActivity extends AppCompatActivity {
     private TextView guardianRelationship;
     private TextView guardianPhoneNumber;
     private TextView guardianEmail;
+    private TextView guardianAccountNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,7 @@ public class StudentDetailsActivity extends AppCompatActivity {
         guardianRelationship = findViewById(R.id.activity_student_details_textView_guardian_relationship_1);
         guardianPhoneNumber = findViewById(R.id.activity_student_details_textView_guardian_phone_number_1);
         guardianEmail = findViewById(R.id.activity_student_details_textView_guardian_email_1);
+        guardianAccountNumber = findViewById(R.id.activity_student_details_textView_guardian_account_number_1);
 
         Intent intent = getIntent();
         Student student = (Student) intent.getParcelableExtra("Student");
@@ -55,6 +57,7 @@ public class StudentDetailsActivity extends AppCompatActivity {
         guardianRelationship.setText("Relationship: " + student.getGuardian().getRelationship());
         guardianPhoneNumber.setText("Phone number: " + student.getGuardian().getGuardianPhoneNumber());
         guardianEmail.setText("Email: " + student.getGuardian().getGuardianEmail());
+        guardianAccountNumber.setText("Account Number: " + student.getGuardian().getGuardianAccountNumber());
     }
 
     private void setupToolbar(View includer, String title){

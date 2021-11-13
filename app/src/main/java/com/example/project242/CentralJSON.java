@@ -205,6 +205,7 @@ public class CentralJSON {
             guardian.setRelationship(guardianDetails.getString("Relationship"));
             guardian.setGuardianPhoneNumber(guardianDetails.getString("Phone Number"));
             guardian.setGuardianEmail(guardianDetails.getString("Email"));
+            guardian.setGuardianAccountNumber(guardianDetails.getString("Sender AccNumber"));
         }
         catch (JSONException e) {
             e.printStackTrace();

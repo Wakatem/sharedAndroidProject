@@ -17,6 +17,8 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 import com.example.project242.Home.HomeSection;
 import com.example.project242.R;
 
+import java.util.Date;
+
 public class DialogCheckOut extends AppCompatDialogFragment {
     private TextView studentNameTextView;
     private TextView studentIDTextView;
@@ -45,6 +47,20 @@ public class DialogCheckOut extends AppCompatDialogFragment {
                 .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        /*
+                        Date date = new Date(System.currentTimeMillis());
+                        student.setCheckOutTime(System.currentTimeMillis());
+
+                        long checkInDuration = student.getCheckOutTime() - student.getCheckInTime();
+                        int hours = (int) checkInDuration / 60;
+                        int minutes = (int) checkInDuration % 60;
+
+                        int checkOutCosts = HomeSection.costsHandler.getCost(hours, minutes);
+
+                        int transactionID = 1;
+
+
+                        */
                         HomeSection.currentStudentsArrayList.remove(student);
                         for (int j = 0; j < HomeSection.allStudentsArrayList.size(); ++j) {
                             if (HomeSection.allStudentsArrayList.get(j).getStudentID() == student.getStudentID()) {
@@ -72,5 +88,9 @@ public class DialogCheckOut extends AppCompatDialogFragment {
 
 
         return builder.create();
+    }
+
+    public void checkOutStudent() {
+
     }
 }

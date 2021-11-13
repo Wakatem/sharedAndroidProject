@@ -7,7 +7,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.example.project242.MonetaryRates.PagerAdapter;
 import com.example.project242.R;
@@ -17,10 +20,11 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.ArrayList;
 
+
 public class StudentsSection extends AppCompatActivity {
 
-    ViewPager2 pager;
-
+    private ViewPager2 pager;
+    private ImageView addStudentButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,16 @@ public class StudentsSection extends AppCompatActivity {
 
         //setup tabs
         setupTabs();
+
+        addStudentButton = findViewById(R.id.addStudentButton);
+
+        addStudentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), RegisterStudentActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
