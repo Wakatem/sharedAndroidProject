@@ -45,6 +45,7 @@ public class DialogCheckIn extends AppCompatDialogFragment {
                 .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        student.setCheckInTime(System.currentTimeMillis());
                         HomeSection.currentStudentsArrayList.add(student);
                         student.setCheckedInFlag(true);
                         adapter.notifyDataSetChanged();
