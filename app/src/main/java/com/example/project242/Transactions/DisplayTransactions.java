@@ -24,7 +24,7 @@ public class DisplayTransactions extends AppCompatActivity {
 
         //setup Toolbar
         View includer = findViewById(R.id.includer);
-        setupToolbar(includer, "TransactionsList");
+        setupToolbar(includer, "Transactions List");
 
         ListView transactionsLV = (ListView) findViewById(R.id.transactionsLV);
         TransactionAdapter adapter = new TransactionAdapter(this, HomeSection.transactionsHandler);

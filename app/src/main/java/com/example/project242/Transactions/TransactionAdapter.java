@@ -1,6 +1,8 @@
 package com.example.project242.Transactions;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,19 +43,20 @@ public class TransactionAdapter extends ArrayAdapter<Transaction> {
         TextView dateTV      = item.findViewById(R.id.transactionDate_TV);
 
         //retrieve values
-
         String accHolder="";
         if (transaction.getTransactionType() == TransactionTypes.INCOME) {
             image.setImageResource(R.drawable.income);
-            accHolder = "From: " + String.valueOf(transaction.getSender_AccountName());
+            accHolder = "From: " + String.valueOf(transaction.getSender_AccountName() + "\n");
+            amountTV.setTextColor(Color.parseColor("#00BFA5"));
         }
         else {
             image.setImageResource(R.drawable.expense);
-            accHolder = "To: " + String.valueOf(transaction.getRecipient_AccountName());
+            accHolder = "To: " + String.valueOf(transaction.getRecipient_AccountName() + "\n");
+            amountTV.setTextColor(Color.parseColor("#D84315"));
         }
 
         String id     = String.valueOf(transaction.getTransactionID());
-        String amount = String.valueOf(transaction.getAmount());
+        String amount = String.valueOf(transaction.getAmount() + R.string.currency);
         String date   = String.valueOf(transaction.getDate().getDay());
 
 
