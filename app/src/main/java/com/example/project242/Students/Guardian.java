@@ -8,19 +8,22 @@ public class Guardian implements Parcelable {
     private String relationship;
     private String guardianPhoneNumber;
     private String guardianEmail;
+    private String guardianAccountNumber;
 
     public Guardian() {
         this.guardianName = "Null";
         this.relationship = "Null";
         this.guardianPhoneNumber = "Null";
         this.guardianEmail = "Null";
+        this.guardianAccountNumber = "Null";
     }
 
-    public Guardian(String guardianName, String relationship, String guardianPhoneNumber, String guardianEmail) {
+    public Guardian(String guardianName, String relationship, String guardianPhoneNumber, String guardianEmail, String guardianAccountNumber) {
         this.guardianName = guardianName;
         this.relationship = relationship;
         this.guardianPhoneNumber = guardianPhoneNumber;
         this.guardianEmail = guardianEmail;
+        this.guardianAccountNumber = guardianAccountNumber;
     }
 
     protected Guardian(Parcel in) {
@@ -28,6 +31,7 @@ public class Guardian implements Parcelable {
         relationship = in.readString();
         guardianPhoneNumber = in.readString();
         guardianEmail = in.readString();
+        guardianAccountNumber = in.readString();
     }
 
     @Override
@@ -36,6 +40,7 @@ public class Guardian implements Parcelable {
         parcel.writeString(relationship);
         parcel.writeString(guardianPhoneNumber);
         parcel.writeString(guardianEmail);
+        parcel.writeString(guardianAccountNumber);
     }
 
     public static final Creator<Guardian> CREATOR = new Creator<Guardian>() {
@@ -85,5 +90,13 @@ public class Guardian implements Parcelable {
 
     public void setGuardianEmail(String guardianEmail) {
         this.guardianEmail = guardianEmail;
+    }
+
+    public String getGuardianAccountNumber() {
+        return this.guardianAccountNumber;
+    }
+
+    public void setGuardianAccountNumber(String guardianAccountNumber) {
+        this.guardianAccountNumber = guardianAccountNumber;
     }
 }
