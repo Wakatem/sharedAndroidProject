@@ -12,6 +12,9 @@ public class Student implements Parcelable {
 
     private boolean checkedInFlag = false;
 
+    private long checkInTime;
+    private long checkOutTime;
+
     public Student() {
         this.studentID = -1;
         this.studentName = "Null";
@@ -106,5 +109,21 @@ public class Student implements Parcelable {
 
     public void setCheckedInFlag(boolean flag) {
         this.checkedInFlag = flag;
+    }
+
+    public void setCheckInTime(long checkInTime) {
+        this.checkInTime = checkInTime;
+    }
+
+    public long getCheckInTime() {
+        return this.checkInTime;
+    }
+
+    public void setCheckOutTime(long checkOutTime) {
+        this.checkOutTime = checkOutTime;
+    }
+
+    public long getCheckOutTime() {
+        return this.checkOutTime;
     }
 }
