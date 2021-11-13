@@ -188,10 +188,7 @@ public class CentralJSON {
             e.printStackTrace();
         }
 
-
-
-        list.sortTransactions();
-
+        list.chooseSortingMethod(false, true, false, false);
         return list;
     }
 

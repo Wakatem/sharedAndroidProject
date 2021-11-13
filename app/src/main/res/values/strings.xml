@@ -7,4 +7,16 @@
         <item>Equals</item>
         <item>Less than</item>
     </string-array>
+    <string-array name="transactionTypes">
+        <item>All</item>
+        <item>Income</item>
+        <item>Expense</item>
+    </string-array>
+
+    <string-array name="sortingOptions">
+        <item>Ascending Date</item>
+        <item>Descending Date</item>
+        <item>Ascending Amount</item>
+        <item>Descending Amount</item>
+    </string-array>
 </resources>
