@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -81,6 +82,10 @@ public class AdapterAllStudents extends ArrayAdapter {
                 bundle.putParcelable("Student", student);
                 dialogCheckIn.setArguments(bundle);
                 dialogCheckIn.show(fragmentManager, "Check-In Dialog");
+
+                if(student.getCheckedInFlag()) {
+                    studentStatus.setText("Checked-In");
+                }
             }
         });
 

@@ -39,7 +39,7 @@ public class DialogCheckIn extends AppCompatDialogFragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Home.currentStudentsArrayList.add(student);
-                        // callBack.onResult(true);
+                        student.setCheckedInFlag(true);
                         Toast.makeText(getActivity(),"Confirmed!", Toast.LENGTH_SHORT).show();
                     }
                 })
@@ -53,8 +53,8 @@ public class DialogCheckIn extends AppCompatDialogFragment {
         studentNameTextView = view.findViewById(R.id.dialog_check_in_textView_student_name_1);
         studentIDTextView = view.findViewById(R.id.dialog_check_in_textView_student_id_1);
 
-        studentNameTextView.setText("Name:\t" + student.getStudentName());
-        studentIDTextView.setText("ID:\t\t" + String.valueOf(student.getStudentID()));
+        studentNameTextView.setText("Name:" + student.getStudentName());
+        studentIDTextView.setText("ID:" + String.valueOf(student.getStudentID()));
 
         return builder.create();
     }

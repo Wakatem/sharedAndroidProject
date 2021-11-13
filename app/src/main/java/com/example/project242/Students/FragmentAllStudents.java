@@ -17,12 +17,15 @@ import java.util.ArrayList;
 
 public class FragmentAllStudents extends Fragment {
 
+    ListView listView;
+    AdapterAllStudents studentAdapter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_all_students, container, false);
 
-        ListView listView = (ListView) view.findViewById(R.id.fragment_all_students_listView_all_students_1);
-        AdapterAllStudents studentAdapter = new AdapterAllStudents(getActivity(), Home.allStudentsArrayList);
+        listView = (ListView) view.findViewById(R.id.fragment_all_students_listView_all_students_1);
+        studentAdapter = new AdapterAllStudents(getActivity(), Home.allStudentsArrayList);
         listView.setAdapter(studentAdapter);
 
         return listView;
