@@ -1,6 +1,7 @@
 package com.example.project242.Students;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
@@ -8,9 +9,11 @@ import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.example.project242.Home.HomeSection;
 import com.example.project242.R;
@@ -38,12 +41,9 @@ public class RegisterStudentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_student);
 
-        //setup Navigation menu
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
-        SectionsMenu menu = new SectionsMenu(this, drawer);
-        menu.initialize();
-        menu.setToolbarTitle("Register New Student");
-        menu.setOptionSelectedListener();
+        //setup Toolbar
+        View includer = findViewById(R.id.includer);
+        setupToolbar(includer, "Transactions List");
 
         studentLastNameEditText = (EditText) findViewById(R.id.activity_register_student_editText_student_last_name_1);
         studentFirstNameEditText = (EditText) findViewById(R.id.activity_register_student_editText_student_first_name_1);
@@ -102,5 +102,21 @@ public class RegisterStudentActivity extends AppCompatActivity {
         }
 
         return randomID;
+    }
+
+
+    private void setupToolbar(View includer, String title) {
+        Toolbar toolbar = (Toolbar) includer.findViewById(R.id.app_toolbar);
+        TextView screenTitle = (TextView) includer.findViewById(R.id.screenTitle);
+        ImageView backButton = (ImageView) includer.findViewById(R.id.menu_button);
+
+        screenTitle.setText(title);
+        backButton.setImageResource(R.drawable.back_icon);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 }
