@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <TextView
         android:layout_width="wrap_content"
@@ -10,234 +12,350 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:text="Add New Transaction"
+        android:textColor="@color/black"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="511dp"
         android:layout_marginTop="20dp">
+
+        <EditText
+            android:id="@+id/transactionIDA"
+            android:textAlignment="viewStart"
+            android:layout_width="255dp"
+            android:layout_height="45dp"
+            android:layout_below="@id/expensetypeQ"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/edit_text_border"
+            android:hint="  eg. 876253762"
+            android:inputType="number"
+            android:maxLength="9"
+            android:includeFontPadding="true"
+            android:paddingLeft="10dp"
+            android:textSize="15sp"
+            tools:layout_editor_absoluteX="189dp"
+            tools:layout_editor_absoluteY="232dp" />
 
         <TextView
             android:id="@+id/transactionIDQ"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:text="Transaction ID:"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/transactionIDA"
-            android:layout_width="155dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:textSize="15sp"/>
+            android:layout_below="@id/expensetypeQ"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/white"
+            android:text=" Transaction ID"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="135dp"
+            tools:layout_editor_absoluteY="437dp" />
 
         <TextView
             android:id="@+id/senderaccQ"
             android:layout_width="155dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/transactionIDQ"
-            android:layout_marginLeft="10dp"
+            android:layout_below="@id/transactionIDA"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="18dp"
+            android:text="Sender Account"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
 
-            android:layout_marginTop="21dp"
-            android:text="Sender Account:"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="273dp" />
 
         <EditText
             android:id="@+id/senderIDA"
-            android:layout_width="155dp"
-            android:layout_height="wrap_content"
-            android:hint="ID"
-            android:layout_below="@id/transactionIDA"
-            android:layout_alignParentRight="true"
-            android:textSize="15sp"/>
+            android:layout_width="158dp"
+            android:layout_height="35dp"
+            android:layout_below="@id/senderaccQ"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit_text_border"
+            android:includeFontPadding="true"
+            android:paddingLeft="10dp"
+            android:hint="  ID"
+            android:inputType="number"
+            android:maxLength="6"
+            android:textSize="15sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="243dp" />
 
         <EditText
             android:id="@+id/senderNameA"
-            android:layout_width="155dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/senderIDA"
-            android:hint="Name"
-            android:layout_alignParentRight="true"
-            android:textSize="15sp"/>
+            android:layout_width="158dp"
+            android:layout_height="35dp"
+            android:layout_below="@id/senderIDA"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit_text_border"
+            android:hint="   Name"
+            android:includeFontPadding="true"
+            android:paddingLeft="10dp"
+            android:inputType="text"
+            android:textSize="15sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="243dp" />
 
         <TextView
             android:id="@+id/recipientQ"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/senderaccQ"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="71dp"
-            android:text="Recipient Account:"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:layout_below="@id/transactionIDA"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="18dp"
+            android:layout_toRightOf="@+id/senderaccQ"
+            android:text="Recipient Account"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="123dp"
+            tools:layout_editor_absoluteY="105dp" />
 
         <EditText
             android:id="@+id/recipientIDA"
-            android:layout_width="155dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/senderNameA"
-            android:hint="ID"
-            android:layout_alignParentRight="true"
-            android:textSize="15sp"/>
+            android:layout_width="158dp"
+            android:layout_height="35dp"
+            android:layout_below="@id/recipientQ"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/senderIDA"
+            android:background="@drawable/edit_text_border"
+            android:hint="   ID"
+            android:includeFontPadding="true"
+            android:inputType="number"
+            android:maxLength="6"
+            android:paddingLeft="10dp"
+            android:textSize="15sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="243dp" />
 
         <EditText
             android:id="@+id/recipientNameA"
-            android:layout_width="155dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/recipientIDA"
-            android:hint="Name"
-            android:layout_alignParentRight="true"
-            android:textSize="15sp"/>
+            android:layout_width="158dp"
+            android:layout_height="35dp"
+            android:layout_below="@id/recipientIDA"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/senderNameA"
+            android:background="@drawable/edit_text_border"
+            android:includeFontPadding="true"
+            android:paddingLeft="10dp"
+            android:hint="   Name"
+            android:inputType="text"
+            android:textSize="15sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="243dp" />
+
+
+        <EditText
+            android:id="@+id/amountA"
+            android:layout_width="259dp"
+            android:layout_height="36dp"
+            android:layout_below="@+id/senderNameA"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/edit_text_border"
+            android:hint="  Amount in Dirhams"
+            android:includeFontPadding="true"
+            android:paddingLeft="10dp"
+            android:inputType="numberDecimal"
+            android:textSize="15sp"
+            tools:layout_editor_absoluteX="228dp"
+            tools:layout_editor_absoluteY="114dp" />
 
 
         <TextView
             android:id="@+id/amountQ"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/recipientQ"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="57dp"
-            android:text="Amount"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/amountA"
-            android:layout_width="155dp"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:layout_below="@id/recipientNameA"
-            android:layout_alignParentRight="true"
-            android:textSize="15sp"/>
-
-        <TextView
-            android:id="@+id/dateQ"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/amountQ"
-            android:layout_marginLeft="10dp"
-
-            android:layout_marginTop="20dp"
-            android:text="Date"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:layout_below="@+id/senderNameA"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="9dp"
+            android:background="@color/white"
+            android:text=" Amount "
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="330dp"
+            tools:layout_editor_absoluteY="425dp" />
 
         <EditText
             android:id="@+id/dateA"
-            android:layout_width="155dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/amountA"
-            android:layout_alignParentRight="true"
+            android:layout_width="259dp"
+            android:layout_height="36dp"
+            android:layout_below="@id/amountA"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/edit_text_border"
+            android:hint="  dd/mm/yyyy"
+            android:includeFontPadding="true"
+            android:paddingLeft="10dp"
             android:inputType="date"
             android:textSize="15sp"
-            android:hint="dd/mm/yyyy"/>
+            tools:layout_editor_absoluteX="228dp"
+            tools:layout_editor_absoluteY="114dp" />
+
+        <TextView
+            android:id="@+id/dateError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/amountA"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@+id/dateA"
+            android:textColor="#FF0000"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/paymenttypeQ"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/dateQ"
-            android:layout_marginLeft="10dp"
-
-            android:layout_marginTop="19dp"
+            android:layout_below="@+id/dateA"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
             android:text="Payment Method"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="9dp"
+            tools:layout_editor_absoluteY="328dp" />
 
-        <EditText
+        <Spinner
             android:id="@+id/paymentMethodA"
-            android:layout_width="155dp"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="37dp"
             android:layout_below="@id/dateA"
-            android:layout_alignParentRight="true"
-            android:textSize="15sp"
-             />
+            android:layout_marginLeft="190dp"
+            android:layout_marginTop="12dp"
+            tools:layout_editor_absoluteX="155dp"
+            tools:layout_editor_absoluteY="395dp" />
 
 
         <TextView
             android:id="@+id/typeQ"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/paymenttypeQ"
+            android:layout_width="128dp"
+            android:layout_height="24dp"
+            android:layout_alignParentTop="true"
             android:layout_marginLeft="10dp"
-
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="1dp"
             android:text="Transaction Type"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <RadioGroup
-            android:id="@+id/typeA"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/paymentMethodA"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="9dp"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/income"
-                android:layout_width="105dp"
-                android:layout_height="28dp"
-                android:layout_marginLeft="60dp"
-                android:text="Income"
-                android:textSize="18sp" />
-
-            <RadioButton
-                android:id="@+id/expense"
-                android:layout_width="wrap_content"
-                android:layout_height="28dp"
-                android:text="Expense"
-                android:textSize="18sp" />
-        </RadioGroup>
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="23dp" />
 
         <TextView
             android:id="@+id/expensetypeQ"
             android:layout_width="155dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/typeQ"
+            android:layout_below="@+id/typeQ"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="19dp"
+            android:layout_marginTop="15dp"
+
+            android:layout_marginBottom="15dp"
             android:text="Expense Type"
-            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
             android:textStyle="bold"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            tools:layout_editor_absoluteX="45dp"
+            tools:layout_editor_absoluteY="209dp" />
 
         <Spinner
             android:id="@+id/expenseTypeA"
-            android:layout_width="200dp"
+            android:layout_width="155dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/typeA"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="4dp"
-            android:layout_toRightOf="@+id/expensetypeQ"
+            android:layout_marginLeft="41dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/expensetypeQ"
             android:textAlignment="center"
-            android:visibility="invisible"/>
+            android:visibility="invisible"
+            tools:layout_editor_absoluteX="217dp"
+            tools:layout_editor_absoluteY="185dp" />
 
         <Button
             android:id="@+id/saveTransaction"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="90dp"
+            android:layout_width="115dp"
+            android:layout_height="47dp"
+            android:layout_below="@id/paymenttypeQ"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="21dp"
+            android:backgroundTint="#CAE9F5"
             android:text="Save"
-            android:layout_below="@+id/expenseTypeA"/>
+            android:textColor="@color/black"
+            tools:layout_editor_absoluteX="284dp"
+            tools:layout_editor_absoluteY="280dp" />
+
 
         <Button
             android:id="@+id/cancelTransaction"
+            android:layout_width="115dp"
+            android:layout_height="47dp"
+            android:layout_below="@id/paymentMethodA"
+            android:layout_marginLeft="51dp"
+            android:layout_marginTop="16dp"
+            android:layout_toRightOf="@+id/saveTransaction"
+            android:backgroundTint="#f4dafe"
+            android:text="Cancel"
+            android:textColor="@color/black"
+            tools:layout_editor_absoluteX="284dp"
+            tools:layout_editor_absoluteY="280dp" />
+
+        <RadioGroup
+            android:id="@+id/typeA"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="66dp"
-            android:layout_toRightOf="@+id/saveTransaction"
-            android:text="Cancel"
-            android:layout_below="@+id/expenseTypeA"/>
-    </RelativeLayout>
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/typeQ"
+            android:orientation="horizontal">
 
+            <RadioButton
+                android:id="@+id/expense"
+                android:layout_width="111dp"
+                android:layout_height="22dp"
+                android:text="Expense"
+                android:textSize="18sp"
+
+                tools:layout_editor_absoluteX="284dp"
+                tools:layout_editor_absoluteY="23dp" />
+
+            <RadioButton
+                android:id="@+id/income"
+                android:layout_width="97dp"
+                android:layout_height="22dp"
+
+                android:text="Income"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="171dp"
+                tools:layout_editor_absoluteY="23dp" />
+
+        </RadioGroup>
+
+
+        <TextView
+            android:id="@+id/dateQ"
+            android:layout_width="44dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/amountA"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="3dp"
+            android:background="@color/white"
+            android:text=" Date "
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="32dp"
+            tools:layout_editor_absoluteY="432dp" />
+    </RelativeLayout>
 
 
 </LinearLayout>

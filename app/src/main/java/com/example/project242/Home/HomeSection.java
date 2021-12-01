@@ -70,9 +70,6 @@ public class HomeSection extends AppCompatActivity {
         currentUser = CentralJSON.parseUsers(userName,passWord);
 
 
-
-
-
         // Synchronise checkedInFlag of allStudentsArrayList with currentStudentsArrayList
         for (int i = 0; i < allStudentsArrayList.size(); ++i) {
             for (int j = 0; j < currentStudentsArrayList.size(); ++j) {
