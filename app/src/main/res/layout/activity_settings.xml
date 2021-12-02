@@ -19,37 +19,301 @@
         <!-- main content here from here -->
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="70dp"
+            android:id="@+id/thelayout"
+            android:background="@drawable/edit_text_border"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:id="@+id/profileImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_baseline_person_24" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Username"
+                android:layout_toRightOf="@+id/profileImage"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:id="@+id/name"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="My Profile"
-                android:id="@+id/heading"/>
+                android:layout_below="@+id/name"
+                android:layout_marginLeft="55dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:id="@+id/currentName" />
+
             <EditText
+                android:id="@+id/changeUName"
+                android:layout_width="201dp"
+                android:layout_height="35dp"
+                android:layout_below="@id/currentName"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/settings_edit_text_border"
+                android:textSize="18sp"
+                android:visibility="invisible"
+                android:hint=" Enter new username"
+                android:paddingLeft="10dp"/>
+
+            <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/enterNew"
-                android:layout_below="@id/heading"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/newEmail"
-                android:layout_below="@+id/enterNew"/>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/newEmail"
+                android:layout_alignParentRight="true"
+                android:layout_margin="10dp"
                 android:id="@+id/change"
-                android:text="click"/>
+                android:src="@drawable/ic_baseline_edit_24" />
+
             <Button
+                android:id="@+id/save"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/change"
-                android:id="@+id/saveIt"
-                android:text="Save"/>
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:text="save"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:visibility="invisible" />
 
         </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:id="@+id/emailLayout"
+            android:background="@drawable/edit_text_border"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:id="@+id/emailImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_baseline_email_24" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:layout_toRightOf="@+id/emailImage"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:id="@+id/emailName"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/emailName"
+                android:layout_marginLeft="55dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="18sp"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/black"
+                android:id="@+id/currentEmail" />
+
+            <EditText
+                android:id="@+id/changedEmail"
+                android:layout_width="201dp"
+                android:layout_height="35dp"
+                android:layout_below="@id/currentEmail"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/settings_edit_text_border"
+                android:textSize="18sp"
+                android:visibility="invisible"
+                android:hint=" Enter new Email"
+                android:paddingLeft="10dp"/>
+
+            <ImageButton
+                android:id="@+id/changeEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/ic_baseline_edit_24" />
+
+            <Button
+                android:id="@+id/saveEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:text="save"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:visibility="invisible" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:id="@+id/phoneLayout"
+            android:background="@drawable/edit_text_border"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:id="@+id/phoneImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_baseline_local_phone_24" />
+
+            <TextView
+                android:id="@+id/phoneNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/phoneImage"
+                android:text="Phone No"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/phoneNo"
+                android:layout_marginLeft="55dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:id="@+id/currentPhone" />
+
+            <EditText
+                android:id="@+id/newPhone"
+                android:layout_width="201dp"
+                android:layout_height="35dp"
+                android:layout_below="@id/currentPhone"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/settings_edit_text_border"
+                android:textSize="18sp"
+                android:inputType="phone"
+                android:visibility="invisible"
+                android:hint=" Enter new number"
+                android:paddingLeft="10dp"/>
+
+            <ImageButton
+                android:id="@+id/changePhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/ic_baseline_edit_24" />
+
+            <Button
+                android:id="@+id/savePhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:text="save"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:visibility="invisible" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:id="@+id/passwordLayout"
+            android:background="@drawable/edit_text_border"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:id="@+id/passImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_baseline_security_24" />
+
+            <TextView
+                android:id="@+id/passwordHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/passImage"
+                android:text="Password"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/passwordHeader"
+                android:layout_marginLeft="55dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:inputType="textPassword"
+                android:id="@+id/currentPass" />
+
+            <EditText
+                android:id="@+id/newPass"
+                android:layout_width="201dp"
+                android:layout_height="35dp"
+                android:layout_below="@id/currentPass"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/settings_edit_text_border"
+                android:hint=" Enter new password"
+                android:inputType="textPassword"
+                android:paddingLeft="10dp"
+
+                android:textSize="18sp"
+                android:visibility="invisible" />
+
+            <ImageButton
+                android:id="@+id/changePass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/ic_baseline_edit_24" />
+
+            <Button
+                android:id="@+id/savePass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:text="save"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:visibility="invisible" />
+
+        </RelativeLayout>
+
 
 
 

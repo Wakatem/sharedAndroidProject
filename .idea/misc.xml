@@ -16,13 +16,14 @@
         <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/drawable/less_than_ring.xml" value="0.18796296296296297" />
         <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/drawable/new_app_color.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/drawable/new_color.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/drawable/settings_edit_text_border.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/drawable/textstyle.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/activity_check_in.xml" value="0.14628623188405798" />
         <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/activity_display_transactions.xml" value="0.1" />
         <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/activity_home.xml" value="0.14221014492753623" />
         <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/activity_monetary_rates.xml" value="0.1" />
         <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/activity_register_student.xml" value="0.16032608695652173" />
-        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/activity_settings.xml" value="0.14628623188405798" />
+        <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/activity_settings.xml" value="0.22" />
         <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/activity_student_details.xml" value="0.16032608695652173" />
         <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/activity_students.xml" value="0.14628623188405798" />
         <entry key="..\:/Users/Maya Umar/AndroidStudioProjects/sharedAndroidProject/app/src/main/res/layout/activity_transactions.xml" value="0.10144927536231885" />
@@ -78,5 +79,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.22" />
+      </ProjectState>
+    </option>
   </component>
 </project>

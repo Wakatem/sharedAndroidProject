@@ -9,7 +9,6 @@
         android:id="@+id/app_toolbar"
         android:layout_width="match_parent"
         android:layout_height="95dp"
-        android:background="@drawable/app_bar_color"
         android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
         app:popupTheme="@style/Theme.MaterialComponents.Light">
 
@@ -20,16 +19,17 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="36dp"
-            android:src="@drawable/menu_icon" />
+            android:src="@drawable/menu_icon"
+            app:tint="@color/black"/>
 
         <TextView
             android:id="@+id/screenTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="30dp"
+            android:layout_gravity="center"
             android:fontFamily="sans-serif-light"
             android:text="Text"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="20sp" />
 

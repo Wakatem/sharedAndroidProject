@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,8 +27,8 @@ import java.util.ArrayList;
 
 public class HomeSection extends AppCompatActivity {
 
-    EditText username;
-    EditText password;
+    TextView username;
+    TextView password;
 
     public static CostsHandler costsHandler;
     public static DiscountsHandler discountsHandler;
@@ -61,13 +63,14 @@ public class HomeSection extends AppCompatActivity {
         currentStudentsArrayList  = CentralJSON.parseCurrentStudents();
 
         //current user credentials
-        username = findViewById(R.id.username1);
-        password = findViewById(R.id.password);
+        View loginView = LayoutInflater.from(this).inflate(R.layout.login_page, new LinearLayout(this));
+        username = loginView.findViewById(R.id.username1);
+        password = loginView.findViewById(R.id.password);
 
-        String userName = "Mcmillan586";
-        String passWord = "Henry1217";
+        //String userName = "Mcmillan586";
+        //String passWord = "Henry1217";
 
-        currentUser = CentralJSON.parseUsers(userName,passWord);
+        currentUser = CentralJSON.findCurrentUser(username.getText().toString(),password.getText().toString());
 
 
         // Synchronise checkedInFlag of allStudentsArrayList with currentStudentsArrayList

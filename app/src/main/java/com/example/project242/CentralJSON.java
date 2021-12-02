@@ -131,7 +131,7 @@ public class CentralJSON {
         return list;
     }
 
-    public static User parseUsers(String username, String password){
+    public static User findCurrentUser(String username, String password){
        // UsersHandler userList = new UsersHandler();
         User newUser = new User();
         try {
