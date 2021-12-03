@@ -1,25 +1,20 @@
 package com.example.project242.Home;
 
-import static com.example.project242.R.drawable.new_color;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.project242.CentralJSON;
 import com.example.project242.MonetaryRates.Costs.CostsHandler;
 import com.example.project242.MonetaryRates.Discount.DiscountsHandler;
 import com.example.project242.R;
-import com.example.project242.SectionsMenu;
+import com.example.project242.zNavigationMenu.SectionsMenu;
 import com.example.project242.Students.Student;
 import com.example.project242.Transactions.TransactionsHandler;
 import com.example.project242.User;
@@ -44,7 +39,7 @@ public class HomeSection extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         View includer = findViewById(R.id.includer);
-        setupToolbarAndMenu(includer, "Home");
+        setupToolbarAndMenu(includer, "Home", 0);
 
 
 
@@ -82,7 +77,7 @@ public class HomeSection extends AppCompatActivity {
     }
 
 
-    private void setupToolbarAndMenu(View includer, String title){
+    private void setupToolbarAndMenu(View includer, String title, int checkedSection){
 
         //setup Toolbar
         TextView screenTitle = (TextView) includer.findViewById(R.id.screenTitle);
@@ -93,7 +88,7 @@ public class HomeSection extends AppCompatActivity {
         //setup Navigation menu
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
         SectionsMenu menu = new SectionsMenu(this, drawer, includer);
-        menu.initialize();
+        menu.initialize(checkedSection);
         menu.EnableMenu();
     }
 

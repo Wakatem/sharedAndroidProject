@@ -1,7 +1,6 @@
 package com.example.project242.Transactions;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
@@ -13,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.project242.R;
-import com.example.project242.SectionsMenu;
+import com.example.project242.zNavigationMenu.SectionsMenu;
 
 public class TransactionsSection extends AppCompatActivity {
 
@@ -24,7 +23,7 @@ public class TransactionsSection extends AppCompatActivity {
         setContentView(R.layout.activity_transactions);
 
         View includer = findViewById(R.id.includer);
-        setupToolbarAndMenu(includer, "Transactions");
+        setupToolbarAndMenu(includer, "Transactions", 2);
 
         
         Button button = findViewById(R.id.showList);
@@ -48,7 +47,7 @@ public class TransactionsSection extends AppCompatActivity {
     }
 
 
-    private void setupToolbarAndMenu(View includer, String title){
+    private void setupToolbarAndMenu(View includer, String title, int checkedSection){
 
         //setup Toolbar
         TextView screenTitle = (TextView) includer.findViewById(R.id.screenTitle);
@@ -59,7 +58,7 @@ public class TransactionsSection extends AppCompatActivity {
         //setup Navigation menu
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
         SectionsMenu menu = new SectionsMenu(this, drawer, includer);
-        menu.initialize();
+        menu.initialize(checkedSection);
         menu.EnableMenu();
     }
 

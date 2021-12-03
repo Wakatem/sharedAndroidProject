@@ -1,20 +1,11 @@
 package com.example.project242.Settings;
 
-import static com.example.project242.R.drawable.app_bar_color;
-import static com.example.project242.R.drawable.ic_mtrl_chip_checked_black;
-import static com.example.project242.R.drawable.new_color;
-
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.text.TextUtils;
 import 	android.view.ViewGroup.LayoutParams;
-import androidx.appcompat.widget.Toolbar;
+
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.PathShape;
-import android.graphics.drawable.shapes.Shape;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,7 +18,7 @@ import android.widget.Toast;
 
 import com.example.project242.Home.HomeSection;
 import com.example.project242.R;
-import com.example.project242.SectionsMenu;
+import com.example.project242.zNavigationMenu.SectionsMenu;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -70,7 +61,7 @@ public class SettingsSection extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         View includer = findViewById(R.id.includer);
-        setupToolbarAndMenu(includer, "Settings");
+        setupToolbarAndMenu(includer, "Settings", 4);
 
         //username initialization
         username = findViewById(R.id.currentName);
@@ -273,7 +264,7 @@ public class SettingsSection extends AppCompatActivity {
 
 
 
-    private void setupToolbarAndMenu(View includer, String title){
+    private void setupToolbarAndMenu(View includer, String title, int checkedSection){
 
         //setup Toolbar
         TextView screenTitle = (TextView) includer.findViewById(R.id.screenTitle);
@@ -284,7 +275,7 @@ public class SettingsSection extends AppCompatActivity {
         //setup Navigation menu
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
         SectionsMenu menu = new SectionsMenu(this, drawer, includer);
-        menu.initialize();
+        menu.initialize(checkedSection);
         menu.EnableMenu();
     }
 

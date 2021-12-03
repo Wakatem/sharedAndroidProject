@@ -1,23 +1,18 @@
 package com.example.project242.Students;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.project242.Home.HomeSection;
 import com.example.project242.R;
-import com.example.project242.SectionsMenu;
 
 public class RegisterStudentActivity extends AppCompatActivity {
 

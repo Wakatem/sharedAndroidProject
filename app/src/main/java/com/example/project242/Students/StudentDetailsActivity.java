@@ -1,8 +1,6 @@
 package com.example.project242.Students;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.project242.R;
-import com.example.project242.SectionsMenu;
 
 public class StudentDetailsActivity extends AppCompatActivity {
     private TextView studentName;

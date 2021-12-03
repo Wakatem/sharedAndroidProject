@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.project242.R;
-import com.example.project242.SectionsMenu;
+import com.example.project242.zNavigationMenu.SectionsMenu;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -24,7 +24,7 @@ public class MonetaryRatesSection extends AppCompatActivity {
         setContentView(R.layout.activity_monetary_rates);
 
         View includer = findViewById(R.id.includer);
-        setupToolbarAndMenu(includer, "Monetary Rates");
+        setupToolbarAndMenu(includer, "Monetary Rates", 3);
 
         ViewPager2 pager = findViewById(R.id.pager);
         setupTabs(pager);
@@ -32,7 +32,7 @@ public class MonetaryRatesSection extends AppCompatActivity {
 
     }
 
-    private void setupToolbarAndMenu(View includer, String title){
+    private void setupToolbarAndMenu(View includer, String title, int checkedSection){
 
         //setup Toolbar
         TextView screenTitle = (TextView) includer.findViewById(R.id.screenTitle);
@@ -43,7 +43,7 @@ public class MonetaryRatesSection extends AppCompatActivity {
         //setup Navigation menu
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
         SectionsMenu menu = new SectionsMenu(this, drawer, includer);
-        menu.initialize();
+        menu.initialize(checkedSection);
         menu.EnableMenu();
     }
 

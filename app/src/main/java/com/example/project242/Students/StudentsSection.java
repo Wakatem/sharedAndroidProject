@@ -3,8 +3,6 @@ package com.example.project242.Students;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
@@ -13,13 +11,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.project242.MonetaryRates.PagerAdapter;
 import com.example.project242.R;
-import com.example.project242.SectionsMenu;
+import com.example.project242.zNavigationMenu.SectionsMenu;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-
-import java.util.ArrayList;
 
 
 public class StudentsSection extends AppCompatActivity {
@@ -32,7 +27,7 @@ public class StudentsSection extends AppCompatActivity {
         setContentView(R.layout.activity_students);
 
         View includer = findViewById(R.id.includer);
-        setupToolbarAndMenu(includer, "Students");
+        setupToolbarAndMenu(includer, "Students", 1);
 
         ViewPager2 pager = findViewById(R.id.pager);
         setupTabs(pager);
@@ -50,7 +45,7 @@ public class StudentsSection extends AppCompatActivity {
     }
 
 
-    private void setupToolbarAndMenu(View includer, String title){
+    private void setupToolbarAndMenu(View includer, String title, int checkedSection){
 
         //setup Toolbar
         TextView screenTitle = (TextView) includer.findViewById(R.id.screenTitle);
@@ -61,7 +56,7 @@ public class StudentsSection extends AppCompatActivity {
         //setup Navigation menu
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
         SectionsMenu menu = new SectionsMenu(this, drawer, includer);
-        menu.initialize();
+        menu.initialize(checkedSection);
         menu.EnableMenu();
     }
 

@@ -1,4 +1,4 @@
-package com.example.project242;
+package com.example.project242.zNavigationMenu;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -16,6 +16,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.project242.Home.HomeSection;
 import com.example.project242.MonetaryRates.MonetaryRatesSection;
+import com.example.project242.R;
 import com.example.project242.Settings.SettingsSection;
 import com.example.project242.Students.StudentsSection;
 import com.example.project242.Transactions.TransactionsSection;
@@ -44,9 +45,10 @@ public class SectionsMenu {
 
     }
 
-    public void initialize() {
+    public void initialize(int checkedSection) {
         menuButton  = (ImageView) includer.findViewById(R.id.menu_button);
         navView = (NavigationView) drawer.findViewById(R.id.navigation_view);
+        navView.getMenu().getItem(checkedSection).setChecked(true);
     }
 
 

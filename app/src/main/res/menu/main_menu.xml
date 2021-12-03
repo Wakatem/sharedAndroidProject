@@ -1,25 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/HomeSection"
-        android:title="Home" />
 
-    <item
-        android:id="@+id/StudentsSection"
-        android:title="Students" />
+    <group>
 
-    <item
-        android:id="@+id/TransactionsSection"
-        android:title="Transactions" />
+        <item
+            android:id="@+id/HomeSection"
+            android:title="Home"
+            android:icon="@drawable/home_icon" />
 
-    <item
-        android:id="@+id/MonetaryRatesSection"
-        android:title="Monetary Rates" />
+        <item
+            android:id="@+id/StudentsSection"
+            android:title="Students"
+            android:icon="@drawable/students_icon"/>
 
-    <item
-        android:id="@+id/Settings"
-        android:title="Settings" />
+        <item
+            android:id="@+id/TransactionsSection"
+            android:title="Transactions"
+            android:icon="@drawable/transactions_icon"/>
+
+        <item
+            android:id="@+id/MonetaryRatesSection"
+            android:title="Monetary Rates"
+            android:icon="@drawable/monetary_rates_icon2"/>
+
+        <item
+            android:id="@+id/Settings"
+            android:title="Settings"
+            android:icon="@drawable/settings_icon"/>
+
+    </group>
 
 
 </menu>
