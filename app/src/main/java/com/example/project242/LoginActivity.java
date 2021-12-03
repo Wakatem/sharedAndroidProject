@@ -10,34 +10,112 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.project242.Home.HomeSection;
+import com.example.project242.MonetaryRates.Costs.CostsHandler;
+import com.example.project242.MonetaryRates.Discount.DiscountsHandler;
+import com.example.project242.Students.Student;
+import com.example.project242.Transactions.TransactionsHandler;
+import com.example.project242.zNavigationMenu.SectionsMenu;
+
+import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
+
+    volatile boolean dataLoaded = false;
+
+    private TextView username;
+    private TextView password;
+    private CostsHandler costsHandler;
+    private DiscountsHandler discountsHandler;
+    private TransactionsHandler transactionsHandler;
+    private ArrayList<Student> allStudentsArrayList;
+    private ArrayList<Student> currentStudentsArrayList;
+    private User currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
-        boolean dataLoaded = loadData();
+        loadData();
 
         while (!dataLoaded){
-            //start background service
-
-            //start home screen
-
-            //terminate activity
+            //wait
+            //loading screen here
         }
 
-        //start
+
+        Intent intent = new Intent(this, DataContainer.class);
+        intent.putExtra("costsHandler", costsHandler);
+        intent.putExtra("discountsHandler", discountsHandler);
+        intent.putExtra("transactionsHandler", transactionsHandler);
+        intent.putExtra("allStudentsArrayList", allStudentsArrayList);
+        intent.putExtra("currentStudentsArrayList", currentStudentsArrayList);
+        intent.putExtra("currentUser", currentUser);
+
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //start background service
+                startService(intent);
+            }
+        }).start();
+
+        //start home screen
         startActivity(new Intent(this, HomeSection.class));
+
+        //terminate activity
         finish();
 
     }
 
-    private boolean loadData(){
-        TextView username;
-        TextView password;
+
+    private void loadData(){
+
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //load database
+                CentralJSON.loadJSON(LoginActivity.this);
+
+
+                //load data structures
+                costsHandler              = CentralJSON.parseCosts();
+                discountsHandler          = CentralJSON.parseDiscounts();
+                transactionsHandler       = CentralJSON.parseTransactions();
+                allStudentsArrayList      = CentralJSON.parseAllStudents();
+                currentStudentsArrayList  = CentralJSON.parseCurrentStudents();
+
+                //current user credentials
+                View loginView = LayoutInflater.from(LoginActivity.this).inflate(R.layout.login_page, new LinearLayout(LoginActivity.this));
+                username = loginView.findViewById(R.id.username1);
+                password = loginView.findViewById(R.id.password);
+
+                //String userName = "Mcmillan586";
+                //String passWord = "Henry1217";
+
+                currentUser = CentralJSON.findCurrentUser(username.getText().toString(),password.getText().toString());
+
+
+                // Synchronise checkedInFlag of allStudentsArrayList with currentStudentsArrayList
+                for (int i = 0; i <  allStudentsArrayList.size(); ++i) {
+                    for (int j = 0; j < currentStudentsArrayList.size(); ++j) {
+                        if ( allStudentsArrayList.get(i).getStudentID() == currentStudentsArrayList.get(j).getStudentID()) {
+                            allStudentsArrayList.get(i).setCheckedInFlag(currentStudentsArrayList.get(j).getCheckedInFlag());
+                            break;
+                        }
+                    }
+                }
+
+
+                    dataLoaded = true;
+
+
+            }
+
+        }).start();
+
 
         /*
         CostsHandler costsHandler;
@@ -48,41 +126,7 @@ public class LoginActivity extends AppCompatActivity {
         User currentUser;
         */
 
-        //load database
-        CentralJSON.loadJSON(this);
 
-
-
-        //load data structures
-        HomeSection.costsHandler              = CentralJSON.parseCosts();
-        HomeSection.discountsHandler          = CentralJSON.parseDiscounts();
-        HomeSection.transactionsHandler       = CentralJSON.parseTransactions();
-        HomeSection.allStudentsArrayList      = CentralJSON.parseAllStudents();
-        HomeSection.currentStudentsArrayList  = CentralJSON.parseCurrentStudents();
-
-        //current user credentials
-        View loginView = LayoutInflater.from(this).inflate(R.layout.login_page, new LinearLayout(this));
-        username = loginView.findViewById(R.id.username1);
-        password = loginView.findViewById(R.id.password);
-
-        //String userName = "Mcmillan586";
-        //String passWord = "Henry1217";
-
-        HomeSection.currentUser = CentralJSON.findCurrentUser(username.getText().toString(),password.getText().toString());
-
-
-        // Synchronise checkedInFlag of allStudentsArrayList with currentStudentsArrayList
-        for (int i = 0; i <  HomeSection.allStudentsArrayList.size(); ++i) {
-            for (int j = 0; j < HomeSection.currentStudentsArrayList.size(); ++j) {
-                if ( HomeSection.allStudentsArrayList.get(i).getStudentID() == HomeSection.currentStudentsArrayList.get(j).getStudentID()) {
-                    HomeSection.allStudentsArrayList.get(i).setCheckedInFlag(HomeSection.currentStudentsArrayList.get(j).getCheckedInFlag());
-                    break;
-                }
-            }
-        }
-
-
-        return false;
 
     }
 

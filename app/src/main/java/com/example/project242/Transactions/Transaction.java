@@ -1,8 +1,9 @@
 package com.example.project242.Transactions;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Transaction {
+public class Transaction implements Serializable {
 
     private final long transactionID;
     private int sender_AccountNumber;

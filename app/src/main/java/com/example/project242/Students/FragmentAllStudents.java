@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.project242.DataContainer;
 import com.example.project242.Home.HomeSection;
 import com.example.project242.R;
 
@@ -25,7 +26,7 @@ public class FragmentAllStudents extends Fragment {
         View view = inflater.inflate(R.layout.fragment_all_students, container, false);
 
         listView = (ListView) view.findViewById(R.id.fragment_all_students_listView_all_students_1);
-        studentAdapter = new AdapterAllStudents(getContext(), HomeSection.allStudentsArrayList, listView);
+        studentAdapter = new AdapterAllStudents(getContext(), DataContainer.allStudentsArrayList, listView);
         listView.setAdapter(studentAdapter);
 
         return listView;

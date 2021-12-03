@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.project242.DataContainer;
 import com.example.project242.Home.HomeSection;
 import com.example.project242.MonetaryRates.BottomSheet;
 import com.example.project242.R;
@@ -29,7 +30,7 @@ public class CostsFragment extends Fragment {
         costsListView = frag.findViewById(R.id.listV);
 
         //set custom adapter
-        adapter = new CostAdapter(getContext(), HomeSection.costsHandler);
+        adapter = new CostAdapter(getContext(), DataContainer.costsHandler);
         costsListView.setAdapter(adapter);
 
         //set onclick listener for a single item
@@ -37,7 +38,7 @@ public class CostsFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 //display selected cost in a sheet
-                BottomSheet sheet = new BottomSheet(getContext(), R.layout.cost_sheet_item, HomeSection.costsHandler.get(position), HomeSection.costsHandler, costsListView, adapter);
+                BottomSheet sheet = new BottomSheet(getContext(), R.layout.cost_sheet_item, DataContainer.costsHandler.get(position), DataContainer.costsHandler, costsListView, adapter);
                 sheet.initializeCostsViews();
                 sheet.setCostListeners();
                 sheet.show();

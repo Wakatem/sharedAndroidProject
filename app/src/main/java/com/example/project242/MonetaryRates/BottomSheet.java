@@ -16,6 +16,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.project242.DataContainer;
 import com.example.project242.Home.HomeSection;
 import com.example.project242.MonetaryRates.Costs.Cost;
 import com.example.project242.MonetaryRates.Costs.CostAdapter;
@@ -66,7 +67,7 @@ public class BottomSheet {
 
 
     public BottomSheet(Context newContext, int sheetLayout){
-        discountsList = HomeSection.discountsHandler;
+        discountsList = DataContainer.discountsHandler;
 
         sheetDialog = new BottomSheetDialog(newContext);
         context = newContext;

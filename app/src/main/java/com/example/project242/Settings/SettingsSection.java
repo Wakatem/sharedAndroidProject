@@ -16,7 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.project242.Home.HomeSection;
+import com.example.project242.DataContainer;
 import com.example.project242.R;
 import com.example.project242.zNavigationMenu.SectionsMenu;
 
@@ -62,9 +62,10 @@ public class SettingsSection extends AppCompatActivity {
 
         View includer = findViewById(R.id.includer);
         setupToolbarAndMenu(includer, "Settings", 4);
-//username initialization
+
+        //username initialization
         username = findViewById(R.id.currentName);
-        username.setText(HomeSection.currentUser.getUsername());
+        username.setText(DataContainer.currentUser.getUsername());
         user = (RelativeLayout) findViewById(R.id.thelayout);
         edit = findViewById(R.id.change);
         save = findViewById(R.id.save);
@@ -72,7 +73,7 @@ public class SettingsSection extends AppCompatActivity {
 
         //email initialization
         emailName = findViewById(R.id.currentEmail);
-        emailName.setText(HomeSection.currentUser.getEmail());
+        emailName.setText(DataContainer.currentUser.getEmail());
         emailLayout = findViewById(R.id.emailLayout);
         saveEmail = findViewById(R.id.saveEmail);
         editEmail = findViewById(R.id.changeEmail);
@@ -80,7 +81,7 @@ public class SettingsSection extends AppCompatActivity {
 
         //phone initialization
         currentPhone = findViewById(R.id.currentPhone);
-        currentPhone.setText(HomeSection.currentUser.getPhoneNo());
+        currentPhone.setText(DataContainer.currentUser.getPhoneNo());
         phoneLayout = findViewById(R.id.phoneLayout);
         savePhone = findViewById(R.id.savePhone);
         editPhone = findViewById(R.id.changePhone);
@@ -88,7 +89,7 @@ public class SettingsSection extends AppCompatActivity {
 
         //password initialization
         currentPass = findViewById(R.id.currentPass);
-        currentPass.setText(HomeSection.currentUser.getPassword());
+        currentPass.setText(DataContainer.currentUser.getPassword());
         passwordLayout = findViewById(R.id.passwordLayout);
         savePass = findViewById(R.id.savePass);
         editPass = findViewById(R.id.changePass);
@@ -138,8 +139,8 @@ public class SettingsSection extends AppCompatActivity {
                 if (!changeUName.getText().toString().equals("")) {
                     String newUserName = changeUName.getText().toString();
                     if (isValidPassword(newUserName) == true) {
-                        HomeSection.currentUser.setUsername(newUserName);
-                        username.setText(HomeSection.currentUser.getUsername());
+                        DataContainer.currentUser.setUsername(newUserName);
+                        username.setText(DataContainer.currentUser.getUsername());
                         changeUName.setText("");
                         save.setVisibility(View.INVISIBLE);
                         changeUName.setVisibility(View.INVISIBLE);
@@ -154,7 +155,7 @@ public class SettingsSection extends AppCompatActivity {
                         changeUName.setText("");
                     }
                 } else {
-                    username.setText(HomeSection.currentUser.getUsername());
+                    username.setText(DataContainer.currentUser.getUsername());
                     Toast.makeText(getApplicationContext(), "Enter new username", Toast.LENGTH_SHORT).show();
                 }
 
@@ -196,8 +197,8 @@ public class SettingsSection extends AppCompatActivity {
                 if (!changedEmail.getText().toString().equals("")) {
                     String newEmail = changedEmail.getText().toString();
                     if (isValidEmail(newEmail) == true) {
-                        HomeSection.currentUser.setEmail(newEmail);
-                        emailName.setText(HomeSection.currentUser.getEmail());
+                        DataContainer.currentUser.setEmail(newEmail);
+                        emailName.setText(DataContainer.currentUser.getEmail());
                         changedEmail.setText("");
                         saveEmail.setVisibility(View.INVISIBLE);
                         changedEmail.setVisibility(View.INVISIBLE);
@@ -212,7 +213,7 @@ public class SettingsSection extends AppCompatActivity {
                         changedEmail.setText("");
                     }
                 } else {
-                    emailName.setText(HomeSection.currentUser.getEmail());
+                    emailName.setText(DataContainer.currentUser.getEmail());
                     Toast.makeText(getApplicationContext(), "Please enter new valid email", Toast.LENGTH_SHORT).show();
                     changedEmail.setText("");
                 }
@@ -254,8 +255,8 @@ public class SettingsSection extends AppCompatActivity {
                 if (!newPhone.getText().toString().equals("")) {
                     String newPhoneNo = newPhone.getText().toString();
                     if (isValidPhone(newPhoneNo) == true) {
-                        HomeSection.currentUser.setPhoneNo(newPhoneNo);
-                        currentPhone.setText(HomeSection.currentUser.getPhoneNo());
+                        DataContainer.currentUser.setPhoneNo(newPhoneNo);
+                        currentPhone.setText(DataContainer.currentUser.getPhoneNo());
                         newPhone.setText("");
                         savePhone.setVisibility(View.INVISIBLE);
                         newPhone.setVisibility(View.INVISIBLE);
@@ -270,7 +271,7 @@ public class SettingsSection extends AppCompatActivity {
                         newPhone.setText("");
                     }
                 } else {
-                    currentPhone.setText(HomeSection.currentUser.getPhoneNo());
+                    currentPhone.setText(DataContainer.currentUser.getPhoneNo());
                     Toast.makeText(getApplicationContext(), "Please enter new valid phone No", Toast.LENGTH_SHORT).show();
                     newPhone.setText("");
                 }
@@ -314,8 +315,8 @@ public class SettingsSection extends AppCompatActivity {
                 if (!newPass.getText().toString().equals("")) {
                     String newPassword = newPass.getText().toString();
                     if (isValidPassword(newPassword) == true) {
-                        HomeSection.currentUser.setPassword(newPassword);
-                        currentPass.setText(HomeSection.currentUser.getPassword());
+                        DataContainer.currentUser.setPassword(newPassword);
+                        currentPass.setText(DataContainer.currentUser.getPassword());
                         newPass.setText("");
                         savePass.setVisibility(View.INVISIBLE);
                         newPass.setVisibility(View.INVISIBLE);
@@ -330,7 +331,7 @@ public class SettingsSection extends AppCompatActivity {
                         newPass.setText("");
                     }
                 } else {
-                    currentPass.setText(HomeSection.currentUser.getPassword());
+                    currentPass.setText(DataContainer.currentUser.getPassword());
                     Toast.makeText(getApplicationContext(), "please enter new password", Toast.LENGTH_SHORT).show();
                     newPass.setText("");
                 }

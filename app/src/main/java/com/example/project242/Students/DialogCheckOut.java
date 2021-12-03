@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import com.example.project242.DataContainer;
 import com.example.project242.Home.HomeSection;
 import com.example.project242.R;
 
@@ -61,10 +62,10 @@ public class DialogCheckOut extends AppCompatDialogFragment {
 
 
                         */
-                        HomeSection.currentStudentsArrayList.remove(student);
-                        for (int j = 0; j < HomeSection.allStudentsArrayList.size(); ++j) {
-                            if (HomeSection.allStudentsArrayList.get(j).getStudentID() == student.getStudentID()) {
-                                HomeSection.allStudentsArrayList.get(j).setCheckedInFlag(false);
+                        DataContainer.currentStudentsArrayList.remove(student);
+                        for (int j = 0; j < DataContainer.allStudentsArrayList.size(); ++j) {
+                            if (DataContainer.allStudentsArrayList.get(j).getStudentID() == student.getStudentID()) {
+                                DataContainer.allStudentsArrayList.get(j).setCheckedInFlag(false);
                                 break;
                             }
                         }

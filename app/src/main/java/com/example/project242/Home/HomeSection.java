@@ -24,15 +24,6 @@ import java.util.ArrayList;
 
 public class HomeSection extends AppCompatActivity {
 
-    TextView username;
-    TextView password;
-
-    public static CostsHandler costsHandler;
-    public static DiscountsHandler discountsHandler;
-    public static TransactionsHandler transactionsHandler;
-    public static ArrayList<Student> allStudentsArrayList;
-    public static ArrayList<Student> currentStudentsArrayList;
-    public static User currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,42 +32,6 @@ public class HomeSection extends AppCompatActivity {
 
         View includer = findViewById(R.id.includer);
         setupToolbarAndMenu(includer, "Home", 0);
-
-
-
-        //load database
-        CentralJSON.loadJSON(this);
-
-
-        //load data structures
-        costsHandler              = CentralJSON.parseCosts();
-        discountsHandler          = CentralJSON.parseDiscounts();
-        transactionsHandler       = CentralJSON.parseTransactions();
-        allStudentsArrayList      = CentralJSON.parseAllStudents();
-        currentStudentsArrayList  = CentralJSON.parseCurrentStudents();
-
-        //current user credentials
-        View loginView = LayoutInflater.from(this).inflate(R.layout.login_page, new LinearLayout(this));
-        username = loginView.findViewById(R.id.username1);
-        password = loginView.findViewById(R.id.password);
-
-        //String userName = "Mcmillan586";
-        //String passWord = "Henry1217";
-
-        currentUser = CentralJSON.findCurrentUser(username.getText().toString(),password.getText().toString());
-
-
-        // Synchronise checkedInFlag of allStudentsArrayList with currentStudentsArrayList
-        for (int i = 0; i < allStudentsArrayList.size(); ++i) {
-            for (int j = 0; j < currentStudentsArrayList.size(); ++j) {
-                if (allStudentsArrayList.get(i).getStudentID() == currentStudentsArrayList.get(j).getStudentID()) {
-                    allStudentsArrayList.get(i).setCheckedInFlag(currentStudentsArrayList.get(j).getCheckedInFlag());
-                    break;
-                }
-            }
-
-        }
-
 
 
     }

@@ -18,12 +18,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.project242.DataContainer;
 import com.example.project242.Home.HomeSection;
 import com.example.project242.R;
 
 public class DisplayTransactions extends AppCompatActivity {
 
-    private TransactionsHandler transactionsHandler = HomeSection.transactionsHandler;
+    private TransactionsHandler transactionsHandler = DataContainer.transactionsHandler;
     int searchSize = 0;
     public static String search = "";
 

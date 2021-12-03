@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import com.example.project242.DataContainer;
 import com.example.project242.R;
 import com.example.project242.Home.HomeSection;
 
@@ -46,7 +47,7 @@ public class DialogCheckIn extends AppCompatDialogFragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         student.setCheckInTime(System.currentTimeMillis());
-                        HomeSection.currentStudentsArrayList.add(student);
+                        DataContainer.currentStudentsArrayList.add(student);
                         student.setCheckedInFlag(true);
                         adapter.notifyDataSetChanged();
                         listView.invalidateViews();

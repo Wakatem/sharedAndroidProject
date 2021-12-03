@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import com.example.project242.DataContainer;
 import com.example.project242.Home.HomeSection;
 import com.example.project242.R;
 
@@ -33,7 +34,7 @@ public class DialogRegisterStudent extends AppCompatDialogFragment {
                 .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        HomeSection.allStudentsArrayList.add(student);
+                        DataContainer.allStudentsArrayList.add(student);
                         Toast.makeText(getActivity(),"Confirmed!", Toast.LENGTH_SHORT).show();
                     }
                 })

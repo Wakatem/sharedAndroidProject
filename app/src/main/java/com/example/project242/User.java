@@ -3,9 +3,10 @@ package com.example.project242;
 
 import android.widget.EditText;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class User {
+public class User implements Serializable {
     private int userID;
     private String name;
     private String username;

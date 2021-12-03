@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.project242.DataContainer;
 import com.example.project242.Home.HomeSection;
 import com.example.project242.MonetaryRates.BottomSheet;
 import com.example.project242.R;
@@ -34,7 +35,7 @@ public class DiscountsFragment extends Fragment {
         View fragment = LayoutInflater.from(getContext()).inflate(R.layout.discounts_fragment,container,false);
         discountList = fragment.findViewById(R.id.discountList);
 
-        adapter = new DiscountAdapter(getContext(), HomeSection.discountsHandler);
+        adapter = new DiscountAdapter(getContext(), DataContainer.discountsHandler);
         discountList.setAdapter(adapter);
        // close = fragment.findViewById(R.id.discountName);
         close = discountList.findViewById(R.id.closedown);

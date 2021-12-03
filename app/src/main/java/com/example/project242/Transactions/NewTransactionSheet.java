@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.project242.DataContainer;
 import com.example.project242.Home.HomeSection;
 import com.example.project242.Home.HomeSection;
 import com.example.project242.R;
@@ -53,7 +54,7 @@ public class NewTransactionSheet {
     private Button cancel;
 
     public NewTransactionSheet(Context ActivityContext, int sheetlayout) {
-        newList = HomeSection.transactionsHandler;
+        newList = DataContainer.transactionsHandler;
         newSheetDialog = new BottomSheetDialog(ActivityContext);
         context = ActivityContext;
         newSheetDialog.setContentView(sheetlayout);

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.project242.DataContainer;
 import com.example.project242.Home.HomeSection;
 import com.example.project242.R;
 
@@ -48,7 +49,7 @@ public class DiscountAdapter extends ArrayAdapter<Discount> {
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HomeSection.discountsHandler.remove(position);
+                DataContainer.discountsHandler.remove(position);
                 DiscountsFragment.adapter.notifyDataSetChanged();
                 DiscountsFragment.discountList.invalidateViews();
             }

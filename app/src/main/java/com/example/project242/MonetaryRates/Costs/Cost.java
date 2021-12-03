@@ -2,7 +2,9 @@ package com.example.project242.MonetaryRates.Costs;
 
 import com.example.project242.R;
 
-public class Cost {
+import java.io.Serializable;
+
+public class Cost implements Serializable {
 
     private int amount;
     private int hours;

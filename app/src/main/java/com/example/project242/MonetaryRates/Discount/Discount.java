@@ -1,7 +1,9 @@
 package com.example.project242.MonetaryRates.Discount;
 import android.widget.Switch;
 
-public class Discount {
+import java.io.Serializable;
+
+public class Discount implements Serializable {
     private String discountName;
     private int percent;
     private boolean aSwitch;

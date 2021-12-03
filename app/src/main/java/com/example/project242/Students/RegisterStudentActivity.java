@@ -11,6 +11,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.example.project242.DataContainer;
 import com.example.project242.Home.HomeSection;
 import com.example.project242.R;
 
@@ -89,8 +90,8 @@ public class RegisterStudentActivity extends AppCompatActivity {
 
         int randomID = (int)(Math.floor(Math.random()*(max-min+1)+min));;
 
-        for (int i = 0; i < HomeSection.allStudentsArrayList.size(); ++i) {
-            if (randomID == HomeSection.allStudentsArrayList.get(i).getStudentID()) {
+        for (int i = 0; i < DataContainer.allStudentsArrayList.size(); ++i) {
+            if (randomID == DataContainer.allStudentsArrayList.get(i).getStudentID()) {
                 i = 0;
                 randomID = (int)(Math.floor(Math.random()*(max-min+1)+min));
             }
