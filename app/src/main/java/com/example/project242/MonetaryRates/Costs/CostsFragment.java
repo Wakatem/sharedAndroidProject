@@ -11,8 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.project242.DataContainer;
-import com.example.project242.Home.HomeSection;
+import com.example.project242.general.DataContainer;
 import com.example.project242.MonetaryRates.BottomSheet;
 import com.example.project242.R;
 

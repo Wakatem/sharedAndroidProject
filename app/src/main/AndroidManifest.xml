@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Project242">
-        <service android:name=".DataContainer" android:stopWithTask="true"/>
+        <service android:name=".general.DataContainer" android:stopWithTask="true"/>
         <activity
             android:name=".LoginActivity"
             android:exported="true">

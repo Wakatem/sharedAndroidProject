@@ -11,8 +11,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.example.project242.DataContainer;
-import com.example.project242.Home.HomeSection;
+import com.example.project242.general.DataContainer;
 import com.example.project242.R;
 
 public class RegisterStudentActivity extends AppCompatActivity {

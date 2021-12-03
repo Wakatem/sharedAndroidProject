@@ -6,15 +6,13 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
-import com.example.project242.DataContainer;
-import com.example.project242.Home.HomeSection;
+import com.example.project242.general.DataContainer;
 import com.example.project242.R;
 
 public class DialogRegisterStudent extends AppCompatDialogFragment {

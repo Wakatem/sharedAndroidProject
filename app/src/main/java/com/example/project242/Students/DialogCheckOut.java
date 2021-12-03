@@ -14,11 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
-import com.example.project242.DataContainer;
-import com.example.project242.Home.HomeSection;
+import com.example.project242.general.DataContainer;
 import com.example.project242.R;
-
-import java.util.Date;
 
 public class DialogCheckOut extends AppCompatDialogFragment {
     private TextView studentNameTextView;

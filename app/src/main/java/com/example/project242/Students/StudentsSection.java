@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.project242.R;
-import com.example.project242.SectionsMenu;
+import com.example.project242.general.SectionsMenu;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 

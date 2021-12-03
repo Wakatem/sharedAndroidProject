@@ -16,8 +16,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.project242.DataContainer;
-import com.example.project242.Home.HomeSection;
+import com.example.project242.general.DataContainer;
 import com.example.project242.MonetaryRates.Costs.Cost;
 import com.example.project242.MonetaryRates.Costs.CostAdapter;
 import com.example.project242.MonetaryRates.Costs.CostTypes;

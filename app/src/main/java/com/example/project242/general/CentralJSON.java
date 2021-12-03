@@ -1,4 +1,4 @@
-package com.example.project242;
+package com.example.project242.general;
 
 import android.content.Context;
 
@@ -7,6 +7,7 @@ import com.example.project242.MonetaryRates.Costs.CostTypes;
 import com.example.project242.MonetaryRates.Costs.CostsHandler;
 import com.example.project242.MonetaryRates.Discount.Discount;
 import com.example.project242.MonetaryRates.Discount.DiscountsHandler;
+import com.example.project242.R;
 import com.example.project242.Students.Guardian;
 import com.example.project242.Students.Student;
 import com.example.project242.Transactions.ExpenseTypes;
@@ -14,6 +15,7 @@ import com.example.project242.Transactions.PaymentMethods;
 import com.example.project242.Transactions.Transaction;
 import com.example.project242.Transactions.TransactionTypes;
 import com.example.project242.Transactions.TransactionsHandler;
+import com.example.project242.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;

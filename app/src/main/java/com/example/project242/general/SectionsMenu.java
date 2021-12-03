@@ -1,4 +1,4 @@
-package com.example.project242;
+package com.example.project242.general;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -25,7 +25,6 @@ import com.google.android.material.navigation.NavigationView;
 
 /**
  * This class initializes and activates the necessary components for a navigation menu functionality.
- * This class automatically initializes the custom toolbar with it.
  */
 
 public class SectionsMenu {

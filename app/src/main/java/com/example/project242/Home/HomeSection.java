@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.project242.R;
-import com.example.project242.SectionsMenu;
+import com.example.project242.general.SectionsMenu;
 
 public class HomeSection extends AppCompatActivity {
 

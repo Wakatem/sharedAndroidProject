@@ -16,9 +16,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.project242.DataContainer;
+import com.example.project242.general.DataContainer;
 import com.example.project242.R;
-import com.example.project242.SectionsMenu;
+import com.example.project242.general.SectionsMenu;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

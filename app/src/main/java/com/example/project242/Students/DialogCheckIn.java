@@ -14,9 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
-import com.example.project242.DataContainer;
+import com.example.project242.general.DataContainer;
 import com.example.project242.R;
-import com.example.project242.Home.HomeSection;
 
 public class DialogCheckIn extends AppCompatDialogFragment {
     private TextView studentNameTextView;

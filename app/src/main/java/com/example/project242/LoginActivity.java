@@ -4,9 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.project242.Home.HomeSection;
@@ -14,6 +11,8 @@ import com.example.project242.MonetaryRates.Costs.CostsHandler;
 import com.example.project242.MonetaryRates.Discount.DiscountsHandler;
 import com.example.project242.Students.Student;
 import com.example.project242.Transactions.TransactionsHandler;
+import com.example.project242.general.CentralJSON;
+import com.example.project242.general.DataContainer;
 
 import java.util.ArrayList;
 

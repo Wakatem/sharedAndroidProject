@@ -1,4 +1,4 @@
-package com.example.project242;
+package com.example.project242.general;
 
 import android.app.Service;
 import android.content.Intent;
@@ -8,6 +8,7 @@ import com.example.project242.MonetaryRates.Costs.CostsHandler;
 import com.example.project242.MonetaryRates.Discount.DiscountsHandler;
 import com.example.project242.Students.Student;
 import com.example.project242.Transactions.TransactionsHandler;
+import com.example.project242.User;
 
 import java.util.ArrayList;
 
