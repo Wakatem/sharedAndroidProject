@@ -83,6 +83,13 @@ public class StudentsSection extends AppCompatActivity {
 
             }
         }).attach();
+
+        int pos = 0;
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            pos = extras.getInt("getCurrentStudentsFragment");
+        }
+        pager.setCurrentItem(pos);
     }
 
 }

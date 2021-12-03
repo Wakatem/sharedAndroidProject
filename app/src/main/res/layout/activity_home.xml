@@ -19,6 +19,201 @@
 
         <!-- main content here from here -->
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/home_box_style">
+
+            <TextView
+                android:id="@+id/In"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="TOTAL:"
+                android:textColor="#301932"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/InNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_toRightOf="@+id/In"
+                android:textColor="#301932"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/Out"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="70dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_toRightOf="@id/InNo"
+                android:text="CURRENT:"
+                android:textColor="#301932"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:id="@+id/OutNo"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/Out"
+                android:layout_marginLeft="10dp"
+                android:textColor="#301932"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp">
+
+            <FrameLayout
+                android:id="@+id/box1"
+                android:layout_width="168dp"
+                android:layout_height="170dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/home_box_style"
+                android:backgroundTint="#e5cdfd">
+
+                <ImageView
+                    android:layout_width="94dp"
+                    android:layout_height="89dp"
+                    android:src="@drawable/forboxone"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="68dp"
+                    android:layout_marginTop="94dp"
+                    android:fontFamily="@font/josefinsans_semibold"
+                    android:text="Register
+                    Student"
+                    android:lines="2"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/box2"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_toRightOf="@+id/box1"
+                android:background="@drawable/home_box_style"
+                android:backgroundTint="#d1e7ff">
+
+                <ImageView
+                    android:layout_width="94dp"
+                    android:layout_height="89dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/forboxtwo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="68dp"
+                    android:layout_marginTop="94dp"
+                    android:fontFamily="@font/josefinsans_semibold"
+                    android:lines="2"
+                    android:text="Current
+                    Students"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/box3"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_below="@+id/box1"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/home_box_style"
+                android:backgroundTint="#d9f4ed">
+
+                <ImageView
+                    android:layout_width="94dp"
+                    android:layout_height="85dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/forboxthree"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="65dp"
+                    android:layout_marginTop="94dp"
+                    android:fontFamily="@font/josefinsans_semibold"
+                    android:lines="2"
+                    android:text="View
+                    Cashflow"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/box4"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_below="@+id/box2"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_toRightOf="@+id/box3"
+                android:background="@drawable/home_box_style"
+                android:backgroundTint="#ffd4cb">
+
+                <ImageView
+                    android:layout_width="94dp"
+                    android:layout_height="89dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/forboxfour" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="94dp"
+                    android:fontFamily="@font/josefinsans_semibold"
+                    android:lines="2"
+                    android:text="Generate
+                    Statements"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+            </FrameLayout>
+        </RelativeLayout>
+
+
+
 
 
     </LinearLayout>

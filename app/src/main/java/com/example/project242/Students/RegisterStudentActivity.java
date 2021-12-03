@@ -36,7 +36,7 @@ public class RegisterStudentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_student);
 
-        setupToolbar("Transactions List");
+        setupToolbar("Register New Student");
 
         studentLastNameEditText = (EditText) findViewById(R.id.activity_register_student_editText_student_last_name_1);
         studentFirstNameEditText = (EditText) findViewById(R.id.activity_register_student_editText_student_first_name_1);
