@@ -39,7 +39,7 @@ public class RegisterStudentActivity extends AppCompatActivity {
 
         //setup Toolbar
         View includer = findViewById(R.id.includer);
-        setupToolbar(includer, "Transactions List");
+        setupToolbar(includer, "Register New Student");
 
         studentLastNameEditText = (EditText) findViewById(R.id.activity_register_student_editText_student_last_name_1);
         studentFirstNameEditText = (EditText) findViewById(R.id.activity_register_student_editText_student_first_name_1);
