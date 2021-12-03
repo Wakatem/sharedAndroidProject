@@ -345,6 +345,20 @@ public class SettingsSection extends AppCompatActivity {
     }
 
 
+    private void setupToolbarAndMenu(View includer, String title, int checkedSection){
+
+        //setup Toolbar
+        TextView screenTitle = (TextView) includer.findViewById(R.id.screenTitle);
+        screenTitle.setText(title);
+        ImageView menuButton = (ImageView) includer.findViewById(R.id.menu_button);
+        menuButton.setImageResource(R.drawable.menu_icon);
+
+        //setup Navigation menu
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
+        SectionsMenu menu = new SectionsMenu(this, drawer, includer);
+        menu.initialize(checkedSection);
+        menu.EnableMenu();
+    }
 
 
 
