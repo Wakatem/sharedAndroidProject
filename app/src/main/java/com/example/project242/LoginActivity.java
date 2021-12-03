@@ -4,6 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.project242.Home.HomeSection;
 
@@ -32,6 +36,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean loadData(){
+        TextView username;
+        TextView password;
+
         /*
         CostsHandler costsHandler;
         DiscountsHandler discountsHandler;
@@ -42,40 +49,41 @@ public class LoginActivity extends AppCompatActivity {
         */
 
         //load database
-        CentralJSON.loadJSON(getApplicationContext());
+        CentralJSON.loadJSON(this);
 
 
-        /*
+
         //load data structures
         HomeSection.costsHandler              = CentralJSON.parseCosts();
         HomeSection.discountsHandler          = CentralJSON.parseDiscounts();
         HomeSection.transactionsHandler       = CentralJSON.parseTransactions();
-        allStudentsArrayList      = CentralJSON.parseAllStudents();
-        currentStudentsArrayList  = CentralJSON.parseCurrentStudents();
+        HomeSection.allStudentsArrayList      = CentralJSON.parseAllStudents();
+        HomeSection.currentStudentsArrayList  = CentralJSON.parseCurrentStudents();
 
         //current user credentials
-        View loginView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.login_page, new LinearLayout(getApplicationContext()));
+        View loginView = LayoutInflater.from(this).inflate(R.layout.login_page, new LinearLayout(this));
         username = loginView.findViewById(R.id.username1);
         password = loginView.findViewById(R.id.password);
 
         //String userName = "Mcmillan586";
         //String passWord = "Henry1217";
 
-        currentUser = CentralJSON.findCurrentUser(username.getText().toString(),password.getText().toString());
+        HomeSection.currentUser = CentralJSON.findCurrentUser(username.getText().toString(),password.getText().toString());
 
 
         // Synchronise checkedInFlag of allStudentsArrayList with currentStudentsArrayList
-        for (int i = 0; i < allStudentsArrayList.size(); ++i) {
-            for (int j = 0; j < currentStudentsArrayList.size(); ++j) {
-                if (allStudentsArrayList.get(i).getStudentID() == currentStudentsArrayList.get(j).getStudentID()) {
-                    allStudentsArrayList.get(i).setCheckedInFlag(currentStudentsArrayList.get(j).getCheckedInFlag());
+        for (int i = 0; i <  HomeSection.allStudentsArrayList.size(); ++i) {
+            for (int j = 0; j < HomeSection.currentStudentsArrayList.size(); ++j) {
+                if ( HomeSection.allStudentsArrayList.get(i).getStudentID() == HomeSection.currentStudentsArrayList.get(j).getStudentID()) {
+                    HomeSection.allStudentsArrayList.get(i).setCheckedInFlag(HomeSection.currentStudentsArrayList.get(j).getCheckedInFlag());
                     break;
                 }
             }
         }
-    */
+
 
         return false;
+
     }
 
 

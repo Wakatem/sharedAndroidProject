@@ -115,6 +115,7 @@ public class SettingsSection extends AppCompatActivity {
                 changeUName.setVisibility(View.VISIBLE);
             }
         });
+
         //username saving
         save.setOnClickListener(new View.OnClickListener() {
             @Override
