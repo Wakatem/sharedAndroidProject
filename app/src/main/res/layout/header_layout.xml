@@ -31,12 +31,6 @@
         android:layout_below="@+id/userIDD"
         android:id="@+id/usernameDisplay"
         android:layout_marginLeft="40dp"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="LogOut"
-        android:layout_below="@+id/usernameDisplay"
-        android:layout_marginLeft="50dp"
-        android:layout_marginBottom="20dp"/>
+
 
 </RelativeLayout>

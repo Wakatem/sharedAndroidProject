@@ -33,9 +33,7 @@ public class DisplayTransactions extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_transactions);
 
-        //setup Toolbar
-        View includer = findViewById(R.id.includer);
-        setupToolbar(includer, "Transactions List");
+        setupToolbar("Transactions List");
 
         ListView transactionsLV = (ListView) findViewById(R.id.transactionsLV);
         TransactionAdapter adapter = new TransactionAdapter(this, transactionsHandler);
@@ -144,11 +142,12 @@ public class DisplayTransactions extends AppCompatActivity {
 
 
 
-    private void setupToolbar(View includer, String title) {
-        TextView screenTitle = (TextView) includer.findViewById(R.id.screenTitle);
+    private void setupToolbar(String title) {
+        View toolbarIncluder = findViewById(R.id.toolbar_includer);
+        TextView screenTitle = (TextView) toolbarIncluder.findViewById(R.id.screenTitle);
         screenTitle.setText(title);
 
-        ImageView backButton = (ImageView) includer.findViewById(R.id.menu_button);
+        ImageView backButton = (ImageView) toolbarIncluder.findViewById(R.id.menu_button);
         backButton.setImageResource(R.drawable.back_icon);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override

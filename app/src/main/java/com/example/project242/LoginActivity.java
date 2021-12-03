@@ -14,7 +14,6 @@ import com.example.project242.MonetaryRates.Costs.CostsHandler;
 import com.example.project242.MonetaryRates.Discount.DiscountsHandler;
 import com.example.project242.Students.Student;
 import com.example.project242.Transactions.TransactionsHandler;
-import com.example.project242.zNavigationMenu.SectionsMenu;
 
 import java.util.ArrayList;
 
@@ -88,9 +87,8 @@ public class LoginActivity extends AppCompatActivity {
                 currentStudentsArrayList  = CentralJSON.parseCurrentStudents();
 
                 //current user credentials
-                View loginView = LayoutInflater.from(LoginActivity.this).inflate(R.layout.login_page, new LinearLayout(LoginActivity.this));
-                username = loginView.findViewById(R.id.username1);
-                password = loginView.findViewById(R.id.password);
+                username = findViewById(R.id.username1);
+                password = findViewById(R.id.password);
 
                 //String userName = "Mcmillan586";
                 //String passWord = "Henry1217";

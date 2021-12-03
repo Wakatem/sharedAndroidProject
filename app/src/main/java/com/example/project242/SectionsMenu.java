@@ -1,8 +1,9 @@
-package com.example.project242.zNavigationMenu;
+package com.example.project242;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -30,24 +31,28 @@ import com.google.android.material.navigation.NavigationView;
 public class SectionsMenu {
 
     private DrawerLayout drawer;
-    private View includer;
+    private View toolbarIncluder;
+    private View navView_includer;
     private ImageView menuButton;
     private NavigationView navView;
     private final Activity activity;
 
 
-    public SectionsMenu(Activity activity, DrawerLayout activityDrawer, View includer) {
+    public SectionsMenu(Activity activity, DrawerLayout activityDrawer, View toolbarIncluder) {
         //provided layout must match the layout the provided activity uses
         this.drawer = activityDrawer;
         this.activity = activity;
-        this.includer = includer;
+        this.toolbarIncluder = toolbarIncluder;
 
 
     }
 
     public void initialize(int checkedSection) {
-        menuButton  = (ImageView) includer.findViewById(R.id.menu_button);
-        navView = (NavigationView) drawer.findViewById(R.id.navigation_view);
+        menuButton  = (ImageView) toolbarIncluder.findViewById(R.id.menu_button);
+
+        navView_includer = drawer.findViewById(R.id.navigationView_includer);
+        navView = (NavigationView) navView_includer.findViewById(R.id.navigation_view);
+
         navView.getMenu().getItem(checkedSection).setChecked(true);
     }
 

@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import com.example.project242.DataContainer;
 import com.example.project242.R;
-import com.example.project242.zNavigationMenu.SectionsMenu;
+import com.example.project242.SectionsMenu;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -60,8 +60,7 @@ public class SettingsSection extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        View includer = findViewById(R.id.includer);
-        setupToolbarAndMenu(includer, "Settings", 4);
+        setupToolbarAndMenu("Settings", 4);
 
         //username initialization
         username = findViewById(R.id.currentName);
@@ -346,17 +345,18 @@ public class SettingsSection extends AppCompatActivity {
     }
 
 
-    private void setupToolbarAndMenu(View includer, String title, int checkedSection){
+    private void setupToolbarAndMenu(String title, int checkedSection){
 
         //setup Toolbar
-        TextView screenTitle = (TextView) includer.findViewById(R.id.screenTitle);
+        View toolbarIncluder = findViewById(R.id.toolbar_includer);
+        TextView screenTitle = (TextView) toolbarIncluder.findViewById(R.id.screenTitle);
         screenTitle.setText(title);
-        ImageView menuButton = (ImageView) includer.findViewById(R.id.menu_button);
+        ImageView menuButton = (ImageView) toolbarIncluder.findViewById(R.id.menu_button);
         menuButton.setImageResource(R.drawable.menu_icon);
 
         //setup Navigation menu
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
-        SectionsMenu menu = new SectionsMenu(this, drawer, includer);
+        SectionsMenu menu = new SectionsMenu(this, drawer, toolbarIncluder);
         menu.initialize(checkedSection);
         menu.EnableMenu();
     }

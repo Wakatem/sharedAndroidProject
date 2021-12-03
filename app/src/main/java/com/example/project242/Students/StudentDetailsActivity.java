@@ -27,8 +27,7 @@ public class StudentDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_details);
 
-        View includer = findViewById(R.id.includer);
-        setupToolbar(includer, "Student Details");
+        setupToolbar("Student Details");
 
         studentName = findViewById(R.id.activity_student_details_textView_student_name_1);
         studentID = findViewById(R.id.activity_student_details_textView_student_id_1);
@@ -57,11 +56,12 @@ public class StudentDetailsActivity extends AppCompatActivity {
         guardianAccountNumber.setText("Account Number: " + student.getGuardian().getGuardianAccountNumber());
     }
 
-    private void setupToolbar(View includer, String title) {
-        TextView screenTitle = (TextView) includer.findViewById(R.id.screenTitle);
+    private void setupToolbar(String title) {
+        View toolbarIncluder = findViewById(R.id.toolbar_includer);
+        TextView screenTitle = (TextView) toolbarIncluder.findViewById(R.id.screenTitle);
         screenTitle.setText(title);
 
-        ImageView backButton = (ImageView) includer.findViewById(R.id.menu_button);
+        ImageView backButton = (ImageView) toolbarIncluder.findViewById(R.id.menu_button);
         backButton.setImageResource(R.drawable.back_icon);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override

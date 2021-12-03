@@ -16,7 +16,7 @@
         android:layout_height="wrap_content">
 
     <include
-        android:id="@+id/includer"
+        android:id="@+id/toolbar_includer"
         layout="@layout/custom_toolbar" />
 
         <ImageButton

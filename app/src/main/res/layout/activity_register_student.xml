@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <include
-            android:id="@+id/includer"
+            android:id="@+id/toolbar_includer"
             layout="@layout/custom_toolbar" />
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"

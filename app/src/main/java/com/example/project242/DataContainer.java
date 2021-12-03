@@ -3,15 +3,11 @@ package com.example.project242;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import android.util.Log;
-import android.widget.TextView;
 
-import com.example.project242.MonetaryRates.Costs.Cost;
 import com.example.project242.MonetaryRates.Costs.CostsHandler;
 import com.example.project242.MonetaryRates.Discount.DiscountsHandler;
 import com.example.project242.Students.Student;
 import com.example.project242.Transactions.TransactionsHandler;
-import com.example.project242.zNavigationMenu.SectionsMenu;
 
 import java.util.ArrayList;
 

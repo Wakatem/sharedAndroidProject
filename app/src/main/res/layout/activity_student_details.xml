@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <include
-        android:id="@+id/includer"
+        android:id="@+id/toolbar_includer"
         layout="@layout/custom_toolbar" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
