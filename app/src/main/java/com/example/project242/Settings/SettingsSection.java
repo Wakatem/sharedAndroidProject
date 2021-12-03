@@ -62,11 +62,10 @@ public class SettingsSection extends AppCompatActivity {
 
         View includer = findViewById(R.id.includer);
         setupToolbarAndMenu(includer, "Settings", 4);
-
-        //username initialization
+//username initialization
         username = findViewById(R.id.currentName);
         username.setText(HomeSection.currentUser.getUsername());
-        user = (RelativeLayout)findViewById(R.id.thelayout);
+        user = (RelativeLayout) findViewById(R.id.thelayout);
         edit = findViewById(R.id.change);
         save = findViewById(R.id.save);
         changeUName = findViewById(R.id.changeUName);
@@ -95,7 +94,7 @@ public class SettingsSection extends AppCompatActivity {
         editPass = findViewById(R.id.changePass);
         newPass = findViewById(R.id.newPass);
 
-        if(isEditing==true){
+        if (isEditing == true) {
             edit.setClickable(false);
             editPhone.setClickable(false);
             editEmail.setClickable(false);
@@ -107,33 +106,56 @@ public class SettingsSection extends AppCompatActivity {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                isEditing=true;
-                LayoutParams params = user.getLayoutParams();
-                params.height = 400;
-                user.setLayoutParams(params);
-                save.setVisibility(View.VISIBLE);
-                changeUName.setVisibility(View.VISIBLE);
+                if (isEditing == false) {
+                    preventEditing(edit);
+                    LayoutParams params = user.getLayoutParams();
+                    params.height = 400;
+                    user.setLayoutParams(params);
+                    save.setVisibility(View.VISIBLE);
+                    changeUName.setVisibility(View.VISIBLE);
+                    edit.setImageResource(R.drawable.ic_baseline_close_24);
+                    isEditing = true;
+                } else {
+                    changeUName.setText("");
+                    save.setVisibility(View.INVISIBLE);
+                    changeUName.setVisibility(View.INVISIBLE);
+                    LayoutParams params = user.getLayoutParams();
+                    params.height = 250;
+                    user.setLayoutParams(params);
+                    edit.setImageResource(R.drawable.ic_baseline_edit_24);
+                    enableEditing();
+                    isEditing = false;
+                }
+
             }
         });
         //username saving
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                isEditing=false;
-                if(!changeUName.getText().toString().equals("")) {
+
+                if (!changeUName.getText().toString().equals("")) {
                     String newUserName = changeUName.getText().toString();
-                    HomeSection.currentUser.setUsername(newUserName);
+                    if (isValidPassword(newUserName) == true) {
+                        HomeSection.currentUser.setUsername(newUserName);
+                        username.setText(HomeSection.currentUser.getUsername());
+                        changeUName.setText("");
+                        save.setVisibility(View.INVISIBLE);
+                        changeUName.setVisibility(View.INVISIBLE);
+                        LayoutParams params = user.getLayoutParams();
+                        params.height = 250;
+                        user.setLayoutParams(params);
+                        edit.setImageResource(R.drawable.ic_baseline_edit_24);
+                        isEditing = false;
+                        enableEditing();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Please enter username with minimum 6 characters", Toast.LENGTH_SHORT).show();
+                        changeUName.setText("");
+                    }
+                } else {
                     username.setText(HomeSection.currentUser.getUsername());
-                    changeUName.setText("");
+                    Toast.makeText(getApplicationContext(), "Enter new username", Toast.LENGTH_SHORT).show();
                 }
-                else {
-                    username.setText(HomeSection.currentUser.getUsername());
-                }
-                save.setVisibility(View.INVISIBLE);
-                changeUName.setVisibility(View.INVISIBLE);
-                LayoutParams params = user.getLayoutParams();
-                params.height = 250;
-                user.setLayoutParams(params);
 
             }
         });
@@ -143,37 +165,57 @@ public class SettingsSection extends AppCompatActivity {
         editEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LayoutParams params = emailLayout.getLayoutParams();
-                params.height = 400;
-                emailLayout.setLayoutParams(params);
-                saveEmail.setVisibility(View.VISIBLE);
-                changedEmail.setVisibility(View.VISIBLE);
+                if (isEditing == false) {
+                    preventEditing(editEmail);
+                    LayoutParams params = emailLayout.getLayoutParams();
+                    params.height = 400;
+                    emailLayout.setLayoutParams(params);
+                    saveEmail.setVisibility(View.VISIBLE);
+                    changedEmail.setVisibility(View.VISIBLE);
+                    editEmail.setImageResource(R.drawable.ic_baseline_close_24);
+                    isEditing = true;
+                } else {
+                    changedEmail.setText("");
+                    saveEmail.setVisibility(View.INVISIBLE);
+                    changedEmail.setVisibility(View.INVISIBLE);
+                    LayoutParams params = emailLayout.getLayoutParams();
+                    params.height = 250;
+                    emailLayout.setLayoutParams(params);
+                    editEmail.setImageResource(R.drawable.ic_baseline_edit_24);
+                    enableEditing();
+                    isEditing = false;
+                }
+
             }
         });
         //username saving
         saveEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!changedEmail.getText().toString().equals("")) {
+                if (!changedEmail.getText().toString().equals("")) {
                     String newEmail = changedEmail.getText().toString();
-                    if(isValidEmail(newEmail)==true) {
+                    if (isValidEmail(newEmail) == true) {
                         HomeSection.currentUser.setEmail(newEmail);
                         emailName.setText(HomeSection.currentUser.getEmail());
                         changedEmail.setText("");
-                    }
-                    else {
+                        saveEmail.setVisibility(View.INVISIBLE);
+                        changedEmail.setVisibility(View.INVISIBLE);
+                        LayoutParams params = emailLayout.getLayoutParams();
+                        params.height = 250;
+                        emailLayout.setLayoutParams(params);
+                        editEmail.setImageResource(R.drawable.ic_baseline_edit_24);
+                        isEditing = false;
+                        enableEditing();
+                    } else {
                         Toast.makeText(getApplicationContext(), "Please enter valid email", Toast.LENGTH_SHORT).show();
                         changedEmail.setText("");
                     }
-                }
-                else {
+                } else {
                     emailName.setText(HomeSection.currentUser.getEmail());
+                    Toast.makeText(getApplicationContext(), "Please enter new valid email", Toast.LENGTH_SHORT).show();
+                    changedEmail.setText("");
                 }
-                saveEmail.setVisibility(View.INVISIBLE);
-                changedEmail.setVisibility(View.INVISIBLE);
-                LayoutParams params = emailLayout.getLayoutParams();
-                params.height = 250;
-                emailLayout.setLayoutParams(params);
+
 
             }
         });
@@ -182,39 +224,56 @@ public class SettingsSection extends AppCompatActivity {
         editPhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LayoutParams params = phoneLayout.getLayoutParams();
-                params.height = 400;
-                phoneLayout.setLayoutParams(params);
-                savePhone.setVisibility(View.VISIBLE);
-                newPhone.setVisibility(View.VISIBLE);
+                if (isEditing == false) {
+                    preventEditing(editPhone);
+                    LayoutParams params = phoneLayout.getLayoutParams();
+                    params.height = 400;
+                    phoneLayout.setLayoutParams(params);
+                    savePhone.setVisibility(View.VISIBLE);
+                    newPhone.setVisibility(View.VISIBLE);
+                    editPhone.setImageResource(R.drawable.ic_baseline_close_24);
+                    isEditing = true;
+                } else {
+                    newPhone.setText("");
+                    savePhone.setVisibility(View.INVISIBLE);
+                    newPhone.setVisibility(View.INVISIBLE);
+                    LayoutParams params = phoneLayout.getLayoutParams();
+                    params.height = 250;
+                    phoneLayout.setLayoutParams(params);
+                    editPhone.setImageResource(R.drawable.ic_baseline_edit_24);
+                    enableEditing();
+                    isEditing = false;
+                }
             }
         });
         //username saving
         savePhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!newPhone.getText().toString().equals("")) {
+                if (!newPhone.getText().toString().equals("")) {
                     String newPhoneNo = newPhone.getText().toString();
-                    if(isValidPhone(newPhoneNo)==true) {
+                    if (isValidPhone(newPhoneNo) == true) {
                         HomeSection.currentUser.setPhoneNo(newPhoneNo);
                         currentPhone.setText(HomeSection.currentUser.getPhoneNo());
                         newPhone.setText("");
-
-
-                    }
-                    else {
-                        Toast.makeText(getApplicationContext(), "Please enter valid phone", Toast.LENGTH_SHORT).show();
+                        savePhone.setVisibility(View.INVISIBLE);
+                        newPhone.setVisibility(View.INVISIBLE);
+                        LayoutParams params = phoneLayout.getLayoutParams();
+                        params.height = 250;
+                        phoneLayout.setLayoutParams(params);
+                        editPhone.setImageResource(R.drawable.ic_baseline_edit_24);
+                        isEditing = false;
+                        enableEditing();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Please enter valid phone No", Toast.LENGTH_SHORT).show();
                         newPhone.setText("");
                     }
-                }
-                else {
+                } else {
                     currentPhone.setText(HomeSection.currentUser.getPhoneNo());
+                    Toast.makeText(getApplicationContext(), "Please enter new valid phone No", Toast.LENGTH_SHORT).show();
+                    newPhone.setText("");
                 }
-                savePhone.setVisibility(View.INVISIBLE);
-                newPhone.setVisibility(View.INVISIBLE);
-                LayoutParams params = phoneLayout.getLayoutParams();
-                params.height = 250;
-                phoneLayout.setLayoutParams(params);
+
 
             }
         });
@@ -223,32 +282,56 @@ public class SettingsSection extends AppCompatActivity {
         editPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (isEditing == false) {
+                    preventEditing(editPass);
+                    LayoutParams params = passwordLayout.getLayoutParams();
+                    params.height = 400;
+                    passwordLayout.setLayoutParams(params);
+                    savePass.setVisibility(View.VISIBLE);
+                    newPass.setVisibility(View.VISIBLE);
+                    editPass.setImageResource(R.drawable.ic_baseline_close_24);
+                    isEditing = true;
+                } else {
+                    newPass.setText("");
+                    savePass.setVisibility(View.INVISIBLE);
+                    newPass.setVisibility(View.INVISIBLE);
+                    LayoutParams params = passwordLayout.getLayoutParams();
+                    params.height = 250;
+                    passwordLayout.setLayoutParams(params);
+                    editPass.setImageResource(R.drawable.ic_baseline_edit_24);
+                    enableEditing();
+                    isEditing = false;
+                }
 
-                LayoutParams params = passwordLayout.getLayoutParams();
-                params.height = 400;
-                passwordLayout.setLayoutParams(params);
-                savePass.setVisibility(View.VISIBLE);
-                newPass.setVisibility(View.VISIBLE);
             }
         });
         //username saving
         savePass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!newPass.getText().toString().equals("")) {
+
+                if (!newPass.getText().toString().equals("")) {
                     String newPassword = newPass.getText().toString();
-                    if(isValidPassword(newPassword)==true) {
+                    if (isValidPassword(newPassword) == true) {
                         HomeSection.currentUser.setPassword(newPassword);
                         currentPass.setText(HomeSection.currentUser.getPassword());
                         newPass.setText("");
-                    }
-                    else {
+                        savePass.setVisibility(View.INVISIBLE);
+                        newPass.setVisibility(View.INVISIBLE);
+                        LayoutParams params = passwordLayout.getLayoutParams();
+                        params.height = 250;
+                        passwordLayout.setLayoutParams(params);
+                        editPass.setImageResource(R.drawable.ic_baseline_edit_24);
+                        isEditing = false;
+                        enableEditing();
+                    } else {
                         Toast.makeText(getApplicationContext(), "min 6 characters", Toast.LENGTH_SHORT).show();
                         newPass.setText("");
                     }
-                }
-                else {
+                } else {
                     currentPass.setText(HomeSection.currentUser.getPassword());
+                    Toast.makeText(getApplicationContext(), "please enter new password", Toast.LENGTH_SHORT).show();
+                    newPass.setText("");
                 }
                 savePass.setVisibility(View.INVISIBLE);
                 newPass.setVisibility(View.INVISIBLE);
@@ -258,26 +341,10 @@ public class SettingsSection extends AppCompatActivity {
 
             }
         });
-
-
     }
 
 
 
-    private void setupToolbarAndMenu(View includer, String title, int checkedSection){
-
-        //setup Toolbar
-        TextView screenTitle = (TextView) includer.findViewById(R.id.screenTitle);
-        screenTitle.setText(title);
-        ImageView menuButton = (ImageView) includer.findViewById(R.id.menu_button);
-        menuButton.setImageResource(R.drawable.menu_icon);
-
-        //setup Navigation menu
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
-        SectionsMenu menu = new SectionsMenu(this, drawer, includer);
-        menu.initialize(checkedSection);
-        menu.EnableMenu();
-    }
 
 
     public boolean isValidEmail(String email) {
@@ -310,5 +377,18 @@ public class SettingsSection extends AppCompatActivity {
         return true;
 
     }
+    public void preventEditing(ImageButton current){
+        edit.setClickable(false);
+        editPhone.setClickable(false);
+        editEmail.setClickable(false);
+        editPass.setClickable(false);
+        current.setClickable(true);
+    }
 
+    public void enableEditing(){
+        edit.setClickable(true);
+        editPhone.setClickable(true);
+        editEmail.setClickable(true);
+        editPass.setClickable(true);
+    }
 }
