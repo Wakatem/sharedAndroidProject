@@ -4,11 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -48,71 +52,17 @@ public class DisplayTransactions extends AppCompatActivity {
         });
 
 
-        SearchView searchView = findViewById(R.id.transactionSearch);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+        ImageButton filetButton = findViewById(R.id.filter_button);
+        filetButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-
-                search = s;
-
-                if (s.length() > searchSize) {
-                    for (int i = 0; i < transactionsHandler.size(); i++) {
-                        String transactionID = String.valueOf(transactionsHandler.get(i).getTransactionID());
-                        boolean matching = true;
-                        char[] search = DisplayTransactions.search.toCharArray();
-
-                        if (search.length <= transactionID.length()) {
-                            char[] initials = getMatchingChars(DisplayTransactions.search.length(), transactionID);
-
-                            for (int j = 0; j < search.length; j++) {
-                                if (search[j] != initials[j]) {
-                                    matching = false;
-                                    break;
-                                }
-                            }
-                        }
-                        if (!matching) {
-                            Transaction t = transactionsHandler.get(i);
-                            transactionsHandler.backup.add(t);
-
-                            transactionsHandler.remove(i);
-                            break;
-                        }
-                    }
-
-                }else {
-                    for (int i=0; i< transactionsHandler.backup.size(); i--){
-                            //add back
-                            transactionsHandler.add(transactionsHandler.backup.get(i));
-                            transactionsHandler.backup.remove(i);
-                            break; //because a letter is deleted at a time, restore one transaction only then break
-
-                    }
-
-
-                }
-
-                transactionsHandler.chooseSortingMethod(false, true, false, false);
-                adapter.notifyDataSetChanged();
-                transactionsLV.invalidateViews();
-                //Toast.makeText(DisplayTransactions.this, "total: "+ String.valueOf(transactionsHandler.size()), Toast.LENGTH_SHORT).show();
-
-
-                searchSize = s.length();
-                return false;
-
-
-
+            public void onClick(View v) {
 
             }
         });
 
 
+        /*
 
         Spinner sortingOptions = findViewById(R.id.sortingOptions);
         ArrayAdapter<CharSequence> SO_adapter = ArrayAdapter.createFromResource(this, R.array.sortingOptions, android.R.layout.simple_spinner_dropdown_item);
@@ -185,16 +135,19 @@ public class DisplayTransactions extends AppCompatActivity {
 
             }
         });
+        
+         */
 
     }
 
 
-    private void setupToolbar(View includer, String title) {
-        Toolbar toolbar = (Toolbar) includer.findViewById(R.id.app_toolbar);
-        TextView screenTitle = (TextView) includer.findViewById(R.id.screenTitle);
-        ImageView backButton = (ImageView) includer.findViewById(R.id.menu_button);
 
+
+    private void setupToolbar(View includer, String title) {
+        TextView screenTitle = (TextView) includer.findViewById(R.id.screenTitle);
         screenTitle.setText(title);
+
+        ImageView backButton = (ImageView) includer.findViewById(R.id.menu_button);
         backButton.setImageResource(R.drawable.back_icon);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -202,10 +155,18 @@ public class DisplayTransactions extends AppCompatActivity {
                 finish();
             }
         });
+
     }
 
 
     public char[] getMatchingChars(int size, String ID) {
         return ID.substring(0, size).toCharArray();
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.filter_transactions, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 }

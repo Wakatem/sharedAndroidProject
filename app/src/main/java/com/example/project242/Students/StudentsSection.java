@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.project242.MonetaryRates.PagerAdapter;
 import com.example.project242.R;
@@ -23,7 +24,6 @@ import java.util.ArrayList;
 
 public class StudentsSection extends AppCompatActivity {
 
-    private ViewPager2 pager;
     private ImageView addStudentButton;
 
     @Override
@@ -31,18 +31,14 @@ public class StudentsSection extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_students);
 
-        //setup Navigation menu
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
-        SectionsMenu menu = new SectionsMenu(this, drawer);
-        menu.initialize("Boom");
-        menu.setToolbarTitle("Students");
-        menu.setOptionSelectedListener();
+        View includer = findViewById(R.id.includer);
+        setupToolbarAndMenu(includer, "Students");
 
-        //setup tabs
-        setupTabs();
+        ViewPager2 pager = findViewById(R.id.pager);
+        setupTabs(pager);
+
 
         addStudentButton = findViewById(R.id.addStudentButton);
-
         addStudentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,11 +46,28 @@ public class StudentsSection extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+    }
+
+
+    private void setupToolbarAndMenu(View includer, String title){
+
+        //setup Toolbar
+        TextView screenTitle = (TextView) includer.findViewById(R.id.screenTitle);
+        screenTitle.setText(title);
+        ImageView menuButton = (ImageView) includer.findViewById(R.id.menu_button);
+        menuButton.setImageResource(R.drawable.menu_icon);
+
+        //setup Navigation menu
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
+        SectionsMenu menu = new SectionsMenu(this, drawer, includer);
+        menu.initialize();
+        menu.EnableMenu();
     }
 
 
 
-    private void setupTabs(){
+    private void setupTabs(ViewPager2 pager){
         //link viewpager with pager adapter
         pager = findViewById(R.id.activity_main_viewPager2_1);
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager(), getLifecycle());

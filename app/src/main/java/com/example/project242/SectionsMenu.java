@@ -30,49 +30,28 @@ public class SectionsMenu {
 
     private DrawerLayout drawer;
     private View includer;
-    private TextView screenTitle;
     private ImageView menuButton;
-    private Toolbar toolbar;
     private NavigationView navView;
     private final Activity activity;
-    //private Button button1;
 
 
-    public SectionsMenu(Activity activity, DrawerLayout activityDrawer) {
+    public SectionsMenu(Activity activity, DrawerLayout activityDrawer, View includer) {
         //provided layout must match the layout the provided activity uses
         this.drawer = activityDrawer;
         this.activity = activity;
-        includer = drawer.findViewById(R.id.includer);
+        this.includer = includer;
 
 
     }
 
     public void initialize() {
-        toolbar     = (Toolbar)   includer.findViewById(R.id.app_toolbar);
-        screenTitle = (TextView)  includer.findViewById(R.id.screenTitle);
         menuButton  = (ImageView) includer.findViewById(R.id.menu_button);
-
         navView = (NavigationView) drawer.findViewById(R.id.navigation_view);
-
     }
 
 
-    public void initialize(String boom) {
-        toolbar     = (Toolbar)   drawer.findViewById(R.id.app_toolbar);
-        screenTitle = (TextView)  drawer.findViewById(R.id.screenTitle);
-        menuButton  = (ImageView) drawer.findViewById(R.id.menu_button);
 
-        navView = (NavigationView) drawer.findViewById(R.id.navigation_view);
-
-    }
-
-    public void setToolbarTitle(String title) {
-
-        screenTitle.setText(title);
-    }
-
-
-    public void setOptionSelectedListener() {
+    public void EnableMenu() {
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

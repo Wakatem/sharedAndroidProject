@@ -175,8 +175,6 @@ public class CentralJSON {
 
 
 
-
-
     public static TransactionsHandler parseTransactions(){
         TransactionsHandler list = new TransactionsHandler();
 

@@ -106,11 +106,10 @@ public class RegisterStudentActivity extends AppCompatActivity {
 
 
     private void setupToolbar(View includer, String title) {
-        Toolbar toolbar = (Toolbar) includer.findViewById(R.id.app_toolbar);
         TextView screenTitle = (TextView) includer.findViewById(R.id.screenTitle);
-        ImageView backButton = (ImageView) includer.findViewById(R.id.menu_button);
-
         screenTitle.setText(title);
+
+        ImageView backButton = (ImageView) includer.findViewById(R.id.menu_button);
         backButton.setImageResource(R.drawable.back_icon);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,5 +117,7 @@ public class RegisterStudentActivity extends AppCompatActivity {
                 finish();
             }
         });
+
     }
+
 }

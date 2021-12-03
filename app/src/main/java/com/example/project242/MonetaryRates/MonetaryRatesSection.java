@@ -6,6 +6,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.project242.R;
 import com.example.project242.SectionsMenu;
@@ -14,28 +17,38 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 public class MonetaryRatesSection extends AppCompatActivity {
 
-    private ViewPager2 pager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monetary_rates);
 
-        //setup Navigation menu
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
-        SectionsMenu menu = new SectionsMenu(this, drawer);
-        menu.initialize();
-        menu.setToolbarTitle("Monetary Rates");
-        menu.setOptionSelectedListener();
+        View includer = findViewById(R.id.includer);
+        setupToolbarAndMenu(includer, "Monetary Rates");
 
-        //setup tabs
-        setupTabs();
+        ViewPager2 pager = findViewById(R.id.pager);
+        setupTabs(pager);
 
 
     }
 
+    private void setupToolbarAndMenu(View includer, String title){
 
-    private void setupTabs(){
+        //setup Toolbar
+        TextView screenTitle = (TextView) includer.findViewById(R.id.screenTitle);
+        screenTitle.setText(title);
+        ImageView menuButton = (ImageView) includer.findViewById(R.id.menu_button);
+        menuButton.setImageResource(R.drawable.menu_icon);
+
+        //setup Navigation menu
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
+        SectionsMenu menu = new SectionsMenu(this, drawer, includer);
+        menu.initialize();
+        menu.EnableMenu();
+    }
+
+
+    private void setupTabs(ViewPager2 pager){
         //link viewpager with pager adapter
         pager = findViewById(R.id.pager);
         PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), getLifecycle());

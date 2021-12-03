@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,12 +43,8 @@ public class HomeSection extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        //setup Navigation menu
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
-        SectionsMenu menu = new SectionsMenu(this, drawer);
-        menu.initialize();
-        menu.setToolbarTitle("Home");
-        menu.setOptionSelectedListener();
+        View includer = findViewById(R.id.includer);
+        setupToolbarAndMenu(includer, "Home");
 
 
 
@@ -83,4 +80,21 @@ public class HomeSection extends AppCompatActivity {
             }
         }
     }
+
+
+    private void setupToolbarAndMenu(View includer, String title){
+
+        //setup Toolbar
+        TextView screenTitle = (TextView) includer.findViewById(R.id.screenTitle);
+        screenTitle.setText(title);
+        ImageView menuButton = (ImageView) includer.findViewById(R.id.menu_button);
+        menuButton.setImageResource(R.drawable.menu_icon);
+
+        //setup Navigation menu
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
+        SectionsMenu menu = new SectionsMenu(this, drawer, includer);
+        menu.initialize();
+        menu.EnableMenu();
+    }
+
 }
