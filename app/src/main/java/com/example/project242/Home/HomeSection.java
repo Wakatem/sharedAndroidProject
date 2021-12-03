@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.example.project242.R;
 import com.example.project242.Students.RegisterStudentActivity;
 import com.example.project242.Students.StudentsSection;
+import com.example.project242.general.DataContainer;
 import com.example.project242.general.SectionsMenu;
 
 
@@ -46,8 +47,8 @@ public class HomeSection extends AppCompatActivity {
 
 
 
-        allstudents.setText(String.valueOf(allStudentsArrayList.size()));
-        currentStudents.setText(String.valueOf(currentStudentsArrayList.size()));
+        allstudents.setText(String.valueOf(DataContainer.allStudentsArrayList.size()));
+        currentStudents.setText(String.valueOf(DataContainer.currentStudentsArrayList.size()));
 
         box1.setOnClickListener(new View.OnClickListener() {
             @Override
