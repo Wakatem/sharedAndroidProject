@@ -31,7 +31,6 @@ public class SectionsMenu {
 
     private DrawerLayout drawer;
     private View toolbarIncluder;
-    private View navView_includer;
     private ImageView menuButton;
     private NavigationView navView;
     private final Activity activity;
@@ -49,9 +48,7 @@ public class SectionsMenu {
     public void initialize(int checkedSection) {
         menuButton  = (ImageView) toolbarIncluder.findViewById(R.id.menu_button);
 
-        navView_includer = drawer.findViewById(R.id.navigationView_includer);
-        navView = (NavigationView) navView_includer.findViewById(R.id.navigation_view);
-
+        navView = (NavigationView) drawer.findViewById(R.id.navigation_view);
         navView.getMenu().getItem(checkedSection).setChecked(true);
     }
 
