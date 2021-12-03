@@ -9,6 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Project242">
+        <service android:name=".DataContainer" android:stopWithTask="true"/>
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
         <activity
             android:name=".Students.RegisterStudentActivity"
             android:exported="true" />
@@ -29,9 +33,6 @@
             android:exported="false" />
         <activity
             android:name=".MonetaryRates.MonetaryRatesSection"
-            android:exported="false" />
-        <activity
-            android:name=".Students.CheckInActivity"
             android:exported="false" />
         <activity
             android:name=".Home.HomeSection"
