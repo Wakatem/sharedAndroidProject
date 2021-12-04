@@ -31,7 +31,7 @@ import java.util.Date;
 
 public class CentralJSON {
 
-    private static JSONObject root;
+    public static JSONObject root;
 
     public CentralJSON() {
     }
@@ -257,56 +257,42 @@ public class CentralJSON {
     }
 
 
-    public static ArrayList<Student> parseAllStudents() {
-        ArrayList<Student> list = new ArrayList<>();
+    public static ArrayList<Student>[] parseStudentsLists() {
+        ArrayList<Student> allStudentsList = new ArrayList<>();
+        ArrayList<Student> currentStudentsList = new ArrayList<>();
 
         try {
             JSONObject Students = root.getJSONObject("Students");
-            JSONArray studentsJSONArray = Students.getJSONArray("All Students");
+            JSONArray allStudentsJSONArray = Students.getJSONArray("All Students");
 
-            for (int i = 0; i < studentsJSONArray.length(); ++i) {
-                JSONObject studentDetails = studentsJSONArray.getJSONObject(i);
+            for (int i = 0; i < allStudentsJSONArray.length(); ++i) {
+                JSONObject studentDetails = allStudentsJSONArray.getJSONObject(i);
 
-                list.add(new Student());
-                list.get(i).setStudentID(studentDetails.getInt("ID"));
-                list.get(i).setStudentName(studentDetails.getString("Name"));
-                list.get(i).setStudentDOB(studentDetails.getString("DOB"));
-                list.get(i).setStudentGender(studentDetails.getString("Gender"));
-                list.get(i).setGuardian(parseStudentGuardian(studentDetails));
-            }
+                allStudentsList.add(new Student());
+                allStudentsList.get(i).setStudentID(studentDetails.getInt("ID"));
+                allStudentsList.get(i).setStudentName(studentDetails.getString("Name"));
+                allStudentsList.get(i).setStudentDOB(studentDetails.getString("DOB"));
+                allStudentsList.get(i).setStudentGender(studentDetails.getString("Gender"));
+                allStudentsList.get(i).setGuardian(null);
+
+                if (i < Students.getJSONArray("Current Students").length()){
+                    studentDetails = Students.getJSONArray("Current Students").getJSONObject(i);
+                    currentStudentsList.add(new Student());
+                    currentStudentsList.get(i).setStudentID(studentDetails.getInt("ID"));
+                    currentStudentsList.get(i).setStudentName(studentDetails.getString("Name"));
+                    currentStudentsList.get(i).setStudentDOB(studentDetails.getString("DOB"));
+                    currentStudentsList.get(i).setStudentGender(studentDetails.getString("Gender"));
+                    currentStudentsList.get(i).setGuardian(null);
+                }
+
+
+            }//for
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        return list;
+        return new ArrayList[]{allStudentsList, currentStudentsList};
     }
-
-
-    public static ArrayList<Student> parseCurrentStudents() {
-        ArrayList<Student> list = new ArrayList<>();
-
-        try {
-            JSONObject Students = root.getJSONObject("Students");
-            JSONArray studentsJSONArray = Students.getJSONArray("Current Students");
-
-            for (int i = 0; i < studentsJSONArray.length(); ++i) {
-                JSONObject studentDetails = studentsJSONArray.getJSONObject(i);
-
-                list.add(new Student());
-                list.get(i).setStudentID(studentDetails.getInt("ID"));
-                list.get(i).setStudentName(studentDetails.getString("Name"));
-                list.get(i).setStudentDOB(studentDetails.getString("DOB"));
-                list.get(i).setStudentGender(studentDetails.getString("Gender"));
-                list.get(i).setGuardian(parseStudentGuardian(studentDetails));
-                list.get(i).setCheckedInFlag(true);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return list;
-    }
-
 
 
 

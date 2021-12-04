@@ -3,6 +3,7 @@ package com.example.project242.Students;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import androidx.fragment.app.FragmentManager;
 import com.example.project242.Home.HomeSection;
 import com.example.project242.R;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class AdapterAllStudents extends ArrayAdapter {
@@ -92,7 +94,7 @@ public class AdapterAllStudents extends ArrayAdapter {
             public void onClick(View view) {
                 Intent intent = new Intent(context, StudentDetailsActivity.class);
                 intent.putExtra("Student", student);
-                intent.putExtra("Guardian", student.getGuardian());
+                intent.putExtra("Guardian", (Parcelable) student.getGuardian());
                 context.startActivity(intent);
             }
         });

@@ -82,15 +82,13 @@ public class LoginActivity extends AppCompatActivity {
                 costsHandler              = CentralJSON.parseCosts();
                 discountsHandler          = CentralJSON.parseDiscounts();
                 transactionsHandler       = CentralJSON.parseTransactions();
-                allStudentsArrayList      = CentralJSON.parseAllStudents();
-                currentStudentsArrayList  = CentralJSON.parseCurrentStudents();
+                allStudentsArrayList      = CentralJSON.parseStudentsLists()[0];
+                currentStudentsArrayList  = CentralJSON.parseStudentsLists()[1];
 
                 //current user credentials
                 username = findViewById(R.id.username1);
                 password = findViewById(R.id.password);
 
-                //String userName = "Mcmillan586";
-                //String passWord = "Henry1217";
 
                 currentUser = CentralJSON.findCurrentUser(username.getText().toString(),password.getText().toString());
 
