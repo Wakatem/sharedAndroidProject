@@ -22,38 +22,31 @@ import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
 
-    volatile boolean dataLoaded = false;
+    private BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
 
-    private TextView username;
-    private TextView password;
-    private CostsHandler costsHandler;
-    private DiscountsHandler discountsHandler;
-    private TransactionsHandler transactionsHandler;
-    private ArrayList<Student> allStudentsArrayList;
-    private ArrayList<Student> currentStudentsArrayList;
-    private User currentUser;
+            boolean guardiansSet = intent.getBooleanExtra("dataLoaded", false);
+            if (guardiansSet) {
+                //start home screen
+                startActivity(new Intent(LoginActivity.this, HomeSection.class));
+            }
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        loadData();
-
-        while (!dataLoaded){
-            //wait
-            //loading screen here
-        }
-
-
         Intent intent = new Intent(this, DataContainer.class);
-        intent.putExtra("costsHandler", costsHandler);
-        intent.putExtra("discountsHandler", discountsHandler);
-        intent.putExtra("transactionsHandler", transactionsHandler);
-        intent.putExtra("allStudentsArrayList", allStudentsArrayList);
-        intent.putExtra("currentStudentsArrayList", currentStudentsArrayList);
-        intent.putExtra("currentUser", currentUser);
 
+        //current user credentials
+        TextView username = findViewById(R.id.username1);
+        TextView password = findViewById(R.id.password);
+        intent.putExtra("username", username.getText().toString());
+        intent.putExtra("password", password.getText().toString());
 
         new Thread(new Runnable() {
             @Override
@@ -64,77 +57,13 @@ public class LoginActivity extends AppCompatActivity {
         }).start();
 
 
-
-
-
-
-
-
     }
 
-
-    private void loadData(){
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                //load database
-                CentralJSON.loadJSON(LoginActivity.this);
-
-
-                //load data structures
-                costsHandler              = CentralJSON.parseCosts();
-                discountsHandler          = CentralJSON.parseDiscounts();
-                transactionsHandler       = CentralJSON.parseTransactions();
-                allStudentsArrayList      = CentralJSON.parseStudentsLists()[0];
-                currentStudentsArrayList  = CentralJSON.parseStudentsLists()[1];
-
-                //current user credentials
-                username = findViewById(R.id.username1);
-                password = findViewById(R.id.password);
-
-
-                currentUser = CentralJSON.findCurrentUser(username.getText().toString(),password.getText().toString());
-
-
-                // Synchronise checkedInFlag of allStudentsArrayList with currentStudentsArrayList
-                for (int i = 0; i <  allStudentsArrayList.size(); ++i) {
-                    for (int j = 0; j < currentStudentsArrayList.size(); ++j) {
-                        if ( allStudentsArrayList.get(i).getStudentID() == currentStudentsArrayList.get(j).getStudentID()) {
-                            allStudentsArrayList.get(i).setCheckedInFlag(currentStudentsArrayList.get(j).getCheckedInFlag());
-                            break;
-                        }
-                    }
-                }
-
-
-                    dataLoaded = true;
-
-
-            }
-
-        }).start();
-
-    }
-
-
-    private BroadcastReceiver receiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-
-            boolean guardiansSet = intent.getBooleanExtra("guardiansSet", false);
-            if (guardiansSet){
-                //start home screen
-                startActivity(new Intent(LoginActivity.this, HomeSection.class));
-            }
-
-        }
-    };
 
     @Override
     protected void onResume() {
         super.onResume();
-        LocalBroadcastManager.getInstance(this).registerReceiver(receiver, new IntentFilter("setGuardiansResult"));
+        LocalBroadcastManager.getInstance(this).registerReceiver(receiver, new IntentFilter("LoadData"));
     }
 
     @Override
@@ -145,4 +74,5 @@ public class LoginActivity extends AppCompatActivity {
         //terminate login activity
         finish();
     }
+
 }

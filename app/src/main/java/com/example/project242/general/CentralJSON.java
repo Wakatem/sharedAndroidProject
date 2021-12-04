@@ -273,7 +273,7 @@ public class CentralJSON {
                 allStudentsList.get(i).setStudentName(studentDetails.getString("Name"));
                 allStudentsList.get(i).setStudentDOB(studentDetails.getString("DOB"));
                 allStudentsList.get(i).setStudentGender(studentDetails.getString("Gender"));
-                allStudentsList.get(i).setGuardian(null);
+                allStudentsList.get(i).setGuardian(parseStudentGuardian(studentDetails));
 
                 if (i < Students.getJSONArray("Current Students").length()){
                     studentDetails = Students.getJSONArray("Current Students").getJSONObject(i);
@@ -282,7 +282,7 @@ public class CentralJSON {
                     currentStudentsList.get(i).setStudentName(studentDetails.getString("Name"));
                     currentStudentsList.get(i).setStudentDOB(studentDetails.getString("DOB"));
                     currentStudentsList.get(i).setStudentGender(studentDetails.getString("Gender"));
-                    currentStudentsList.get(i).setGuardian(null);
+                    currentStudentsList.get(i).setGuardian(parseStudentGuardian(studentDetails));
                 }
 
 

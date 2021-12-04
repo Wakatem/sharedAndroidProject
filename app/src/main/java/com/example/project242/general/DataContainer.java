@@ -7,8 +7,10 @@ import android.util.Log;
 
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import com.example.project242.LoginActivity;
 import com.example.project242.MonetaryRates.Costs.CostsHandler;
 import com.example.project242.MonetaryRates.Discount.DiscountsHandler;
+import com.example.project242.R;
 import com.example.project242.Students.Guardian;
 import com.example.project242.Students.Student;
 import com.example.project242.Transactions.TransactionsHandler;
@@ -21,6 +23,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class DataContainer extends Service {
+
+    private String username;
+    private String password;
 
     public static CostsHandler costsHandler = new CostsHandler();
     public static DiscountsHandler discountsHandler = new DiscountsHandler();
@@ -36,18 +41,13 @@ public class DataContainer extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        //retrieve passed objects
-        retrieveList(costsHandler, intent, "costsHandler");
-        retrieveList(discountsHandler, intent, "discountsHandler");
-        retrieveList(transactionsHandler, intent, "transactionsHandler");
-        retrieveList(allStudentsArrayList, intent, "allStudentsArrayList");
-        retrieveList(currentStudentsArrayList, intent, "currentStudentsArrayList");
-        currentUser = (User) intent.getSerializableExtra("currentUser");
+        //retrieve credentials
+        username = intent.getStringExtra("username");
+        password = intent.getStringExtra("password");
 
-        //set guardians here as the chain of serialized/paracled objects affects data
-        boolean guardiansSet = setGuardians();
-        Intent message = new Intent("setGuardiansResult");
-        message.putExtra("guardiansSet", guardiansSet);
+        boolean dataLoaded = LoadData();
+        Intent message = new Intent("LoadData");
+        message.putExtra("dataLoaded", dataLoaded);
         LocalBroadcastManager.getInstance(this).sendBroadcastSync(message);
 
 
@@ -61,46 +61,45 @@ public class DataContainer extends Service {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
-    private <T extends ArrayList> void retrieveList(T t, Intent intent, String name){
-        ArrayList list = (ArrayList) intent.getSerializableExtra(name);
-        for (int i=0; i < list.size(); i++) {
-            t.add(0, list.get(i));
-        }
-
-    }
 
 
-    public boolean setGuardians(){
-        JSONObject Students;
-        JSONArray studentsJSONArray;
-        JSONObject studentDetails;
-        Guardian guardian;
+    private boolean LoadData(){
 
         try {
-            Students = CentralJSON.root.getJSONObject("Students");
-            studentsJSONArray = Students.getJSONArray("All Students");
+            //load database
+            CentralJSON.loadJSON(this);
 
-            for (int i = 0; i < studentsJSONArray.length(); ++i) {
-                studentDetails = studentsJSONArray.getJSONObject(i);
-                guardian = CentralJSON.parseStudentGuardian(studentDetails);
-                allStudentsArrayList.get(i).setGuardian(guardian);
 
-                //load current students list simultaneously
-                if (i < currentStudentsArrayList.size()){
-                    studentDetails = Students.getJSONArray("Current Students").getJSONObject(i);
-                    guardian = CentralJSON.parseStudentGuardian(studentDetails);
-                    currentStudentsArrayList.get(i).setGuardian(guardian);
+            //load data structures
+            costsHandler              = CentralJSON.parseCosts();
+            discountsHandler          = CentralJSON.parseDiscounts();
+            transactionsHandler       = CentralJSON.parseTransactions();
+            allStudentsArrayList      = CentralJSON.parseStudentsLists()[0];
+            currentStudentsArrayList  = CentralJSON.parseStudentsLists()[1];
+
+            currentUser = CentralJSON.findCurrentUser(username,password);
+
+
+            // Synchronise checkedInFlag of allStudentsArrayList with currentStudentsArrayList
+            for (int i = 0; i <  allStudentsArrayList.size(); ++i) {
+                for (int j = 0; j < currentStudentsArrayList.size(); ++j) {
+                    if ( allStudentsArrayList.get(i).getStudentID() == currentStudentsArrayList.get(j).getStudentID()) {
+                        allStudentsArrayList.get(i).setCheckedInFlag(currentStudentsArrayList.get(j).getCheckedInFlag());
+                        break;
+                    }
                 }
-
             }
 
-        } catch (JSONException e) {
+
+        }catch (Exception e){
             e.printStackTrace();
             return false;
         }
 
+
         return true;
     }
+
 
 
 }
