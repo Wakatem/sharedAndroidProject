@@ -2,6 +2,7 @@ package com.example.project242.Students;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -19,6 +20,7 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 public class StudentsSection extends AppCompatActivity {
 
+    private DrawerLayout drawer;
     private ImageView addStudentButton;
 
     @Override
@@ -44,7 +46,7 @@ public class StudentsSection extends AppCompatActivity {
     }
 
 
-    private void setupToolbarAndMenu(String title, int checkedSection){
+    private void setupToolbarAndMenu(String title, int checkedSection) {
 
         //setup Toolbar
         View toolbarIncluder = findViewById(R.id.toolbar_includer);
@@ -54,7 +56,7 @@ public class StudentsSection extends AppCompatActivity {
         menuButton.setImageResource(R.drawable.menu_icon);
 
         //setup Navigation menu
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
+        drawer = (DrawerLayout) findViewById(R.id.drawer);
         SectionsMenu menu = new SectionsMenu(this, drawer, toolbarIncluder);
         menu.initialize(checkedSection);
         menu.EnableMenu();
@@ -92,4 +94,12 @@ public class StudentsSection extends AppCompatActivity {
         pager.setCurrentItem(pos);
     }
 
+
+    @Override
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START))
+            drawer.closeDrawer(GravityCompat.START);
+        else
+            super.onBackPressed();
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.project242.Home;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
@@ -24,12 +25,13 @@ import com.example.project242.general.SectionsMenu;
 
 public class HomeSection extends AppCompatActivity {
 
-    TextView allstudents;
-    TextView currentStudents;
-    FrameLayout box1;
-    FrameLayout box2;
-    FrameLayout box3;
-    FrameLayout box4;
+    private TextView allstudents;
+    private TextView currentStudents;
+    private FrameLayout box2;
+    private FrameLayout box1;
+    private FrameLayout box3;
+    private FrameLayout box4;
+    private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +40,12 @@ public class HomeSection extends AppCompatActivity {
 
         setupToolbarAndMenu("Home", 0);
 
-        allstudents =  findViewById(R.id.InNo);
+        allstudents = findViewById(R.id.InNo);
         currentStudents = findViewById(R.id.OutNo);
         box1 = findViewById(R.id.box1);
         box2 = findViewById(R.id.box2);
         box3 = findViewById(R.id.box3);
         box4 = findViewById(R.id.box4);
-
 
 
         allstudents.setText(String.valueOf(DataContainer.allStudentsArrayList.size()));
@@ -59,7 +60,6 @@ public class HomeSection extends AppCompatActivity {
         });
 
 
-
         box2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,7 +72,7 @@ public class HomeSection extends AppCompatActivity {
     }
 
 
-    private void setupToolbarAndMenu(String title, int checkedSection){
+    private void setupToolbarAndMenu(String title, int checkedSection) {
 
         //setup Toolbar
         View toolbarIncluder = findViewById(R.id.toolbar_includer);
@@ -82,10 +82,18 @@ public class HomeSection extends AppCompatActivity {
         menuButton.setImageResource(R.drawable.menu_icon);
 
         //setup Navigation menu
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
+        drawer = (DrawerLayout) findViewById(R.id.drawer);
         SectionsMenu menu = new SectionsMenu(this, drawer, toolbarIncluder);
         menu.initialize(checkedSection);
         menu.EnableMenu();
     }
 
+
+    @Override
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START))
+            drawer.closeDrawer(GravityCompat.START);
+        else
+            super.onBackPressed();
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.project242.Transactions;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
@@ -16,7 +17,9 @@ import com.example.project242.general.SectionsMenu;
 
 public class TransactionsSection extends AppCompatActivity {
 
-    ImageButton button1;
+    private ImageButton button1;
+    private DrawerLayout drawer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +49,7 @@ public class TransactionsSection extends AppCompatActivity {
     }
 
 
-    private void setupToolbarAndMenu(String title, int checkedSection){
+    private void setupToolbarAndMenu(String title, int checkedSection) {
 
         //setup Toolbar
         View toolbarIncluder = findViewById(R.id.toolbar_includer);
@@ -56,11 +59,19 @@ public class TransactionsSection extends AppCompatActivity {
         menuButton.setImageResource(R.drawable.menu_icon);
 
         //setup Navigation menu
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
+        drawer = (DrawerLayout) findViewById(R.id.drawer);
         SectionsMenu menu = new SectionsMenu(this, drawer, toolbarIncluder);
         menu.initialize(checkedSection);
         menu.EnableMenu();
     }
 
 
+
+    @Override
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START))
+            drawer.closeDrawer(GravityCompat.START);
+        else
+            super.onBackPressed();
+    }
 }

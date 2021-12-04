@@ -46,12 +46,11 @@ public class SectionsMenu {
     }
 
     public void initialize(int checkedSection) {
-        menuButton  = (ImageView) toolbarIncluder.findViewById(R.id.menu_button);
+        menuButton = (ImageView) toolbarIncluder.findViewById(R.id.menu_button);
 
         navView = (NavigationView) drawer.findViewById(R.id.navigation_view);
         navView.getMenu().getItem(checkedSection).setChecked(true);
     }
-
 
 
     public void EnableMenu() {
@@ -67,41 +66,46 @@ public class SectionsMenu {
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (activity.getClass() == activity.getClass()){
-                    drawer.closeDrawer(GravityCompat.START);
-                    return false;
-                }
 
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.HomeSection:
+                        if (!(activity instanceof HomeSection))
                         activity.startActivity(new Intent(activity, HomeSection.class));
+                        activity.finish();
                         break;
 
                     case R.id.StudentsSection:
+                        if (!(activity instanceof StudentsSection))
                         activity.startActivity(new Intent(activity, StudentsSection.class));
+                        activity.finish();
                         break;
 
                     case R.id.TransactionsSection:
+                        if (!(activity instanceof TransactionsSection))
                         activity.startActivity(new Intent(activity, TransactionsSection.class));
+                        activity.finish();
                         break;
 
                     case R.id.MonetaryRatesSection:
+                        if (!(activity instanceof MonetaryRatesSection))
                         activity.startActivity(new Intent(activity, MonetaryRatesSection.class));
+                        activity.finish();
                         break;
 
                     case R.id.SettingsSection:
+                        if (!(activity instanceof SettingsSection))
                         activity.startActivity(new Intent(activity, SettingsSection.class));
+                        activity.finish();
                         break;
 
                 }
-
-                //activity.finish();
 
                 drawer.closeDrawer(GravityCompat.START);
                 return false;
             }
         });
     }
+
 
 
 }

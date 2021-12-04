@@ -2,7 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <group android:id="@+id/categories">
+
+    <group android:id="@+id/categories"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/HomeSection"
             android:title="Home"
@@ -34,7 +36,8 @@
     <group android:id="@+id/other">
         <item
             android:id="@+id/logoutButton"
-            android:title="Log out" />
+            android:title="Log out"
+            android:icon="@drawable/logout_icon"/>
     </group>
 
 </menu>

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import 	android.view.ViewGroup.LayoutParams;
 
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
@@ -24,6 +25,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SettingsSection extends AppCompatActivity {
+
+    private DrawerLayout drawer;
 
     //username changes
     TextView username;
@@ -345,7 +348,7 @@ public class SettingsSection extends AppCompatActivity {
     }
 
 
-    private void setupToolbarAndMenu(String title, int checkedSection){
+    private void setupToolbarAndMenu(String title, int checkedSection) {
 
         //setup Toolbar
         View toolbarIncluder = findViewById(R.id.toolbar_includer);
@@ -355,7 +358,7 @@ public class SettingsSection extends AppCompatActivity {
         menuButton.setImageResource(R.drawable.menu_icon);
 
         //setup Navigation menu
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
+        drawer = (DrawerLayout) findViewById(R.id.drawer);
         SectionsMenu menu = new SectionsMenu(this, drawer, toolbarIncluder);
         menu.initialize(checkedSection);
         menu.EnableMenu();
@@ -406,5 +409,15 @@ public class SettingsSection extends AppCompatActivity {
         editPhone.setClickable(true);
         editEmail.setClickable(true);
         editPass.setClickable(true);
+    }
+
+
+
+    @Override
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START))
+            drawer.closeDrawer(GravityCompat.START);
+        else
+            super.onBackPressed();
     }
 }
