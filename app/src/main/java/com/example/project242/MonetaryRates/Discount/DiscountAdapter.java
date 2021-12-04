@@ -40,9 +40,6 @@ public class DiscountAdapter extends ArrayAdapter<Discount> {
         TextView rupee = listItem.findViewById(R.id.percentage);
         rupee.setText(String.valueOf(list.get(position).getPercent()));
 
-        Switch aswitch = listItem.findViewById(R.id.aswitch);
-        aswitch.setChecked(list.get(position).getaSwitch());
-
         ImageView close = listItem.findViewById(R.id.closedown);
 
         close.setOnClickListener(new View.OnClickListener() {

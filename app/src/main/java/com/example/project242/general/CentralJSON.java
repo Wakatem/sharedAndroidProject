@@ -135,10 +135,7 @@ public class CentralJSON {
 
 
                 //load current students list
-                if (i < currentStudentsSize){
-                    dataRemaining = true;
-                    parseCurrentStudents(i, currentStudentsJSONArray);
-                }
+
 
 
 
@@ -209,10 +206,8 @@ public class CentralJSON {
                 String discounttype = discount.getString("Title");
                 String percentage1 = discount.getString("Percentage");
                 int percentage= Integer.valueOf(percentage1);
-                String switchValue = discount.getString("Active");
-                boolean switchValue1 = Boolean.valueOf(switchValue);
 
-                discountsList.add(new Discount(discounttype,percentage,switchValue1));
+                discountsList.add(new Discount(discounttype,percentage));
 
 
 
@@ -399,8 +394,8 @@ public class CentralJSON {
 
     private static PaymentMethods getPaymentMethod(String paymentString){
 
-        if (paymentString.equals("CASH"))
-            return PaymentMethods.CASH;
+        if (paymentString.equals("ONLINE_PAYMENT"))
+            return PaymentMethods.ONLINE_PAYMENT;
         else if (paymentString.equals("CHEQUE"))
             return PaymentMethods.CHEQUE;
         else

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="paymentType">
-        <item>Cash</item>
+        <item>Online Payment</item>
         <item>Cheque</item>
         <item>Bank Transfer</item>
     </string-array>

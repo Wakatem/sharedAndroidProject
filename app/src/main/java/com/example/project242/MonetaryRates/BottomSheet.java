@@ -55,7 +55,6 @@ public class BottomSheet {
     private TextView discountType;
     private EditText discountTypeR;
     private EditText percentageR;
-    private Switch aSwitch;
     private RelativeLayout buttons;
     private Button add;
     private Button cancel;
@@ -153,7 +152,6 @@ public class BottomSheet {
         discountType = sheetDialog.findViewById(R.id.type1);
         discountTypeR = sheetDialog.findViewById(R.id.type2);
         percentageR = sheetDialog.findViewById(R.id.percentage2);
-        aSwitch = sheetDialog.findViewById(R.id.switch1);
         buttons = sheetDialog.findViewById(R.id.buttons);
         add = sheetDialog.findViewById(R.id.add);
         cancel = sheetDialog.findViewById(R.id.cancel);
@@ -259,7 +257,7 @@ public class BottomSheet {
                     Toast.makeText(context, "please enter values to continue",Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    addDiscount(discountTypeR, percentageR, aSwitch);
+                    addDiscount(discountTypeR, percentageR);
                     sheetDialog.dismiss();
                 }
 
@@ -290,14 +288,14 @@ public class BottomSheet {
 
     }
 
-    public void addDiscount(EditText discountTypeR, EditText percentageR, Switch newswitch) {
+    public void addDiscount(EditText discountTypeR, EditText percentageR) {
         String name = discountTypeR.getText().toString();
         int percentage = Integer.valueOf(percentageR.getText().toString());
-        boolean switchR = newswitch.isChecked();
-        Discount newDiscount = new Discount(name, percentage, switchR);
-        discountsList.add(newDiscount);
-        DiscountsFragment.adapter.notifyDataSetChanged();
-        DiscountsFragment.discountList.invalidateViews();
+        Discount newDiscount = new Discount(name, percentage);
+            discountsList.add(newDiscount);
+
+            DiscountsFragment.adapter.notifyDataSetChanged();
+            DiscountsFragment.discountList.invalidateViews();
 
 
     }

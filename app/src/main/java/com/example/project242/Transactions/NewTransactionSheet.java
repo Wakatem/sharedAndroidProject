@@ -124,8 +124,8 @@ public class NewTransactionSheet {
         }
 
         PaymentMethods payment;
-        if (PaymentMethod.getSelectedItem().toString() == "Cash") {
-            payment = PaymentMethods.CASH;
+        if (PaymentMethod.getSelectedItem().toString() == "Online Payment") {
+            payment = PaymentMethods.ONLINE_PAYMENT;
         } else if (PaymentMethod.getSelectedItem().toString() == "Cheque") {
             payment = PaymentMethods.CHEQUE;
         } else {
@@ -155,8 +155,8 @@ public class NewTransactionSheet {
         TransactionTypes TType = TransactionTypes.INCOME;
 
         PaymentMethods payment;
-        if (PaymentMethod.getSelectedItem().toString() == "Cash") {
-            payment = PaymentMethods.CASH;
+        if (PaymentMethod.getSelectedItem().toString() == "Online Payment") {
+            payment = PaymentMethods.ONLINE_PAYMENT;
         } else if (PaymentMethod.getSelectedItem().toString() == "Cheque") {
             payment = PaymentMethods.CHEQUE;
         } else {

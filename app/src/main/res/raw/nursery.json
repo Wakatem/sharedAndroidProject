@@ -672,14 +672,12 @@
     ],
     "Discounts": [
       {
-        "Title": "Early Bird",
-        "Percentage": "20",
-        "Active": true
+        "Title": "ADCB 20% Discount",
+        "Percentage": "20"
       },
       {
         "Title": "Liv 50% Discount",
-        "Percentage": "50",
-        "Active": true
+        "Percentage": "50"
       }
     ]
   },
@@ -693,7 +691,7 @@
         "Recipient AccNumber": 739136,
         "Amount": 89588,
         "Date": "01/11/2020",
-        "PaymentMethod": "CASH"
+        "PaymentMethod": "ONLINE_PAYMENT"
       },
       {
         "transactionID": 768536097,
@@ -743,7 +741,7 @@
         "Recipient AccNumber": 739136,
         "Amount": 83600,
         "Date": "19/09/2019",
-        "PaymentMethod": "CASH"
+        "PaymentMethod": "ONLINE_PAYMENT"
       },
       {
         "transactionID": 972500223,
@@ -753,7 +751,7 @@
         "Recipient AccNumber": 739136,
         "Amount": 20802,
         "Date": "20/07/2021",
-        "PaymentMethod": "CASH"
+        "PaymentMethod": "ONLINE_PAYMENT"
       },
       {
         "transactionID": 363470246,
@@ -763,7 +761,7 @@
         "Recipient AccNumber": 739136,
         "Amount": 20845,
         "Date": "12/03/2020",
-        "PaymentMethod": "CASH"
+        "PaymentMethod": "ONLINE_PAYMENT"
       },
       {
         "transactionID": 522916778,
@@ -773,7 +771,7 @@
         "Recipient AccNumber": 739136,
         "Amount": 86857,
         "Date": "10/10/2021",
-        "PaymentMethod": "CASH"
+        "PaymentMethod": "ONLINE_PAYMENT"
       },
       {
         "transactionID": 312138417,
@@ -813,7 +811,7 @@
         "Recipient AccNumber": 739136,
         "Amount": 71991,
         "Date": "20/03/2021",
-        "PaymentMethod": "CASH"
+        "PaymentMethod": "ONLINE_PAYMENT"
       },
       {
         "transactionID": 446915723,
@@ -833,7 +831,7 @@
         "Recipient AccNumber": 739136,
         "Amount": 40519,
         "Date": "13/01/2020",
-        "PaymentMethod": "CASH"
+        "PaymentMethod": "ONLINE_PAYMENT"
       },
       {
         "transactionID": 522461110,
@@ -863,7 +861,7 @@
         "Recipient AccNumber": 739136,
         "Amount": 34631,
         "Date": "09/02/2020",
-        "PaymentMethod": "CASH"
+        "PaymentMethod": "ONLINE_PAYMENT"
       },
       {
         "transactionID": 944037493,
@@ -873,7 +871,7 @@
         "Recipient AccNumber": 739136,
         "Amount": 20762,
         "Date": "18/08/2019",
-        "PaymentMethod": "CASH"
+        "PaymentMethod": "ONLINE_PAYMENT"
       },
       {
         "transactionID": 688174706,
@@ -903,7 +901,7 @@
         "Recipient AccNumber": 739136,
         "Amount": 74490,
         "Date": "20/05/2021",
-        "PaymentMethod": "CASH"
+        "PaymentMethod": "ONLINE_PAYMENT"
       },
       {
         "transactionID": 586406942,
@@ -937,7 +935,7 @@
         "Amount": 72831,
         "Date": "22/07/2020",
         "Expense Type": "Salary",
-        "PaymentMethod": "CASH"
+        "PaymentMethod": "ONLINE_PAYMENT"
       },
       {
         "transactionID": 856704040,
@@ -948,7 +946,7 @@
         "Amount": 78852,
         "Date": "22/10/2020",
         "Expense Type": "Salary",
-        "PaymentMethod": "CASH"
+        "PaymentMethod": "ONLINE_PAYMENT"
       },
       {
         "transactionID": 142697486,
@@ -1003,7 +1001,7 @@
         "Amount": 52230,
         "Date": "08/05/2019",
         "Expense Type": "Salary",
-        "PaymentMethod": "CASH"
+        "PaymentMethod": "ONLINE_PAYMENT"
       },
       {
         "transactionID": 485795118,
@@ -1014,7 +1012,7 @@
         "Amount": 82144,
         "Date": "04/04/2020",
         "Expense Type": "Other",
-        "PaymentMethod": "CASH"
+        "PaymentMethod": "ONLINE_PAYMENT"
       },
       {
         "transactionID": 257170126,
@@ -1069,7 +1067,7 @@
         "Amount": 58765,
         "Date": "04/01/2021",
         "Expense Type": "Utility",
-        "PaymentMethod": "CASH"
+        "PaymentMethod": "ONLINE_PAYMENT"
       },
       {
         "transactionID": 964941847,
@@ -1091,7 +1089,7 @@
         "Amount": 43906,
         "Date": "21/10/2019",
         "Expense Type": "Utility",
-        "PaymentMethod": "CASH"
+        "PaymentMethod": "ONLINE_PAYMENT"
       },
       {
         "transactionID": 859282157,
@@ -1113,7 +1111,7 @@
         "Amount": 84261,
         "Date": "23/07/2020",
         "Expense Type": "Rent",
-        "PaymentMethod": "CASH"
+        "PaymentMethod": "ONLINE_PAYMENT"
       },
       {
         "transactionID": 214948492,
@@ -1157,7 +1155,7 @@
         "Amount": 58799,
         "Date": "29/10/2019",
         "Expense Type": "Rent",
-        "PaymentMethod": "CASH"
+        "PaymentMethod": "ONLINE_PAYMENT"
       }
     ]
   }

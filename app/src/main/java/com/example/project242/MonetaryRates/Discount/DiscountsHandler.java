@@ -22,9 +22,10 @@ public class DiscountsHandler extends ArrayList<Discount> {
 
     }
 
-    public void newDiscount(String discountName, int percentage, boolean switchstatus){
-        new Discount(discountName,percentage,switchstatus);
+    public void newDiscount(String discountName, int percentage){
+        new Discount(discountName,percentage);
     }
+
 
 
     }

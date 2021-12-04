@@ -18,13 +18,36 @@
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/payments"
         android:layout_below="@id/dialog_check_out_textView_student_id_1">
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cash" />
+            android:text="Online Payment"
+            android:id="@+id/onlinePayment"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cheque"
+            android:id="@+id/cheque"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bank Transfer"
+            android:id="@+id/bankTransfer"/>
 
     </RadioGroup>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/discountsAvailable"
+        android:layout_below="@+id/payments"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/amountValue"
+        android:layout_below="@+id/discountsAvailable"/>
 
 </RelativeLayout>
