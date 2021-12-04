@@ -67,55 +67,35 @@ public class SectionsMenu {
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                boolean status = false;
+                if (activity.getClass() == activity.getClass()){
+                    drawer.closeDrawer(GravityCompat.START);
+                    return false;
+                }
 
-                switch (item.getItemId()) {
+                switch (item.getItemId()){
                     case R.id.HomeSection:
-                        if (!(activity instanceof HomeSection))
-                            //destroy current activity and go back to home automatically
-                            activity.finish();
-                        status = true;
+                        activity.startActivity(new Intent(activity, HomeSection.class));
                         break;
-
 
                     case R.id.StudentsSection:
-                        if (!(activity instanceof StudentsSection)) {
-                            activity.startActivity(new Intent(activity, StudentsSection.class));
-                        }
-                        status = true;
+                        activity.startActivity(new Intent(activity, StudentsSection.class));
                         break;
-
 
                     case R.id.TransactionsSection:
-                        if (!(activity instanceof TransactionsSection)) {
-                            activity.startActivity(new Intent(activity, TransactionsSection.class));
-                        }
-                        status = true;
+                        activity.startActivity(new Intent(activity, TransactionsSection.class));
                         break;
-
 
                     case R.id.MonetaryRatesSection:
-                        if (!(activity instanceof MonetaryRatesSection)) {
-                            activity.startActivity(new Intent(activity, MonetaryRatesSection.class));
-                        }
-                        status = true;
+                        activity.startActivity(new Intent(activity, MonetaryRatesSection.class));
                         break;
 
-
-                    case R.id.Settings:
-                        if (!(activity instanceof SettingsSection)) {
-                            activity.startActivity(new Intent(activity, SettingsSection.class));
-                        }
-                        status = true;
+                    case R.id.SettingsSection:
+                        activity.startActivity(new Intent(activity, SettingsSection.class));
                         break;
 
-                }//switch
-
-                if (status == true) {
-                    if (!(activity instanceof HomeSection)) {
-                        activity.finish();
-                    }
                 }
+
+                //activity.finish();
 
                 drawer.closeDrawer(GravityCompat.START);
                 return false;

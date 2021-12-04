@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
 
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import com.example.project242.MonetaryRates.Costs.CostsHandler;
 import com.example.project242.MonetaryRates.Discount.DiscountsHandler;
 import com.example.project242.Students.Guardian;
@@ -43,7 +45,11 @@ public class DataContainer extends Service {
         currentUser = (User) intent.getSerializableExtra("currentUser");
 
         //set guardians here as the chain of serialized/paracled objects affects data
-        setGuardians();
+        boolean guardiansSet = setGuardians();
+        Intent message = new Intent("setGuardiansResult");
+        message.putExtra("guardiansSet", guardiansSet);
+        LocalBroadcastManager.getInstance(this).sendBroadcastSync(message);
+
 
         return super.onStartCommand(intent, flags, startId);
     }
@@ -64,7 +70,7 @@ public class DataContainer extends Service {
     }
 
 
-    private void setGuardians(){
+    public boolean setGuardians(){
         JSONObject Students;
         JSONArray studentsJSONArray;
         JSONObject studentDetails;
@@ -90,7 +96,11 @@ public class DataContainer extends Service {
 
         } catch (JSONException e) {
             e.printStackTrace();
+            return false;
         }
 
+        return true;
     }
+
+
 }

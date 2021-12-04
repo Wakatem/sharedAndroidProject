@@ -24,7 +24,7 @@
             android:icon="@drawable/monetary_rates_icon2"/>
 
         <item
-            android:id="@+id/Settings"
+            android:id="@+id/SettingsSection"
             android:title="Settings"
             android:icon="@drawable/settings_icon"/>
 

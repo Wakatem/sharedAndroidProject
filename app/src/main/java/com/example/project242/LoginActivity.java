@@ -1,8 +1,12 @@
 package com.example.project242;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -59,17 +63,17 @@ public class LoginActivity extends AppCompatActivity {
             }
         }).start();
 
-        //start home screen
-        startActivity(new Intent(this, HomeSection.class));
 
-        //terminate activity
-        finish();
+
+
+
+
+
 
     }
 
 
     private void loadData(){
-
 
         new Thread(new Runnable() {
             @Override
@@ -111,20 +115,34 @@ public class LoginActivity extends AppCompatActivity {
 
         }).start();
 
-
-        /*
-        CostsHandler costsHandler;
-        DiscountsHandler discountsHandler;
-        TransactionsHandler transactionsHandler;
-        ArrayList<Student> allStudentsArrayList;
-        ArrayList<Student> currentStudentsArrayList;
-        User currentUser;
-        */
-
-
-
     }
 
 
+    private BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
 
+            boolean guardiansSet = intent.getBooleanExtra("guardiansSet", false);
+            if (guardiansSet){
+                //start home screen
+                startActivity(new Intent(LoginActivity.this, HomeSection.class));
+            }
+
+        }
+    };
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        LocalBroadcastManager.getInstance(this).registerReceiver(receiver, new IntentFilter("setGuardiansResult"));
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(receiver);
+
+        //terminate login activity
+        finish();
+    }
 }
