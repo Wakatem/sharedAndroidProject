@@ -71,11 +71,12 @@ public class DataContainer extends Service {
 
 
             //load data structures
-            costsHandler              = CentralJSON.parseCosts();
-            discountsHandler          = CentralJSON.parseDiscounts();
-            transactionsHandler       = CentralJSON.parseTransactions();
-            allStudentsArrayList      = CentralJSON.parseStudentsLists()[0];
-            currentStudentsArrayList  = CentralJSON.parseStudentsLists()[1];
+            ArrayList[] lists = CentralJSON.loadLists();
+            costsHandler              = (CostsHandler) lists[0];
+            discountsHandler          = (DiscountsHandler) lists[1];
+            transactionsHandler       = (TransactionsHandler) lists[2];
+            allStudentsArrayList      = (ArrayList<Student>) lists[3];
+            currentStudentsArrayList  = (ArrayList<Student>) lists[4];
 
             currentUser = CentralJSON.findCurrentUser(username,password);
 

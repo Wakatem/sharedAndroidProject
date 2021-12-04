@@ -31,43 +31,141 @@ import java.util.Date;
 
 public class CentralJSON {
 
-    public static JSONObject root;
+    private static JSONObject root;
+    private static CostsHandler costsList;
+    private static DiscountsHandler discountsList;
+    private static TransactionsHandler transactionsList;
+    private static ArrayList<Student> allStudentsList;
+    private static ArrayList<Student> currentStudentsList;
 
-    public CentralJSON() {
-    }
+    public CentralJSON() { }
 
     public static void loadJSON(Context context) {
         //open file
         InputStreamReader inputStreamReader = new InputStreamReader(context.getResources().openRawResource(R.raw.nursery));
         BufferedReader reader = new BufferedReader(inputStreamReader);
-        StringBuffer stringBuffer = new StringBuffer();
+        StringBuilder builder = new StringBuilder();
 
         try {
             //read file
             String line;
             while ((line = reader.readLine()) != null) {
-                stringBuffer.append(line);
+                builder.append(line);
             }
 
-            JSONObject root = new JSONObject(stringBuffer.toString());
-            CentralJSON.root = root;
+            root = new JSONObject(builder.toString());
+
         } catch (JSONException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        costsList = new CostsHandler();
+        discountsList = new DiscountsHandler();
+        transactionsList = new TransactionsHandler();
+        allStudentsList = new ArrayList<>();
+        currentStudentsList = new ArrayList<>();
     }
 
 
+    public static ArrayList[] loadLists(){
 
-    public static CostsHandler parseCosts(){
-        CostsHandler list = new CostsHandler();
+        boolean dataRemaining;
 
         try {
             JSONObject MonetaryRates_obj = root.getJSONObject("Monetary Rates");
-            JSONArray allCosts = MonetaryRates_obj.getJSONArray("Costs");
+            JSONObject Students = root.getJSONObject("Students");
+            JSONObject Transactions_obj = root.getJSONObject("Transactions");
 
-            for (int i = 0; i < allCosts.length(); i++) {
+            //costs
+            JSONArray allCosts = MonetaryRates_obj.getJSONArray("Costs");
+            int costsSize = allCosts.length();
+
+            //discounts
+            JSONArray alldiscounts = MonetaryRates_obj.getJSONArray("Discounts");
+            int discountsSize = alldiscounts.length();
+
+            //income transactions
+            JSONArray incomeTransactions = Transactions_obj.getJSONArray("Income");
+            int incomeTransactionsSize = incomeTransactions.length();
+
+            //expense transaction
+            JSONArray expenseTransaction = Transactions_obj.getJSONArray("Expense");
+            int expenseTransactionSize = expenseTransaction.length();
+
+            //all students
+            JSONArray allStudentsJSONArray = Students.getJSONArray("All Students");
+            int allStudentsSize = allStudentsJSONArray.length();
+
+            //current students
+            JSONArray currentStudentsJSONArray= Students.getJSONArray("Current Students");
+            int currentStudentsSize = currentStudentsJSONArray.length();
+
+
+            int i=0;
+            while (true){
+                dataRemaining = false;
+
+
+                //load costs
+                if (i < costsSize){
+                    dataRemaining = true;
+                    parseCost(i, allCosts);
+                }
+
+
+                //load discounts
+                if (i < discountsSize){
+                    dataRemaining = true;
+                    parseDiscount(i, alldiscounts);
+                }
+
+
+                //load transactions
+                if (i < incomeTransactionsSize){ dataRemaining = true; parseTransaction(i, incomeTransactions, true);}
+                if (i < expenseTransactionSize){ dataRemaining = true; parseTransaction(i, expenseTransaction, false);}
+
+
+                //load all students list
+                if (i < allStudentsSize){
+                    dataRemaining = true;
+                    parseAllStudents(i, allStudentsJSONArray);
+                }
+
+
+                //load current students list
+                if (i < currentStudentsSize){
+                    dataRemaining = true;
+                    parseCurrentStudents(i, currentStudentsJSONArray);
+                }
+
+
+
+                if (dataRemaining)
+                    i++;
+                else
+                    break;
+            }
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+
+        transactionsList.chooseSortingMethod(false, true, false, false);
+
+        return new ArrayList[]{costsList, discountsList, transactionsList, allStudentsList, currentStudentsList};
+    }
+
+
+    public static void parseCost(int i, JSONArray allCosts){
+
+
+        try {
+
                 JSONObject cost = allCosts.getJSONObject(i);
 
                 //get cost duration details
@@ -91,27 +189,21 @@ public class CentralJSON {
                 int amount = Integer.valueOf(amountString);
 
 
-                list.add(new Cost(amount, type, hours));
+                costsList.add(new Cost(amount, type, hours));
 
-            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
 
-        return list;
+
     }
 
 
-    public static DiscountsHandler parseDiscounts(){
-        DiscountsHandler list = new DiscountsHandler();
-        
+    public static void parseDiscount(int i, JSONArray alldiscounts){
 
         try {
-            JSONObject MonetaryRates_obj = root.getJSONObject("Monetary Rates");
-            JSONArray alldiscounts = MonetaryRates_obj.getJSONArray("Discounts");
 
-            for (int i = 0; i < alldiscounts.length(); i++) {
                 JSONObject discount = alldiscounts.getJSONObject(i);
 
                 String discounttype = discount.getString("Title");
@@ -120,21 +212,133 @@ public class CentralJSON {
                 String switchValue = discount.getString("Active");
                 boolean switchValue1 = Boolean.valueOf(switchValue);
 
-                list.add(new Discount(discounttype,percentage,switchValue1));
+                discountsList.add(new Discount(discounttype,percentage,switchValue1));
 
 
 
-            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
 
-        return list;
     }
 
+
+    public static void parseTransaction(int i, JSONArray transactionType, boolean parseIncome){
+
+
+        try {
+            if (parseIncome){
+
+                //parsing Incomes
+                JSONObject transaction = transactionType.getJSONObject(i);
+
+                long transactionID        = transaction.getLong("transactionID");
+                int senderAccNumber       = transaction.getInt("Sender AccNumber");
+                String senderAccName      = transaction.getString("Sender AccName");
+                int recipientAccNumber    = transaction.getInt("Recipient AccNumber");
+                String recipientAccName   = transaction.getString("Recipient AccName");
+                int amount                = transaction.getInt("Amount");
+                Date date                 = getDate(transaction.getString("Date"));
+                PaymentMethods method     = getPaymentMethod(transaction.getString("PaymentMethod"));
+
+                Transaction t = new Transaction(transactionID, senderAccNumber, senderAccName, recipientAccNumber, recipientAccName, amount, date, TransactionTypes.INCOME, method);
+                transactionsList.add(t);
+            }
+
+
+            else {
+
+                //parsing Expenses
+                JSONObject transaction = transactionType.getJSONObject(i);
+
+                long transactionID        = transaction.getLong("transactionID");
+                int senderAccNumber       = transaction.getInt("Sender AccNumber");
+                String senderAccName      = transaction.getString("Sender AccName");
+                int recipientAccNumber    = transaction.getInt("Recipient AccNumber");
+                String recipientAccName   = transaction.getString("Recipient AccName");
+                int amount                = transaction.getInt("Amount");
+                Date date                 = getDate(transaction.getString("Date"));
+                ExpenseTypes expense      = getExpense(transaction.getString("Expense Type"));
+                PaymentMethods method     = getPaymentMethod(transaction.getString("PaymentMethod"));
+
+                Transaction t = new Transaction(transactionID, senderAccNumber, senderAccName, recipientAccNumber, recipientAccName, amount, date, expense, method);
+                transactionsList.add(t);
+            }
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
+
+    public static void parseAllStudents(int i, JSONArray allStudentsJSONArray) {
+
+        try {
+                JSONObject studentDetails = allStudentsJSONArray.getJSONObject(i);
+
+                allStudentsList.add(new Student());
+                allStudentsList.get(i).setStudentID(studentDetails.getInt("ID"));
+                allStudentsList.get(i).setStudentName(studentDetails.getString("Name"));
+                allStudentsList.get(i).setStudentDOB(studentDetails.getString("DOB"));
+                allStudentsList.get(i).setStudentGender(studentDetails.getString("Gender"));
+                allStudentsList.get(i).setGuardian(parseStudentGuardian(studentDetails));
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    public static void parseCurrentStudents(int i, JSONArray currentStudentsJSONArray) {
+
+        try {
+                JSONObject studentDetails = currentStudentsJSONArray.getJSONObject(i);
+
+                currentStudentsList.add(new Student());
+                currentStudentsList.get(i).setStudentID(studentDetails.getInt("ID"));
+                currentStudentsList.get(i).setStudentName(studentDetails.getString("Name"));
+                currentStudentsList.get(i).setStudentDOB(studentDetails.getString("DOB"));
+                currentStudentsList.get(i).setStudentGender(studentDetails.getString("Gender"));
+                currentStudentsList.get(i).setGuardian(parseStudentGuardian(studentDetails));
+                currentStudentsList.get(i).setCheckedInFlag(true);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+    }
+
+
+    private static Guardian parseStudentGuardian(JSONObject studentDetails) {
+        Guardian guardian = new Guardian();
+
+        try {
+            JSONObject guardianDetails = studentDetails.getJSONObject("Guardian");
+
+            guardian.setGuardianName(guardianDetails.getString("Name"));
+            guardian.setRelationship(guardianDetails.getString("Relationship"));
+            guardian.setGuardianPhoneNumber(guardianDetails.getString("Phone Number"));
+            guardian.setGuardianEmail(guardianDetails.getString("Email"));
+            guardian.setGuardianAccountNumber(guardianDetails.getString("Sender AccNumber"));
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return guardian;
+    }
+
+
     public static User findCurrentUser(String username, String password){
-       // UsersHandler userList = new UsersHandler();
+        // UsersHandler userList = new UsersHandler();
         User newUser = new User();
         try {
 
@@ -172,126 +376,6 @@ public class CentralJSON {
         }
         return newUser;
 
-    }
-
-
-
-
-    public static TransactionsHandler parseTransactions(){
-        TransactionsHandler list = new TransactionsHandler();
-
-        try {
-            JSONObject Transactions_obj = root.getJSONObject("Transactions");
-            JSONArray transactionType;
-
-
-            //parsing Incomes
-            transactionType = Transactions_obj.getJSONArray("Income");
-            for (int i = 0; i < transactionType.length(); i++) {
-                JSONObject transaction = transactionType.getJSONObject(i);
-
-                long transactionID        = transaction.getLong("transactionID");
-                int senderAccNumber       = transaction.getInt("Sender AccNumber");
-                String senderAccName      = transaction.getString("Sender AccName");
-                int recipientAccNumber    = transaction.getInt("Recipient AccNumber");
-                String recipientAccName   = transaction.getString("Recipient AccName");
-                int amount                = transaction.getInt("Amount");
-                Date date                 = getDate(transaction.getString("Date"));
-                PaymentMethods method     = getPaymentMethod(transaction.getString("PaymentMethod"));
-
-                Transaction t = new Transaction(transactionID, senderAccNumber, senderAccName, recipientAccNumber, recipientAccName, amount, date, TransactionTypes.INCOME, method);
-                list.add(t);
-
-            }
-
-
-            //parsing Expenses
-            transactionType = Transactions_obj.getJSONArray("Expense");
-            for (int i = 0; i < transactionType.length(); i++) {
-                JSONObject transaction = transactionType.getJSONObject(i);
-
-                long transactionID        = transaction.getLong("transactionID");
-                int senderAccNumber       = transaction.getInt("Sender AccNumber");
-                String senderAccName      = transaction.getString("Sender AccName");
-                int recipientAccNumber    = transaction.getInt("Recipient AccNumber");
-                String recipientAccName   = transaction.getString("Recipient AccName");
-                int amount                = transaction.getInt("Amount");
-                Date date                 = getDate(transaction.getString("Date"));
-                ExpenseTypes expense      = getExpense(transaction.getString("Expense Type"));
-                PaymentMethods method     = getPaymentMethod(transaction.getString("PaymentMethod"));
-
-                Transaction t = new Transaction(transactionID, senderAccNumber, senderAccName, recipientAccNumber, recipientAccName, amount, date, expense, method);
-                list.add(t);
-
-            }
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        list.chooseSortingMethod(false, true, false, false);
-        return list;
-    }
-
-
-
-
-    public static Guardian parseStudentGuardian(JSONObject studentDetails) {
-        Guardian guardian = new Guardian();
-
-        try {
-            JSONObject guardianDetails = studentDetails.getJSONObject("Guardian");
-
-            guardian.setGuardianName(guardianDetails.getString("Name"));
-            guardian.setRelationship(guardianDetails.getString("Relationship"));
-            guardian.setGuardianPhoneNumber(guardianDetails.getString("Phone Number"));
-            guardian.setGuardianEmail(guardianDetails.getString("Email"));
-            guardian.setGuardianAccountNumber(guardianDetails.getString("Sender AccNumber"));
-        }
-        catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return guardian;
-    }
-
-
-    public static ArrayList<Student>[] parseStudentsLists() {
-        ArrayList<Student> allStudentsList = new ArrayList<>();
-        ArrayList<Student> currentStudentsList = new ArrayList<>();
-
-        try {
-            JSONObject Students = root.getJSONObject("Students");
-            JSONArray allStudentsJSONArray = Students.getJSONArray("All Students");
-
-            for (int i = 0; i < allStudentsJSONArray.length(); ++i) {
-                JSONObject studentDetails = allStudentsJSONArray.getJSONObject(i);
-
-                allStudentsList.add(new Student());
-                allStudentsList.get(i).setStudentID(studentDetails.getInt("ID"));
-                allStudentsList.get(i).setStudentName(studentDetails.getString("Name"));
-                allStudentsList.get(i).setStudentDOB(studentDetails.getString("DOB"));
-                allStudentsList.get(i).setStudentGender(studentDetails.getString("Gender"));
-                allStudentsList.get(i).setGuardian(parseStudentGuardian(studentDetails));
-
-                if (i < Students.getJSONArray("Current Students").length()){
-                    studentDetails = Students.getJSONArray("Current Students").getJSONObject(i);
-                    currentStudentsList.add(new Student());
-                    currentStudentsList.get(i).setStudentID(studentDetails.getInt("ID"));
-                    currentStudentsList.get(i).setStudentName(studentDetails.getString("Name"));
-                    currentStudentsList.get(i).setStudentDOB(studentDetails.getString("DOB"));
-                    currentStudentsList.get(i).setStudentGender(studentDetails.getString("Gender"));
-                    currentStudentsList.get(i).setGuardian(parseStudentGuardian(studentDetails));
-                }
-
-
-            }//for
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return new ArrayList[]{allStudentsList, currentStudentsList};
     }
 
 
