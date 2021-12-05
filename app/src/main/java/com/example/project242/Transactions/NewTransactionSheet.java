@@ -83,6 +83,10 @@ public class NewTransactionSheet {
             public void onClick(View view) {
                 expenseTypeQ.setVisibility(View.VISIBLE);
                 expenseType.setVisibility(View.VISIBLE);
+                senderID.setText("739136");
+                senderName.setText("Little Bunnies Nursery");
+                recipientID.setText("");
+                recipientName.setText("");
             }
         });
         Income.setOnClickListener(new View.OnClickListener() {
@@ -90,6 +94,10 @@ public class NewTransactionSheet {
             public void onClick(View view) {
                 expenseType.setVisibility(View.INVISIBLE);
                 expenseTypeQ.setVisibility(View.INVISIBLE);
+                recipientID.setText("739136");
+                recipientName.setText("Little Bunnies Nursery");
+                senderID.setText("");
+                senderName.setText("");
             }
         });
 
@@ -98,8 +106,8 @@ public class NewTransactionSheet {
 
     public void addTransaction(EditText transactionID, EditText sender_AccountNumber, EditText sender_AccountName, EditText recipient_AccountNumber, EditText recipient_AccountName, EditText amount, EditText date, Spinner expenseType, Spinner PaymentMethod) {
         long transID = Long.parseLong(transactionID.getText().toString());
-        int sendAcc = Integer.valueOf(sender_AccountNumber.getText().toString());
-        String sendName = sender_AccountName.getText().toString();
+        int sendAcc = 739136;
+        String sendName = "Little Bunnies Nursery";
         int receiptAcc = Integer.valueOf(recipient_AccountNumber.getText().toString());
         String receiptName = recipient_AccountName.getText().toString();
         int amountSent = Integer.valueOf(amount.getText().toString());
@@ -140,8 +148,8 @@ public class NewTransactionSheet {
         long transID = Long.parseLong(transactionID.getText().toString());
         int sendAcc = Integer.valueOf(sender_AccountNumber.getText().toString());
         String sendName = sender_AccountName.getText().toString();
-        int receiptAcc = Integer.valueOf(recipient_AccountNumber.getText().toString());
-        String receiptName = recipient_AccountName.getText().toString();
+        int receiptAcc = 739136;
+        String receiptName = "Little Bunnies Nursery";
         int amountSent = Integer.valueOf(amount.getText().toString());
 
         SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
@@ -176,6 +184,8 @@ public class NewTransactionSheet {
                 if (expenseType.getVisibility() == View.VISIBLE) {
                     if (transactionID.length() != 0 && senderID.length() != 0 && senderName.length() != 0 && recipientID.length() != 0 && recipientName.length() != 0 && amount.length() != 0 && date.length() != 0) {
                         if (isValidDate(date.getText().toString()) == true) {
+                            senderName.setText("Little Bunnies Nursery");
+                            senderID.setText("739136");
                             addTransaction(transactionID, senderID, senderName, recipientID, recipientName, amount, date, expenseType, PaymentMethod);
                             Toast.makeText(context, "new expense  added", Toast.LENGTH_SHORT).show();
                             dateError.setText("");
@@ -189,6 +199,8 @@ public class NewTransactionSheet {
                 } else {
                     if (transactionID.length() != 0 && senderID.length() != 0 && senderName.length() != 0 && recipientID.length() != 0 && recipientName.length() != 0 && amount.length() != 0 && date.length() != 0) {
                         if (isValidDate(date.getText().toString()) == true) {
+                            recipientName.setText("Little Bunnies Nursery");
+                            recipientID.setText("739136");
                             addTransactionWOExpense(transactionID, senderID, senderName, recipientID, recipientName, amount, date, transactionType, PaymentMethod);
                             Toast.makeText(context, "new income  added", Toast.LENGTH_SHORT).show();
                             dateError.setText("");

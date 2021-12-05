@@ -3,6 +3,7 @@ package com.example.project242.Students;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,12 +29,14 @@ public class DialogRegisterStudent extends AppCompatDialogFragment {
         Student student = bundle.getParcelable("Student");
 
         builder.setView(view)
-                .setTitle("Registration Confirmation")
+                .setTitle("Confirm Registration")
                 .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         DataContainer.allStudentsArrayList.add(student);
                         Toast.makeText(getActivity(),"Confirmed!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getContext(), StudentsSection.class);
+                        startActivity(intent);
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
