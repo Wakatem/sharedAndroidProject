@@ -48,6 +48,7 @@ public class TransactionDetails extends AppCompatActivity {
         else {
 
             transactionAmount_TV.setTextColor(getResources().getColor(R.color.expense));
+            ExpenseTypeTV.setText(transaction.getExpenseType().toString());
             image.setImageResource(R.drawable.expense);
 
         }
