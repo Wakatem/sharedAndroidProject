@@ -37,5 +37,6 @@ dependencies {
     implementation 'info.hoang8f:fbutton:1.0.5'
     implementation 'info.hoang8f:fbutton:1.0.5'
     implementation 'commons-io:commons-io:+'
+    implementation 'com.github.imangazalievm:circlemenu:3.0.0'
 
 }

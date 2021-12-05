@@ -116,6 +116,7 @@ public class BottomSheet {
         cancelButton   = sheetDialog.findViewById(R.id.cancel_button);
         editButton     = sheetDialog.findViewById(R.id.edit_button);
 
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context, R.array.costTypes, android.R.layout.simple_spinner_dropdown_item);
         costTypesMenu.setAdapter(adapter);
 

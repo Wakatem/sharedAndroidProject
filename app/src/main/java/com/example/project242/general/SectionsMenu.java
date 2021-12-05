@@ -69,33 +69,38 @@ public class SectionsMenu {
 
                 switch (item.getItemId()) {
                     case R.id.HomeSection:
-                        if (!(activity instanceof HomeSection))
-                        activity.startActivity(new Intent(activity, HomeSection.class));
-                        activity.finish();
+                        if (!(activity instanceof HomeSection)) {
+                            activity.startActivity(new Intent(activity, HomeSection.class));
+                            activity.finish();
+                        }
                         break;
 
                     case R.id.StudentsSection:
-                        if (!(activity instanceof StudentsSection))
-                        activity.startActivity(new Intent(activity, StudentsSection.class));
-                        activity.finish();
+                        if (!(activity instanceof StudentsSection)) {
+                            activity.startActivity(new Intent(activity, StudentsSection.class));
+                            activity.finish();
+                        }
                         break;
 
                     case R.id.TransactionsSection:
-                        if (!(activity instanceof TransactionsSection))
-                        activity.startActivity(new Intent(activity, TransactionsSection.class));
-                        activity.finish();
+                        if (!(activity instanceof TransactionsSection)) {
+                            activity.startActivity(new Intent(activity, TransactionsSection.class));
+                            activity.finish();
+                        }
                         break;
 
                     case R.id.MonetaryRatesSection:
-                        if (!(activity instanceof MonetaryRatesSection))
-                        activity.startActivity(new Intent(activity, MonetaryRatesSection.class));
-                        activity.finish();
+                        if (!(activity instanceof MonetaryRatesSection)) {
+                            activity.startActivity(new Intent(activity, MonetaryRatesSection.class));
+                            activity.finish();
+                        }
                         break;
 
                     case R.id.SettingsSection:
-                        if (!(activity instanceof SettingsSection))
-                        activity.startActivity(new Intent(activity, SettingsSection.class));
-                        activity.finish();
+                        if (!(activity instanceof SettingsSection)) {
+                            activity.startActivity(new Intent(activity, SettingsSection.class));
+                            activity.finish();
+                        }
                         break;
 
                 }
