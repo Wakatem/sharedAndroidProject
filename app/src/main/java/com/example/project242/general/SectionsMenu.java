@@ -16,6 +16,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.project242.Home.HomeSection;
+import com.example.project242.LoginActivity;
 import com.example.project242.MonetaryRates.MonetaryRatesSection;
 import com.example.project242.R;
 import com.example.project242.Settings.SettingsSection;
@@ -101,6 +102,12 @@ public class SectionsMenu {
                             activity.startActivity(new Intent(activity, SettingsSection.class));
                             activity.finish();
                         }
+                        break;
+
+
+                    case R.id.logoutButton:
+                        activity.startActivity(new Intent(activity, LoginActivity.class));
+                        activity.finish();
                         break;
 
                 }

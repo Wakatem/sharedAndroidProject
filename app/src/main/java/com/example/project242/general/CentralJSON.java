@@ -338,15 +338,16 @@ public class CentralJSON {
 
     public static User findCurrentUser(String username, String password){
         // UsersHandler userList = new UsersHandler();
-        User newUser = new User();
+        User newUser = null;
         try {
 
-            JSONArray  users = root.getJSONArray("Users");
+            JSONArray users = root.getJSONArray("Users");
 
             // users = Users_obj.getJSONArray("Users");
             for(int i = 0; i <users.length();i++) {
                 JSONObject user = users.getJSONObject(i);
-                if (user.getString("Username").equals(username)) {
+                if (user.getString("Username").equals(username) && user.getString("Password").equals(password)) {
+                    newUser = new User();
                     int userID = user.getInt("ID");
                     String name = user.getString("Name");
                     String username1 = username;

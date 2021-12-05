@@ -8,7 +8,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.project242.Home.HomeSection;
 import com.example.project242.MonetaryRates.Costs.CostsHandler;
@@ -18,6 +22,7 @@ import com.example.project242.Transactions.TransactionsHandler;
 import com.example.project242.general.CentralJSON;
 import com.example.project242.general.DataContainer;
 
+import java.io.BufferedReader;
 import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
@@ -40,24 +45,42 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        CentralJSON.loadJSON(this);
         Intent intent = new Intent(this, DataContainer.class);
 
         //current user credentials
-        TextView username = findViewById(R.id.username1);
-        TextView password = findViewById(R.id.password);
-        intent.putExtra("username", username.getText().toString());
-        intent.putExtra("password", password.getText().toString());
+        EditText username = findViewById(R.id.username1);
+        Button login = findViewById(R.id.login);
+        EditText password = findViewById(R.id.password);
 
-        new Thread(new Runnable() {
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void run() {
-                //start background service
-                startService(intent);
+            public void onClick(View view) {
+                User user = CentralJSON.findCurrentUser(username.getText().toString(), password.getText().toString());
+                if (user != null){
+                    intent.putExtra("username", username.getText().toString());
+                    intent.putExtra("password", password.getText().toString());
+
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            //start background service
+                            startService(intent);
+                        }
+                    }).start();
+                }else {
+                    Toast.makeText(getApplicationContext(), "invalid credentials", Toast.LENGTH_SHORT).show();
+
+                }
+
             }
-        }).start();
+        });
+
+        }
 
 
-    }
+
+
 
 
     @Override
