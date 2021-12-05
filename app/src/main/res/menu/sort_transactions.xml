@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/descendingDate"
+        android:title="Descending Date"/>
+
+    <item
+        android:id="@+id/ascendingDate"
+        android:title="Ascending Date"/>
+
+    <item
+        android:id="@+id/ascendingAmount"
+        android:title="Ascending Amount"/>
+    <item
+        android:id="@+id/descendingAmount"
+        android:title="Descending Amount"/>
+</menu>

@@ -19,7 +19,6 @@ public class TransactionsHandler extends ArrayList<Transaction> {
     private boolean sortByAscendingAmount;
     private boolean sortByDescendingAmount;
 
-    private boolean filterBySearchBar;
     private boolean filterByAllOption;
     private boolean filterByIncomeOption;
     private boolean filterByExpenseOption;
@@ -63,9 +62,8 @@ public class TransactionsHandler extends ArrayList<Transaction> {
     }
 
 
-    public void chooseFilteringMethod(boolean filterBySearchBar, boolean filterByAllOption, boolean filterByIncomeOption, boolean filterByExpenseOption) {
+    public void chooseFilteringMethod(boolean filterByAllOption, boolean filterByIncomeOption, boolean filterByExpenseOption) {
 
-        this.filterBySearchBar = filterBySearchBar;
         this.filterByAllOption = filterByAllOption;
         this.filterByIncomeOption = filterByIncomeOption;
         this.filterByExpenseOption = filterByExpenseOption;
@@ -74,9 +72,6 @@ public class TransactionsHandler extends ArrayList<Transaction> {
 
 
     public void filterTransactions(){
-        if (filterBySearchBar) {
-            filter.filterBySearchBar();
-        }
 
         if (filterByAllOption) {
             filter.filterByAllOption();
@@ -92,15 +87,49 @@ public class TransactionsHandler extends ArrayList<Transaction> {
 
     }
 
+    public String getFilteringMethod(){
+        String method="";
 
+        if (filterByAllOption) {
+           method="All";
+        }
+
+        if (filterByIncomeOption) {
+            method="Income";
+        }
+
+        if (filterByExpenseOption) {
+            method="Expense";
+        }
+        return method;
+    }
+
+    public String getSortingMethod(){
+        String method="";
+
+        if (sortByAscendingDate) {
+            method = "Ascending Date";
+        }
+
+        if (sortByDescendingDate) {
+            method = "Descending Date";
+        }
+
+        if (sortByAscendingAmount) {
+            method = "Ascending Amount";
+        }
+
+        if (sortByDescendingAmount) {
+            method = "Descending Amount";
+        }
+
+        return method;
+    }
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     private class FilteringMethods {
-
-        public void filterBySearchBar() {
-        }
 
 
         public void filterByAllOption() {
@@ -274,6 +303,7 @@ public class TransactionsHandler extends ArrayList<Transaction> {
 
 
     }//class
+
 
 
 }//parent class

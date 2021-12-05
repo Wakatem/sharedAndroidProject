@@ -23,7 +23,7 @@ import com.imangazaliev.circlemenu.CircleMenu;
 
 public class TransactionsSection extends AppCompatActivity {
 
-    private int savedSize = DataContainer.transactionsHandler.size();
+    private int savedSize = 0;
     private TextView profitTV;
     private TextView incomeTV;
     private TextView expenseTV;
@@ -45,19 +45,6 @@ public class TransactionsSection extends AppCompatActivity {
         incomeTV = findViewById(R.id.incomeAmount);
         expenseTV = findViewById(R.id.expenseAmount);
 
-            //calculate total
-            int incomeTotal=0, expenseTotal=0;
-            for (int i = 0; i < DataContainer.transactionsHandler.size(); i++) {
-                if (DataContainer.transactionsHandler.get(i).getTransactionType() == TransactionTypes.INCOME)
-                    incomeTotal += DataContainer.transactionsHandler.get(i).getAmount();
-                else
-                    expenseTotal+= DataContainer.transactionsHandler.get(i).getAmount();
-            }
-
-            int profit = incomeTotal - expenseTotal;
-            profitTV.setText(String.valueOf(profit)+" AED");
-            incomeTV.setText(String.valueOf(incomeTotal)+" AED");
-            expenseTV.setText(String.valueOf(expenseTotal)+" AED");
 
 
 
@@ -197,7 +184,11 @@ public class TransactionsSection extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        //update statistical details on list changes
         if (DataContainer.transactionsHandler.size() != savedSize){
+            //save new size
+            savedSize = DataContainer.transactionsHandler.size();
+
             //calculate total
             int incomeTotal=0, expenseTotal=0;
             for (int i = 0; i < DataContainer.transactionsHandler.size(); i++) {

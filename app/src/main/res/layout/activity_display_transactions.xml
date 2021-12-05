@@ -2,11 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mememe"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Transactions.DisplayTransactions">
-
 
 
     <!-- main content here from here -->
@@ -15,9 +15,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <include
-        android:id="@+id/toolbar_includer"
-        layout="@layout/custom_toolbar" />
+        <include
+            android:id="@+id/toolbar_includer"
+            layout="@layout/custom_toolbar" />
 
         <ImageButton
             android:id="@+id/filter_button"
@@ -26,44 +26,58 @@
             android:layout_gravity="right|center_vertical"
             android:layout_marginRight="50dp"
             android:background="#FFFFFF"
-            android:src="@drawable/filter_icon"/>
+            android:src="@drawable/filter_icon" />
+
+        <ImageButton
+            android:id="@+id/sort_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="15dp"
+            android:background="#FFFFFF"
+            android:src="@drawable/sorting_icon" />
     </FrameLayout>
 
 
-    <!--
-        <LinearLayout
-            android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:paddingLeft="45dp"
+            android:text="Filtering by: "/>
 
-            <SearchView
-                android:id="@+id/transactionSearch"
-                android:layout_width="200dp"
-                android:layout_height="35dp"
-                android:background="@drawable/search_bar_border"
-                android:inputType="number"/>
+        <TextView
+            android:id="@+id/filteringValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:paddingLeft="5dp"
+            android:text="All"/>
 
-            <Spinner
-                android:id="@+id/sortingOptions"
-                android:layout_width="40dp"
-                android:layout_height="35dp"
-                android:layout_weight="1"
-                android:clickable="false" />
-            <Spinner
-                android:id="@+id/transactionTypeSpinner"
-                android:layout_width="40dp"
-                android:layout_height="35dp"
-                android:layout_weight="1"
-                android:clickable="false" />
 
-        </LinearLayout>
-    -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="40dp"
+            android:text="Sorting by: "/>
 
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/transactionsLV"/>
-
+        <TextView
+            android:id="@+id/sortingValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:textStyle="bold"
+            android:text="DescendingAmount"/>
 
 
     </LinearLayout>
+    <ListView
+        android:id="@+id/transactionsLV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</LinearLayout>

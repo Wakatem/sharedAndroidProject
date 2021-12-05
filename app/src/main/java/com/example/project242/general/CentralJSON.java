@@ -152,7 +152,11 @@ public class CentralJSON {
         }
 
 
+        transactionsList.chooseFilteringMethod(true, false, false);
         transactionsList.chooseSortingMethod(false, true, false, false);
+
+        transactionsList.filterTransactions();
+        transactionsList.sortTransactions();
 
         return new ArrayList[]{costsList, discountsList, transactionsList, allStudentsList, currentStudentsList};
     }

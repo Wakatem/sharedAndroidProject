@@ -33,16 +33,17 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
+
         <TextView
-            android:id="@+id/transactionID_TV"
+            android:id="@+id/transactionAccHolder_TV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:lines="2"
+            android:fontFamily="@font/raleway_regular"
             android:gravity="center_horizontal|center_vertical"
-            android:text="1234567"
-            android:textSize="14sp"
+            android:text="nursery"
             android:textColor="#808080" />
-
 
     </LinearLayout>
 
@@ -55,16 +56,7 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/transactionAccHolder_TV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:lines="2"
-            android:fontFamily="@font/raleway_regular"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="nursery"
-            android:textColor="#808080" />
+
 
         <TextView
             android:id="@+id/transactionDate_TV"

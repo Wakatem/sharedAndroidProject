@@ -9,7 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Project242">
-        <service android:name=".general.DataContainer" android:stopWithTask="true"/>
+        <activity
+            android:name=".Transactions.TransactionDetails"
+            android:exported="false" />
+
+        <service
+            android:name=".general.DataContainer"
+            android:stopWithTask="true" />
+
         <activity
             android:name=".LoginActivity"
             android:exported="true">
@@ -42,8 +49,7 @@
             android:exported="false" />
         <activity
             android:name=".Home.HomeSection"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
     </application>
 
 </manifest>

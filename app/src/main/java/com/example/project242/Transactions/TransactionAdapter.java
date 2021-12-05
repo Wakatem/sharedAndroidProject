@@ -45,7 +45,6 @@ public class TransactionAdapter extends ArrayAdapter<Transaction> {
 
             //link views
             ImageView image = item.findViewById(R.id.transactionType);
-            TextView idTV = item.findViewById(R.id.transactionID_TV);
             TextView amountTV = item.findViewById(R.id.transactionAmount_TV);
             TextView accHolderTV = item.findViewById(R.id.transactionAccHolder_TV);
             TextView dateTV = item.findViewById(R.id.transactionDate_TV);
@@ -63,7 +62,6 @@ public class TransactionAdapter extends ArrayAdapter<Transaction> {
                 amountTV.setTextColor(Color.parseColor("#D84315"));
             }
 
-            String id = "transaction id: " + String.valueOf(transaction.getTransactionID());
             String amount = String.valueOf(transaction.getAmount()) + " AED";
 
             calendar = Calendar.getInstance();
@@ -74,7 +72,6 @@ public class TransactionAdapter extends ArrayAdapter<Transaction> {
 
 
             //assign values to views
-            idTV.setText(id);
             amountTV.setText(amount);
             accHolderTV.setText(accHolder);
             dateTV.setText(date);
