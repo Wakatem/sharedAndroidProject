@@ -122,6 +122,8 @@ public class TransactionsSection extends AppCompatActivity {
                 animateFAB(generateButton, duration, 0, 0, true);
 
                 menuClosed = true;
+
+
             }
         });
     }

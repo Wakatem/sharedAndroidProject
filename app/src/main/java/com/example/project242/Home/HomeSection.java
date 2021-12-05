@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.example.project242.R;
 import com.example.project242.Students.RegisterStudentActivity;
 import com.example.project242.Students.StudentsSection;
+import com.example.project242.Transactions.TransactionsSection;
 import com.example.project242.general.DataContainer;
 import com.example.project242.general.SectionsMenu;
 
@@ -54,7 +55,7 @@ public class HomeSection extends AppCompatActivity {
         box1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), RegisterStudentActivity.class);
+                Intent intent = new Intent(HomeSection.this, RegisterStudentActivity.class);
                 startActivity(intent);
             }
         });
@@ -63,8 +64,17 @@ public class HomeSection extends AppCompatActivity {
         box2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), StudentsSection.class);
+                Intent intent = new Intent(HomeSection.this, StudentsSection.class);
                 intent.putExtra("getCurrentStudentsFragment", 1);
+                startActivity(intent);
+            }
+        });
+
+
+        box3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeSection.this, TransactionsSection.class);
                 startActivity(intent);
             }
         });
