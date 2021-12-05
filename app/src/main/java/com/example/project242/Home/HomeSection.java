@@ -96,4 +96,9 @@ public class HomeSection extends AppCompatActivity {
         else
             super.onBackPressed();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 }

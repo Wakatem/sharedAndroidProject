@@ -17,23 +17,24 @@
             android:id="@+id/toolbar_includer"
             layout="@layout/custom_toolbar" />
 
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".Students.RegisterStudentActivity">
+            tools:context=".Students.RegisterStudentActivity"
+            android:background="#F0F8FF">
 
             <TextView
                 android:id="@+id/activity_register_student_textView_student_details_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="32dp"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="28dp"
                 android:text="Student Details"
-                android:textSize="16sp" />
+                android:textColor="@color/black"
+                android:textSize="20sp"
+
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/activity_register_student_textView_student_full_name_1"
@@ -43,7 +44,10 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="24dp"
-                android:text="Name" />
+                android:text="Name"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/activity_register_student_textView_student_dob_1"
@@ -53,7 +57,10 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="24dp"
-                android:text="Date of Birth" />
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="Date of Birth"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/activity_register_student_textView_student_gender_1"
@@ -63,18 +70,24 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="24dp"
-                android:text="Gender" />
+                android:text="Gender"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/activity_register_student_textView_guardian_details_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/activity_register_student_textView_student_gender_1"
-                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="48dp"
+                android:layout_marginBottom="10dp"
                 android:text="Guardian Details"
-                android:textSize="16sp" />
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/activity_register_student_textView_guardian_full_name_1"
@@ -84,7 +97,10 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="24dp"
-                android:text="Name" />
+                android:text="Name"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/activity_register_student_textView_guardian_relationship_1"
@@ -94,6 +110,9 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="24dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="18sp"
                 android:text="Relationship" />
 
             <TextView
@@ -104,6 +123,9 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="24dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="18sp"
                 android:text="Phone Number" />
 
             <TextView
@@ -114,6 +136,9 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="24dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="18sp"
                 android:text="Email" />
 
             <TextView
@@ -124,6 +149,9 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="24dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="18sp"
                 android:text="Account Number" />
 
             <EditText
@@ -133,11 +161,11 @@
                 android:layout_below="@id/activity_register_student_textView_student_details_1"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="14dp"
-                android:layout_marginEnd="34dp"
+                android:layout_marginEnd="20dp"
                 android:ems="8"
                 android:hint="Last Name"
                 android:inputType="textPersonName"
-                android:textSize="12sp" />
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/activity_register_student_editText_student_first_name_1"
@@ -145,12 +173,12 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/activity_register_student_textView_student_details_1"
                 android:layout_marginTop="14dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="5dp"
                 android:layout_toStartOf="@+id/activity_register_student_editText_student_last_name_1"
                 android:ems="8"
                 android:hint="First Name"
                 android:inputType="textPersonName"
-                android:textSize="12sp" />
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/activity_register_student_editText_student_dob_1"
@@ -161,9 +189,9 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="20dp"
                 android:ems="10"
-                android:hint="dd/mm/yy"
+                android:hint="dd/mm/yyyy"
                 android:inputType="date"
-                android:textSize="12sp" />
+                android:textSize="16sp" />
 
             <RadioGroup
                 android:id="@+id/activity_register_student_editText_student_gender_1"
@@ -180,13 +208,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="14dp"
                     android:text="Male"
-                    android:textSize="12dp" />
+                    android:id="@+id/male"
+                    android:textSize="16dp" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Female"
-                    android:textSize="12dp" />
+                    android:id="@+id/female"
+                    android:textSize="16dp" />
 
             </RadioGroup>
 
@@ -197,11 +227,11 @@
                 android:layout_below="@id/activity_register_student_textView_guardian_details_1"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="14dp"
-                android:layout_marginRight="34dp"
+                android:layout_marginRight="20dp"
                 android:ems="8"
                 android:hint="Last Name"
                 android:inputType="textPersonName"
-                android:textSize="12dp" />
+                android:textSize="16dp" />
 
             <EditText
                 android:id="@+id/activity_register_student_editText_guardian_first_name_1"
@@ -209,12 +239,12 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/activity_register_student_textView_guardian_details_1"
                 android:layout_marginTop="14dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginRight="5dp"
                 android:layout_toStartOf="@+id/activity_register_student_editText_guardian_last_name_1"
                 android:ems="8"
                 android:hint="First Name"
                 android:inputType="textPersonName"
-                android:textSize="12dp" />
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/activity_register_student_editText_guardian_relation_1"
@@ -226,7 +256,7 @@
                 android:layout_marginRight="20dp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:textSize="12dp" />
+                android:textSize="16dp" />
 
             <EditText
                 android:id="@+id/activity_register_student_editText_guardian_phone_number_1"
@@ -237,9 +267,9 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginRight="20dp"
                 android:ems="10"
-                android:hint="+971-XX-XXX-XXXX"
-                android:inputType="numberSigned"
-                android:textSize="12dp" />
+                android:hint="(XXX) XXX-XXXX"
+                android:inputType="phone"
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/activity_register_student_editText_guardian_email_1"
@@ -251,7 +281,7 @@
                 android:layout_marginRight="20dp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:textSize="12dp" />
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/activity_register_student_editText_guardian_account_name_1"
@@ -262,8 +292,10 @@
                 android:layout_marginTop="7dp"
                 android:layout_marginRight="20dp"
                 android:ems="10"
+                android:hint="eg 676543"
                 android:inputType="numberSigned"
-                android:textSize="12dp" />
+                android:maxLength="6"
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/activity_register_student_button_register"
@@ -272,6 +304,8 @@
                 android:layout_below="@+id/activity_register_student_editText_guardian_account_name_1"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="24dp"
+                android:textColor="@color/black"
+                android:backgroundTint="#f4dafe"
                 android:text="Register" />
 
         </RelativeLayout>

@@ -7,11 +7,15 @@
     <TextView
         android:id="@+id/dialog_check_in_textView_student_name_1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/dialog_check_in_textView_student_id_1"
         android:layout_width="match_parent"
+        android:textSize="18sp"
+        android:textColor="@color/black"
         android:layout_height="wrap_content"
         android:layout_below="@+id/dialog_check_in_textView_student_name_1" />
 

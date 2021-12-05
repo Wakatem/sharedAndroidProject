@@ -24,7 +24,6 @@
 
         <EditText
             android:id="@+id/transactionIDA"
-            android:textAlignment="viewStart"
             android:layout_width="255dp"
             android:layout_height="45dp"
             android:layout_below="@id/expensetypeQ"
@@ -32,10 +31,11 @@
             android:layout_marginTop="15dp"
             android:background="@drawable/edit_text_border"
             android:hint="  eg. 876253762"
+            android:includeFontPadding="true"
             android:inputType="number"
             android:maxLength="9"
-            android:includeFontPadding="true"
             android:paddingLeft="10dp"
+            android:textAlignment="viewStart"
             android:textSize="15sp"
             tools:layout_editor_absoluteX="189dp"
             tools:layout_editor_absoluteY="232dp" />
@@ -78,11 +78,11 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/edit_text_border"
-            android:includeFontPadding="true"
-            android:paddingLeft="10dp"
             android:hint="  ID"
+            android:includeFontPadding="true"
             android:inputType="number"
             android:maxLength="6"
+            android:paddingLeft="10dp"
             android:textSize="15sp"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="243dp" />
@@ -332,7 +332,6 @@
                 android:id="@+id/income"
                 android:layout_width="97dp"
                 android:layout_height="22dp"
-
                 android:text="Income"
                 android:textSize="18sp"
                 tools:layout_editor_absoluteX="171dp"

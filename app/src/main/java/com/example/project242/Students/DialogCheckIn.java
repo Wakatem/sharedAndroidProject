@@ -63,8 +63,8 @@ public class DialogCheckIn extends AppCompatDialogFragment {
         studentNameTextView = view.findViewById(R.id.dialog_check_in_textView_student_name_1);
         studentIDTextView = view.findViewById(R.id.dialog_check_in_textView_student_id_1);
 
-        studentNameTextView.setText("Name:" + student.getStudentName());
-        studentIDTextView.setText("ID:" + String.valueOf(student.getStudentID()));
+        studentNameTextView.setText("Name: " + student.getStudentName());
+        studentIDTextView.setText("ID: " + String.valueOf(student.getStudentID()));
 
 
         return builder.create();
